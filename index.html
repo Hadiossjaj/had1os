@@ -1,199 +1,655 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Browser</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070a12">
+<title>Had1oS</title>
 
 <style>
-* {
-    box-sizing: border-box;
+:root{
+  --bg:#070a12;
+  --text:#f6f7ff;
+  --muted:#8992a6;
+  --line:#ffffff18;
+  --a:#7c5cff;
+  --b:#20d9ff;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: #0b0f14;
-    color: white;
-    font-family: Arial, sans-serif;
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  overflow-x:hidden;
 }
 
-.container {
-    min-height: 100vh;
-    padding: 70px 18px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body{
+  min-height:100svh;
 }
 
-.logo {
-    font-size: 42px;
-    font-weight: bold;
-    margin-bottom: 35px;
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
 }
 
-.subtitle {
-    color: #8b95a5;
-    margin-bottom: 30px;
+.aurora{
+  position:fixed;
+  inset:-25%;
+  z-index:0;
+  filter:blur(70px);
+  opacity:.65;
+  background:
+    radial-gradient(circle at 20% 25%,#7c5cff55,transparent 30%),
+    radial-gradient(circle at 80% 35%,#20d9ff40,transparent 28%),
+    radial-gradient(circle at 50% 85%,#b43cff30,transparent 30%);
+  animation:aurora 12s ease-in-out infinite alternate;
 }
 
-.search-box {
-    width: 100%;
-    max-width: 700px;
-    display: flex;
-    gap: 10px;
+.grid{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  opacity:.18;
+  background-image:
+    linear-gradient(#fff1 1px,transparent 1px),
+    linear-gradient(90deg,#fff1 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:radial-gradient(circle,#000 15%,transparent 75%);
 }
 
-.search-box input {
-    flex: 1;
-    height: 58px;
-    border: 1px solid #303844;
-    border-radius: 30px;
-    background: #151b23;
-    color: white;
-    padding: 0 22px;
-    font-size: 18px;
-    outline: none;
+@keyframes aurora{
+  to{
+    transform:translate(3%,2%) scale(1.08);
+  }
 }
 
-.search-box input:focus {
-    border-color: #4d8dff;
+@keyframes float{
+  50%{
+    transform:translateY(-14px) rotateX(2deg) rotateY(-4deg);
+  }
 }
 
-.search-box button {
-    width: 110px;
-    border: none;
-    border-radius: 30px;
-    background: #4d8dff;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+@keyframes pulse{
+  50%{
+    transform:scale(1.35);
+    box-shadow:0 0 34px #20d9ffcc;
+  }
 }
 
-.search-box button:active {
-    transform: scale(.97);
+@keyframes reveal{
+  from{
+    opacity:0;
+    transform:translateY(22px);
+    filter:blur(7px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+    filter:none;
+  }
 }
 
-.engines {
-    margin-top: 18px;
-    color: #8b95a5;
-    font-size: 14px;
+.wrap{
+  position:relative;
+  z-index:2;
+  width:min(1100px,100%);
+  margin:auto;
+  padding:22px 22px 65px;
 }
 
-.results {
-    width: 100%;
-    max-width: 700px;
-    margin-top: 35px;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  animation:reveal .8s ease both;
 }
 
-.result {
-    background: #151b23;
-    border: 1px solid #252d38;
-    border-radius: 18px;
-    padding: 18px;
-    margin-bottom: 14px;
+.logo{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.04em;
 }
 
-.result a {
-    color: #6da5ff;
-    font-size: 19px;
-    text-decoration: none;
+.dot{
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  margin-right:9px;
+  background:linear-gradient(135deg,var(--a),var(--b));
+  box-shadow:0 0 22px #7c5cffcc;
+  animation:pulse 2.4s infinite;
 }
 
-.result p {
-    color: #aab3c0;
-    margin: 8px 0 0;
-    line-height: 1.4;
+.time{
+  font-size:13px;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
 }
 
-.error {
-    color: #ff7777;
-    text-align: center;
-    margin-top: 20px;
+main{
+  min-height:calc(100svh - 100px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:55px 0;
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding-top: 90px;
-    }
+.orbwrap{
+  width:min(390px,78vw);
+  aspect-ratio:1;
+  margin-bottom:28px;
+  transform-style:preserve-3d;
+  animation:float 6s ease-in-out infinite;
+  transition:transform .18s;
+}
 
-    .logo {
-        font-size: 36px;
-    }
+.orb{
+  width:100%;
+  height:100%;
+  position:relative;
+  border-radius:50%;
+  transform-style:preserve-3d;
+  background:
+    radial-gradient(circle at 34% 28%,#fff 0 2%,#fff4 8%,transparent 20%),
+    radial-gradient(circle at 42% 38%,#7c5cffdd,transparent 37%),
+    radial-gradient(circle at 70% 66%,#20d9ffbb,transparent 42%),
+    radial-gradient(circle,#11162a 0 45%,#080b15 75%);
+  box-shadow:
+    inset -35px -35px 80px #000b,
+    inset 25px 20px 45px #fff1,
+    0 0 70px #7c5cff3d,
+    0 0 150px #20d9ff1a;
+}
 
-    .search-box input {
-        height: 54px;
-        font-size: 16px;
-    }
+.orb:before,
+.orb:after{
+  content:"";
+  position:absolute;
+  inset:-7%;
+  border-radius:50%;
+  border:1px solid #fff2;
+  transform:rotateX(68deg) rotateZ(15deg);
+  box-shadow:0 0 24px #7c5cff38;
+  animation:ring 7s linear infinite;
+}
 
-    .search-box button {
-        width: 90px;
-    }
+.orb:after{
+  inset:7%;
+  transform:rotateY(68deg) rotateZ(-20deg);
+  border-color:#20d9ff38;
+  animation-duration:5s;
+  animation-direction:reverse;
+}
+
+@keyframes ring{
+  to{
+    transform:rotateX(68deg) rotateZ(375deg);
+  }
+}
+
+.orbtext{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  transform:translateZ(55px);
+  font-size:clamp(42px,9vw,78px);
+  font-weight:900;
+  text-shadow:0 10px 35px #000b;
+}
+
+.eyebrow{
+  color:#aeb6c8;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  font-size:11px;
+  margin-bottom:12px;
+  animation:reveal .9s .15s both;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(52px,12vw,112px);
+  line-height:.9;
+  letter-spacing:-.075em;
+  font-weight:900;
+  background:linear-gradient(110deg,#fff 15%,#c9c5ff 45%,#70eaff 85%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:reveal .9s .22s both;
+}
+
+.sub{
+  max-width:600px;
+  color:var(--muted);
+  font-size:clamp(15px,2.5vw,18px);
+  line-height:1.6;
+  margin:22px auto 28px;
+  animation:reveal .9s .32s both;
+}
+
+.search{
+  width:min(680px,100%);
+  display:flex;
+  gap:10px;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#0c111e99;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  animation:reveal .9s .42s both;
+}
+
+.search input{
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#fff;
+  padding:14px 16px;
+  font-size:16px;
+}
+
+.search input::placeholder{
+  color:#697286;
+}
+
+.search button{
+  border:0;
+  color:#fff;
+  font-weight:700;
+  border-radius:16px;
+  padding:0 22px;
+  background:linear-gradient(135deg,#7557ff,#1bbfe4);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.search button:hover{
+  transform:translateY(-2px) scale(1.02);
+  filter:brightness(1.12);
+}
+
+.cards{
+  width:min(900px,100%);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:54px;
+}
+
+.card{
+  min-height:145px;
+  padding:22px;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,#12182aae,#080c177a);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  transform-style:preserve-3d;
+  transition:.25s;
+  animation:reveal .8s both;
+}
+
+.card:nth-child(2){
+  animation-delay:.1s;
+}
+
+.card:nth-child(3){
+  animation-delay:.2s;
+}
+
+.card:hover{
+  transform:translateY(-8px) rotateX(4deg) rotateY(-4deg);
+  border-color:#7c5cff66;
+}
+
+.card b{
+  font-size:24px;
+}
+
+.card h2{
+  font-size:17px;
+  margin:16px 0 7px;
+}
+
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+footer{
+  text-align:center;
+  color:#5f687b;
+  font-size:12px;
+  padding-top:35px;
+}
+
+@media(max-width:700px){
+
+  .wrap{
+    padding:16px 16px 45px;
+  }
+
+  .orbwrap{
+    width:min(310px,72vw);
+    margin-bottom:22px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    margin-top:36px;
+  }
+
+  .card{
+    min-height:120px;
+  }
+
+  .search{
+    border-radius:18px;
+  }
+
+  .search button{
+    padding:0 16px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    animation:none!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<canvas id="p"></canvas>
 
-    <div class="logo">My Browser</div>
+<div class="aurora"></div>
+<div class="grid"></div>
 
-    <div class="subtitle">
-        Поиск в интернете
-    </div>
+<div class="wrap">
 
-    <form class="search-box" id="searchForm">
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="Что хотите найти?"
-            autocomplete="off"
-        >
+<header>
 
-        <button type="submit">
-            Найти
-        </button>
-    </form>
+<a class="logo" href="#">
+<span class="dot"></span>
+Had1oS
+</a>
 
-    <div class="engines">
-        Поиск через DuckDuckGo
-    </div>
+<span class="time" id="time">--:--</span>
 
-    <div class="results" id="results"></div>
+</header>
+
+<main>
+
+<div class="orbwrap" id="orbwrap">
+
+<div class="orb">
+
+<div class="orbtext">
+H
+</div>
+
+</div>
+
+</div>
+
+<div class="eyebrow">
+Welcome to my digital space
+</div>
+
+<h1>
+Had1oS
+</h1>
+
+<p class="sub">
+A small interactive corner of the web — built with motion, depth and a little bit of magic.
+</p>
+
+<form class="search" id="form">
+
+<input
+id="q"
+type="search"
+placeholder="Search the web..."
+autocomplete="off"
+>
+
+<button>
+Search
+</button>
+
+</form>
+
+<section class="cards">
+
+<article class="card">
+
+<b>✦</b>
+
+<h2>
+3D Motion
+</h2>
+
+<p>
+Interactive depth, floating elements and a living background.
+</p>
+
+</article>
+
+<article class="card">
+
+<b>◈</b>
+
+<h2>
+Built for Mobile
+</h2>
+
+<p>
+Designed to look clean and smooth on iPhone and desktop.
+</p>
+
+</article>
+
+<article class="card">
+
+<b>⌁</b>
+
+<h2>
+Pure HTML
+</h2>
+
+<p>
+No build step required. One file runs the whole page.
+</p>
+
+</article>
+
+</section>
+
+</main>
+
+<footer>
+Had1oS · 2026
+</footer>
 
 </div>
 
 <script>
 
-const form = document.getElementById("searchForm");
-const input = document.getElementById("searchInput");
-const results = document.getElementById("results");
+/* Часы */
 
-form.addEventListener("submit", function(event) {
+const t = document.getElementById("time");
 
-    event.preventDefault();
+function clock(){
 
-    const query = input.value.trim();
+  t.textContent =
+    new Date().toLocaleTimeString([],{
+      hour:"2-digit",
+      minute:"2-digit",
+      hour12:false
+    });
 
-    if (!query) {
-        input.focus();
-        return;
-    }
+}
 
-    /*
-      Открываем настоящий поиск DuckDuckGo.
-      Пользователь сможет искать любые сайты,
-      новости, изображения и другую информацию.
-    */
+clock();
 
-    const url =
-        "https://duckduckgo.com/?q=" +
-        encodeURIComponent(query);
+setInterval(clock,1000);
 
-    window.location.href = url;
+
+/* 3D-сфера */
+
+const o = document.getElementById("orbwrap");
+
+o.addEventListener("pointermove",e=>{
+
+  const r=o.getBoundingClientRect();
+
+  const x=(e.clientX-r.left)/r.width-.5;
+  const y=(e.clientY-r.top)/r.height-.5;
+
+  o.style.transform=
+    `rotateX(${-y*18}deg) rotateY(${x*22}deg)`;
+
 });
+
+o.addEventListener("pointerleave",()=>{
+
+  o.style.transform="";
+
+});
+
+
+/* Поиск */
+
+document.getElementById("form").addEventListener("submit",e=>{
+
+  e.preventDefault();
+
+  const q=document.getElementById("q").value.trim();
+
+  if(q){
+
+    location.href=
+      "https://duckduckgo.com/?q="+
+      encodeURIComponent(q);
+
+  }
+
+});
+
+
+/* Анимированные частицы */
+
+const c=document.getElementById("p");
+const x=c.getContext("2d");
+
+let ps=[];
+let w,h,d;
+
+function size(){
+
+  d=Math.min(devicePixelRatio||1,2);
+
+  w=innerWidth;
+  h=innerHeight;
+
+  c.width=w*d;
+  c.height=h*d;
+
+  x.setTransform(d,0,0,d,0,0);
+
+  const count=
+    Math.min(
+      85,
+      Math.max(
+        35,
+        Math.floor(w*h/18000)
+      )
+    );
+
+  ps=Array.from(
+    {length:count},
+    ()=>({
+
+      x:Math.random()*w,
+      y:Math.random()*h,
+
+      z:Math.random()*.9+.1,
+
+      r:Math.random()*1.6+.3,
+
+      vx:(Math.random()-.5)*.18,
+      vy:(Math.random()-.5)*.18
+
+    })
+  );
+
+}
+
+function draw(){
+
+  x.clearRect(0,0,w,h);
+
+  for(const p of ps){
+
+    p.x+=p.vx*p.z;
+    p.y+=p.vy*p.z;
+
+    if(p.x<-10)p.x=w+10;
+    if(p.x>w+10)p.x=-10;
+
+    if(p.y<-10)p.y=h+10;
+    if(p.y>h+10)p.y=-10;
+
+    x.beginPath();
+
+    x.arc(
+      p.x,
+      p.y,
+      p.r*p.z,
+      0,
+      Math.PI*2
+    );
+
+    x.fillStyle=
+      `rgba(180,205,255,${.16+p.z*.32})`;
+
+    x.fill();
+
+  }
+
+  requestAnimationFrame(draw);
+
+}
+
+addEventListener("resize",size);
+
+size();
+draw();
 
 </script>
 
