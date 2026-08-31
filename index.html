@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ffffff">
-<title>Had1oS</title>
+
+<title>Had1oS Search</title>
 
 <style>
 * {
@@ -18,7 +19,6 @@ html {
 }
 
 body {
-    min-height: 100vh;
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -26,347 +26,473 @@ body {
         Roboto,
         Arial,
         sans-serif;
+
     background: #fff;
     color: #202124;
-    overflow-x: hidden;
+
+    min-height: 100vh;
 }
 
-/* ================= HEADER ================= */
+/* =========================
+   HEADER
+========================= */
 
 header {
-    height: 70px;
+    height: 72px;
+
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+
     padding: 0 28px;
-    gap: 22px;
+
+    border-bottom: 1px solid #f1f3f4;
+
+    position: sticky;
+    top: 0;
+
+    background: rgba(255,255,255,.94);
+
+    backdrop-filter: blur(15px);
+
+    z-index: 100;
 }
 
-.header-link {
-    color: #202124;
-    text-decoration: none;
-    font-size: 14px;
+.small-logo {
+    font-size: 29px;
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
     cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4285f4,
+            #7657ff,
+            #00a884,
+            #4285f4
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        gradientMove 7s linear infinite;
 }
 
-.header-link:hover {
-    text-decoration: underline;
+@keyframes gradientMove {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 300%;
+    }
 }
 
-.apps-button {
-    width: 42px;
-    height: 42px;
+/* =========================
+   HEADER SEARCH
+========================= */
+
+.header-search {
+    width: min(650px, 60vw);
+
+    margin-left: 45px;
+
+    height: 46px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 8px 0 16px;
+
+    transition: .25s;
+
+    background: white;
+}
+
+.header-search:hover,
+.header-search:focus-within {
+    box-shadow:
+        0 1px 6px rgba(32,33,36,.15);
+
+    border-color: transparent;
+}
+
+.header-search input {
+    flex: 1;
+
     border: none;
-    background: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    transition: .2s;
+    outline: none;
+
+    font-size: 16px;
+
+    color: #202124;
+
+    min-width: 0;
 }
 
-.apps-button:hover {
+.header-search button {
+    width: 36px;
+    height: 36px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+.header-search button:hover {
+    background: #f1f3f4;
+}
+
+/* =========================
+   RIGHT HEADER
+========================= */
+
+.header-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+}
+
+.menu-button {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 21px;
+}
+
+.menu-button:hover {
     background: #f1f3f4;
 }
 
 .login-button {
     border: none;
+
     background: #1a73e8;
+
     color: white;
-    border-radius: 24px;
-    padding: 11px 21px;
-    font-size: 14px;
+
+    padding: 10px 19px;
+
+    border-radius: 22px;
+
     cursor: pointer;
+
+    font-size: 14px;
+
     transition: .2s;
 }
 
 .login-button:hover {
     background: #1765cc;
-    box-shadow: 0 2px 8px rgba(26,115,232,.25);
-}
-
-/* ================= MAIN ================= */
-
-main {
-    min-height: calc(100vh - 70px - 92px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 105px;
-}
-
-/* LOGO */
-
-.logo {
-    font-size: clamp(62px, 13vw, 92px);
-    font-weight: 700;
-    letter-spacing: -5px;
-    margin-bottom: 38px;
-
-    background: linear-gradient(
-        90deg,
-        #4285f4,
-        #7c4dff,
-        #00a884,
-        #4285f4
-    );
-
-    background-size: 300% auto;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-
-    animation: logoGradient 7s linear infinite,
-               logoFloat 4s ease-in-out infinite;
-}
-
-@keyframes logoGradient {
-    0% { background-position: 0% center; }
-    100% { background-position: 300% center; }
-}
-
-@keyframes logoFloat {
-    0%,100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-/* ================= SEARCH ================= */
-
-.search-wrapper {
-    width: min(680px, calc(100% - 32px));
-    position: relative;
-}
-
-.search-box {
-    width: 100%;
-    min-height: 54px;
-
-    border: 1px solid #dfe1e5;
-    border-radius: 28px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 15px 0 19px;
-
-    background: white;
-
-    transition:
-        box-shadow .25s,
-        border-color .25s,
-        transform .25s;
-}
-
-.search-box:hover,
-.search-box.active {
-    border-color: transparent;
-    box-shadow:
-        0 1px 6px rgba(32,33,36,.15),
-        0 4px 18px rgba(32,33,36,.08);
-}
-
-.search-icon {
-    font-size: 20px;
-    color: #70757a;
-    margin-right: 12px;
-}
-
-#searchInput {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 17px;
-    color: #202124;
-    background: transparent;
-    min-width: 0;
-}
-
-#searchInput::placeholder {
-    color: #9aa0a6;
-}
-
-.voice-button,
-.clear-button {
-    width: 38px;
-    height: 38px;
-    border: none;
-    background: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 19px;
-    transition: .2s;
-}
-
-.voice-button:hover,
-.clear-button:hover {
-    background: #f1f3f4;
-}
-
-/* ================= SUGGESTIONS ================= */
-
-.suggestions {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-
-    background: white;
-
-    border-radius: 0 0 24px 24px;
 
     box-shadow:
-        0 4px 15px rgba(0,0,0,.12);
-
-    overflow: hidden;
-
-    display: none;
-
-    z-index: 50;
+        0 3px 10px rgba(26,115,232,.25);
 }
 
-.suggestions.show {
-    display: block;
-}
+/* =========================
+   SEARCH NAV
+========================= */
 
-.suggestion {
+.search-nav {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
     display: flex;
+
+    gap: 28px;
+
+    height: 52px;
+
+    align-items: end;
+
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.nav-item {
+    height: 52px;
+
+    display: flex;
+
     align-items: center;
-    gap: 13px;
 
-    padding: 12px 20px;
+    gap: 7px;
 
-    cursor: pointer;
-
-    font-size: 15px;
-}
-
-.suggestion:hover {
-    background: #f8f9fa;
-}
-
-.suggestion-icon {
-    color: #70757a;
-}
-
-/* ================= BUTTONS ================= */
-
-.search-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.action-button {
-    border: 1px solid #f8f9fa;
-    background: #f8f9fa;
-
-    color: #3c4043;
-
-    padding: 11px 19px;
-
-    border-radius: 5px;
+    color: #5f6368;
 
     font-size: 14px;
 
     cursor: pointer;
 
-    transition:
-        background .2s,
-        box-shadow .2s,
-        transform .15s;
+    position: relative;
+
+    white-space: nowrap;
 }
 
-.action-button:hover {
-    background: white;
-    border-color: #dadce0;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+.nav-item:hover {
+    color: #202124;
 }
 
-.action-button:active {
-    transform: scale(.96);
+.nav-item.active {
+    color: #1a73e8;
 }
 
-/* ================= SEARCH ENGINE ================= */
+.nav-item.active::after {
+    content: "";
 
-.engine-panel {
-    margin-top: 26px;
+    position: absolute;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    left: 0;
+    right: 0;
+    bottom: -1px;
 
-    color: #5f6368;
+    height: 3px;
+
+    border-radius: 3px 3px 0 0;
+
+    background: #1a73e8;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding:
+        25px 20px 80px;
+}
+
+/* =========================
+   RESULT INFO
+========================= */
+
+.result-info {
+    color: #70757a;
 
     font-size: 13px;
+
+    margin-bottom: 28px;
 }
 
-.engine-select {
-    border: 1px solid #dadce0;
-    border-radius: 18px;
+/* =========================
+   RESULTS
+========================= */
 
-    padding: 7px 13px;
+.results {
+    display: flex;
 
-    background: white;
+    flex-direction: column;
 
-    color: #3c4043;
+    gap: 27px;
+}
 
-    outline: none;
+.result {
+    max-width: 720px;
+
+    animation:
+        resultAppear .45s ease both;
+}
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-url {
+    color: #188038;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+.result-title {
+    color: #1a0dab;
+
+    font-size: 21px;
+
+    font-weight: 500;
 
     cursor: pointer;
+
+    margin-bottom: 5px;
 }
 
-/* ================= QUICK LINKS ================= */
-
-.quick-links {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-
-    margin-top: 50px;
-
-    flex-wrap: wrap;
-
-    width: min(700px, calc(100% - 30px));
+.result-title:hover {
+    text-decoration: underline;
 }
 
-.quick-card {
-    width: 105px;
-    height: 85px;
+.result-description {
+    color: #4d5156;
 
-    border-radius: 14px;
+    font-size: 15px;
 
-    background: #fff;
+    line-height: 1.55;
+}
 
-    border: 1px solid #eceff1;
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    min-height: 55vh;
 
     display: flex;
+
     flex-direction: column;
 
     align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.welcome-logo {
+    font-size: clamp(65px, 13vw, 105px);
+
+    font-weight: 800;
+
+    letter-spacing: -6px;
+
+    margin-bottom: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4285f4,
+            #7657ff,
+            #00a884,
+            #4285f4
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation:
+        gradientMove 7s linear infinite,
+        welcomeFloat 4s ease-in-out infinite;
+}
+
+@keyframes welcomeFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.welcome-text {
+    color: #70757a;
+
+    font-size: 17px;
+
+    max-width: 520px;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   QUICK CARDS
+========================= */
+
+.quick {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 38px;
+}
+
+.quick-card {
+    width: 110px;
+    height: 85px;
+
+    border: 1px solid #eceff1;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
     justify-content: center;
 
     gap: 7px;
 
     cursor: pointer;
 
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        border-color .25s;
+    transition: .25s;
+
+    background: white;
 }
 
 .quick-card:hover {
     transform: translateY(-5px);
-    border-color: #dadce0;
 
     box-shadow:
-        0 6px 18px rgba(60,64,67,.12);
+        0 7px 22px rgba(60,64,67,.12);
 }
 
 .quick-icon {
@@ -374,86 +500,22 @@ main {
 }
 
 .quick-name {
-    font-size: 12px;
     color: #5f6368;
+
+    font-size: 12px;
 }
 
-/* ================= FOOTER ================= */
-
-footer {
-    min-height: 92px;
-
-    background: #f2f2f2;
-
-    border-top: 1px solid #dadce0;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 20px 35px;
-
-    color: #70757a;
-
-    font-size: 14px;
-}
-
-.footer-left,
-.footer-right {
-    display: flex;
-    gap: 25px;
-}
-
-.footer-link {
-    cursor: pointer;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
-
-/* ================= TOAST ================= */
-
-.toast {
-    position: fixed;
-
-    bottom: 30px;
-    left: 50%;
-
-    transform:
-        translate(-50%, 30px);
-
-    background: #202124;
-    color: white;
-
-    padding: 12px 20px;
-
-    border-radius: 25px;
-
-    font-size: 14px;
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition: .3s;
-
-    z-index: 100;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translate(-50%, 0);
-}
-
-/* ================= MENU ================= */
+/* =========================
+   MENU
+========================= */
 
 .menu {
     position: fixed;
 
-    top: 68px;
-    right: 22px;
+    top: 67px;
+    right: 20px;
 
-    width: 270px;
+    width: 260px;
 
     background: white;
 
@@ -461,25 +523,27 @@ footer {
 
     border-radius: 18px;
 
-    padding: 12px;
+    padding: 10px;
 
     box-shadow:
-        0 8px 30px rgba(0,0,0,.15);
+        0 8px 30px rgba(0,0,0,.16);
 
     opacity: 0;
+
     visibility: hidden;
 
     transform:
         translateY(-10px)
-        scale(.97);
+        scale(.96);
 
     transition: .2s;
 
-    z-index: 100;
+    z-index: 500;
 }
 
 .menu.show {
     opacity: 1;
+
     visibility: visible;
 
     transform:
@@ -488,16 +552,20 @@ footer {
 }
 
 .menu-title {
-    font-weight: 600;
-    padding: 10px 12px 8px;
+    font-weight: 700;
+
+    padding:
+        12px 13px;
 }
 
 .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    padding: 13px;
 
-    padding: 12px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
 
     border-radius: 12px;
 
@@ -510,60 +578,175 @@ footer {
     background: #f1f3f4;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================
+   TOAST
+========================= */
 
-@media (max-width: 600px) {
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 30px;
+
+    transform:
+        translate(-50%, 30px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background: #202124;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    z-index: 1000;
+
+    transition: .3s;
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #f2f2f2;
+
+    border-top: 1px solid #dadce0;
+
+    min-height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        18px 35px;
+
+    color: #70757a;
+
+    font-size: 13px;
+}
+
+.footer-group {
+    display: flex;
+
+    gap: 24px;
+}
+
+.footer-item {
+    cursor: pointer;
+}
+
+.footer-item:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
 
     header {
         height: 62px;
-        padding: 0 15px;
-        gap: 10px;
+
+        padding:
+            0 12px;
     }
 
-    .header-link {
-        display: none;
+    .small-logo {
+        font-size: 23px;
+    }
+
+    .header-search {
+        margin-left: 12px;
+
+        width: auto;
+
+        flex: 1;
+
+        height: 42px;
+    }
+
+    .header-right {
+        gap: 4px;
     }
 
     .login-button {
-        padding: 10px 16px;
+        display: none;
+    }
+
+    .search-nav {
+        gap: 18px;
+
+        overflow-x: auto;
+
+        scrollbar-width: none;
+    }
+
+    .search-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-item {
+        font-size: 13px;
     }
 
     main {
-        padding-top: 75px;
+        padding:
+            20px 16px 60px;
     }
 
-    .logo {
-        margin-bottom: 28px;
+    .result-title {
+        font-size: 19px;
     }
 
-    .search-box {
-        min-height: 52px;
+    .result-description {
+        font-size: 14px;
     }
 
-    .search-buttons {
-        margin-top: 22px;
+    .welcome {
+        min-height: 58vh;
     }
 
-    .quick-links {
-        margin-top: 35px;
+    .welcome-logo {
+        letter-spacing: -5px;
     }
 
     .quick-card {
-        width: 92px;
+        width: 94px;
         height: 78px;
     }
 
     footer {
         flex-direction: column;
+
         gap: 18px;
+
         text-align: center;
     }
 
-    .footer-left,
-    .footer-right {
+    .footer-group {
         flex-wrap: wrap;
+
         justify-content: center;
-        gap: 15px;
+
+        gap: 14px;
     }
 }
 </style>
@@ -571,305 +754,316 @@ footer {
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-    <a class="header-link"
-       href="https://mail.google.com"
-       target="_blank">
-        Почта
-    </a>
+    <div
+        class="small-logo"
+        onclick="goHome()">
+        Had1oS
+    </div>
 
-    <a class="header-link"
-       href="https://images.google.com"
-       target="_blank">
-        Картинки
-    </a>
 
-    <button class="apps-button"
-            onclick="toggleMenu()"
-            aria-label="Меню">
-        ⋮⋮⋮
-    </button>
+    <div class="header-search">
 
-    <button class="login-button"
-            onclick="showLoginMessage()">
-        Войти
-    </button>
+        <input
+            id="headerInput"
+            type="text"
+            placeholder="Поиск"
+            autocomplete="off"
+        >
+
+        <button
+            onclick="clearHeader()">
+            ×
+        </button>
+
+        <button
+            onclick="voiceSearch()">
+            🎙️
+        </button>
+
+        <button
+            onclick="performSearch()">
+            🔍
+        </button>
+
+    </div>
+
+
+    <div class="header-right">
+
+        <button
+            class="menu-button"
+            onclick="toggleMenu()">
+            ⋮⋮⋮
+        </button>
+
+        <button
+            class="login-button"
+            onclick="login()">
+            Войти
+        </button>
+
+    </div>
 
 </header>
 
 
-<!-- ================= MENU ================= -->
+<!-- =========================
+     MENU
+========================= -->
 
-<div class="menu" id="menu">
+<div
+    class="menu"
+    id="menu">
 
     <div class="menu-title">
         Had1oS
     </div>
 
-    <div class="menu-item"
-         onclick="searchType('web')">
-        🔎
-        <span>Поиск</span>
+    <div
+        class="menu-item"
+        onclick="goHome()">
+        🏠
+        Главная
     </div>
 
-    <div class="menu-item"
-         onclick="searchType('images')">
+    <div
+        class="menu-item"
+        onclick="searchType('images')">
         🖼️
-        <span>Картинки</span>
+        Картинки
     </div>
 
-    <div class="menu-item"
-         onclick="searchType('video')">
+    <div
+        class="menu-item"
+        onclick="searchType('video')">
         🎬
-        <span>Видео</span>
+        Видео
     </div>
 
-    <div class="menu-item"
-         onclick="searchType('news')">
+    <div
+        class="menu-item"
+        onclick="searchType('news')">
         📰
-        <span>Новости</span>
+        Новости
     </div>
 
-    <div class="menu-item"
-         onclick="searchType('maps')">
+    <div
+        class="menu-item"
+        onclick="searchType('maps')">
         🗺️
-        <span>Карты</span>
+        Карты
     </div>
 
-    <div class="menu-item"
-         onclick="openMusic()">
+    <div
+        class="menu-item"
+        onclick="music()">
         🎵
-        <span>Музыка</span>
+        Музыка
     </div>
 
 </div>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =========================
+     NAV
+========================= -->
 
-<main>
+<nav
+    class="search-nav"
+    id="searchNav">
 
-    <div class="logo">
-        Had1oS
+    <div
+        class="nav-item active"
+        onclick="searchType('web')">
+        🔎
+        Все
     </div>
 
-
-    <!-- SEARCH -->
-
-    <div class="search-wrapper">
-
-        <div class="search-box"
-             id="searchBox">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-            <input
-                id="searchInput"
-                type="text"
-                autocomplete="off"
-                placeholder="Поиск"
-                aria-label="Поиск"
-            >
-
-            <button
-                class="clear-button"
-                id="clearButton"
-                onclick="clearSearch()"
-                style="display:none;">
-                ×
-            </button>
-
-            <button
-                class="voice-button"
-                onclick="voiceSearch()"
-                aria-label="Голосовой поиск">
-                🎙️
-            </button>
-
-        </div>
-
-
-        <!-- SUGGESTIONS -->
-
-        <div class="suggestions"
-             id="suggestions">
-
-            <div class="suggestion">
-                <span class="suggestion-icon">↗</span>
-                <span>Популярный поиск</span>
-            </div>
-
-        </div>
-
+    <div
+        class="nav-item"
+        onclick="searchType('images')">
+        🖼️
+        Картинки
     </div>
 
-
-    <!-- BUTTONS -->
-
-    <div class="search-buttons">
-
-        <button
-            class="action-button"
-            onclick="performSearch()">
-            Поиск Had1oS
-        </button>
-
-        <button
-            class="action-button"
-            onclick="luckySearch()">
-            Мне повезёт
-        </button>
-
+    <div
+        class="nav-item"
+        onclick="searchType('video')">
+        🎬
+        Видео
     </div>
 
-
-    <!-- ENGINE -->
-
-    <div class="engine-panel">
-
-        <span>Искать через:</span>
-
-        <select
-            class="engine-select"
-            id="engineSelect">
-
-            <option value="google">
-                Google
-            </option>
-
-            <option value="yandex">
-                Яндекс
-            </option>
-
-            <option value="bing">
-                Bing
-            </option>
-
-            <option value="duck">
-                DuckDuckGo
-            </option>
-
-        </select>
-
+    <div
+        class="nav-item"
+        onclick="searchType('news')">
+        📰
+        Новости
     </div>
 
-
-    <!-- QUICK LINKS -->
-
-    <div class="quick-links">
-
-        <div class="quick-card"
-             onclick="openURL('https://www.youtube.com')">
-
-            <div class="quick-icon">
-                ▶️
-            </div>
-
-            <div class="quick-name">
-                YouTube
-            </div>
-
-        </div>
-
-
-        <div class="quick-card"
-             onclick="openURL('https://vk.com')">
-
-            <div class="quick-icon">
-                VK
-            </div>
-
-            <div class="quick-name">
-                VK
-            </div>
-
-        </div>
-
-
-        <div class="quick-card"
-             onclick="openURL('https://open.spotify.com')">
-
-            <div class="quick-icon">
-                🎵
-            </div>
-
-            <div class="quick-name">
-                Spotify
-            </div>
-
-        </div>
-
-
-        <div class="quick-card"
-             onclick="openURL('https://github.com')">
-
-            <div class="quick-icon">
-                🐙
-            </div>
-
-            <div class="quick-name">
-                GitHub
-            </div>
-
-        </div>
-
-
-        <div class="quick-card"
-             onclick="openURL('https://www.google.com/maps')">
-
-            <div class="quick-icon">
-                🗺️
-            </div>
-
-            <div class="quick-name">
-                Карты
-            </div>
-
-        </div>
-
+    <div
+        class="nav-item"
+        onclick="searchType('maps')">
+        🗺️
+        Карты
     </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main id="main">
+
+    <section class="welcome">
+
+        <div class="welcome-logo">
+            Had1oS
+        </div>
+
+        <div class="welcome-text">
+            Быстрый поиск в интернете.
+            Выбирай сервис и находи нужную информацию.
+        </div>
+
+
+        <div class="quick">
+
+            <div
+                class="quick-card"
+                onclick="openURL('https://www.youtube.com')">
+
+                <div class="quick-icon">
+                    ▶️
+                </div>
+
+                <div class="quick-name">
+                    YouTube
+                </div>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openURL('https://vk.com')">
+
+                <div class="quick-icon">
+                    VK
+                </div>
+
+                <div class="quick-name">
+                    VK
+                </div>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openURL('https://open.spotify.com')">
+
+                <div class="quick-icon">
+                    🎵
+                </div>
+
+                <div class="quick-name">
+                    Spotify
+                </div>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openURL('https://github.com')">
+
+                <div class="quick-icon">
+                    🐙
+                </div>
+
+                <div class="quick-name">
+                    GitHub
+                </div>
+
+            </div>
+
+
+            <div
+                class="quick-card"
+                onclick="openURL('https://maps.google.com')">
+
+                <div class="quick-icon">
+                    🗺️
+                </div>
+
+                <div class="quick-name">
+                    Карты
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+
+    <section
+        id="resultsSection"
+        style="display:none;">
+
+        <div
+            class="result-info"
+            id="resultInfo">
+        </div>
+
+        <div
+            class="results"
+            id="results">
+        </div>
+
+    </section>
 
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    <div class="footer-left">
+    <div class="footer-group">
 
-        <span class="footer-link">
+        <span class="footer-item"
+              onclick="about()">
             О Had1oS
         </span>
 
-        <span class="footer-link">
-            Реклама
+        <span class="footer-item">
+            Конфиденциальность
         </span>
 
-        <span class="footer-link">
-            Для бизнеса
+        <span class="footer-item">
+            Условия
         </span>
 
     </div>
 
 
-    <div class="footer-right">
+    <div class="footer-group">
 
-        <span class="footer-link">
-            Конфиденциальность
-        </span>
-
-        <span class="footer-link">
-            Условия
-        </span>
-
-        <span class="footer-link"
-              onclick="showAbout()">
+        <span class="footer-item"
+              onclick="settings()">
             Настройки
         </span>
 
@@ -878,72 +1072,115 @@ footer {
 </footer>
 
 
-<!-- ================= TOAST ================= -->
+<!-- TOAST -->
 
-<div class="toast"
-     id="toast">
+<div
+    class="toast"
+    id="toast">
 </div>
 
 
 <script>
 
 /* =========================================
-   ELEMENTS
+   VARIABLES
 ========================================= */
 
 const input =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "headerInput"
+    );
 
-const searchBox =
-    document.getElementById("searchBox");
+const welcome =
+    document.querySelector(
+        ".welcome"
+    );
 
-const clearButton =
-    document.getElementById("clearButton");
+const resultsSection =
+    document.getElementById(
+        "resultsSection"
+    );
 
-const suggestions =
-    document.getElementById("suggestions");
+const results =
+    document.getElementById(
+        "results"
+    );
+
+const resultInfo =
+    document.getElementById(
+        "resultInfo"
+    );
 
 const menu =
-    document.getElementById("menu");
+    document.getElementById(
+        "menu"
+    );
 
 const toast =
-    document.getElementById("toast");
+    document.getElementById(
+        "toast"
+    );
 
 
 /* =========================================
-   SEARCH ENGINE URLS
+   ENGINE
+========================================= */
+
+let selectedEngine =
+    localStorage.getItem(
+        "hadios-engine"
+    ) || "google";
+
+
+/* =========================================
+   SEARCH URL
 ========================================= */
 
 function getSearchURL(query) {
 
-    const engine =
-        document.getElementById("engineSelect").value;
-
-    const encoded =
+    const q =
         encodeURIComponent(query);
 
-    if (engine === "google") {
-        return "https://www.google.com/search?q=" + encoded;
+
+    if (selectedEngine === "yandex") {
+
+        return (
+            "https://yandex.ru/search/?text="
+            + q
+        );
+
     }
 
-    if (engine === "yandex") {
-        return "https://yandex.ru/search/?text=" + encoded;
+
+    if (selectedEngine === "bing") {
+
+        return (
+            "https://www.bing.com/search?q="
+            + q
+        );
+
     }
 
-    if (engine === "bing") {
-        return "https://www.bing.com/search?q=" + encoded;
+
+    if (selectedEngine === "duck") {
+
+        return (
+            "https://duckduckgo.com/?q="
+            + q
+        );
+
     }
 
-    if (engine === "duck") {
-        return "https://duckduckgo.com/?q=" + encoded;
-    }
 
-    return "https://www.google.com/search?q=" + encoded;
+    return (
+        "https://www.google.com/search?q="
+        + q
+    );
 }
 
 
 /* =========================================
-   NORMAL SEARCH
+   SEARCH
 ========================================= */
 
 function performSearch() {
@@ -951,14 +1188,27 @@ function performSearch() {
     const query =
         input.value.trim();
 
+
     if (!query) {
 
-        showToast("Введите запрос");
+        showToast(
+            "Введите запрос"
+        );
 
         input.focus();
 
         return;
     }
+
+
+    saveSearch(query);
+
+
+    /*
+       Здесь Had1oS запоминает запрос,
+       а затем отправляет его выбранному
+       поисковику.
+    */
 
     window.location.href =
         getSearchURL(query);
@@ -973,83 +1223,25 @@ input.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
             performSearch();
 
         }
 
-        if (event.key === "Escape") {
-
-            clearSearch();
-
-        }
-
     }
 );
 
 
 /* =========================================
-   INPUT ANIMATION
+   CLEAR
 ========================================= */
 
-input.addEventListener(
-    "focus",
-    function() {
-
-        searchBox.classList.add("active");
-
-    }
-);
-
-input.addEventListener(
-    "blur",
-    function() {
-
-        setTimeout(() => {
-
-            searchBox.classList.remove("active");
-
-        }, 150);
-
-    }
-);
-
-
-/* =========================================
-   CLEAR BUTTON
-========================================= */
-
-input.addEventListener(
-    "input",
-    function() {
-
-        clearButton.style.display =
-            input.value.length
-            ? "block"
-            : "none";
-
-        if (input.value.length > 0) {
-
-            suggestions.classList.add("show");
-
-        } else {
-
-            suggestions.classList.remove("show");
-
-        }
-
-    }
-);
-
-
-function clearSearch() {
+function clearHeader() {
 
     input.value = "";
-
-    clearButton.style.display = "none";
-
-    suggestions.classList.remove("show");
 
     input.focus();
 
@@ -1057,62 +1249,158 @@ function clearSearch() {
 
 
 /* =========================================
-   LUCKY SEARCH
+   HISTORY
 ========================================= */
 
-function luckySearch() {
+function saveSearch(query) {
+
+    let history =
+        JSON.parse(
+            localStorage.getItem(
+                "hadios-history"
+            ) || "[]"
+        );
+
+
+    history =
+        history.filter(
+            item =>
+                item.toLowerCase()
+                !== query.toLowerCase()
+        );
+
+
+    history.unshift(query);
+
+
+    history =
+        history.slice(0, 20);
+
+
+    localStorage.setItem(
+        "hadios-history",
+        JSON.stringify(history)
+    );
+}
+
+
+/* =========================================
+   SEARCH TYPES
+========================================= */
+
+function searchType(type) {
 
     const query =
         input.value.trim();
 
+
     if (!query) {
 
-        showToast("Сначала введите запрос");
+        showToast(
+            "Введите запрос"
+        );
 
         input.focus();
 
         return;
     }
 
-    const url =
-        getSearchURL(query)
-        + "&btnI=1";
 
-    window.location.href = url;
+    const q =
+        encodeURIComponent(query);
 
+
+    let url;
+
+
+    if (type === "images") {
+
+        url =
+            "https://www.google.com/search?tbm=isch&q="
+            + q;
+
+    }
+
+
+    else if (type === "video") {
+
+        url =
+            "https://www.youtube.com/results?search_query="
+            + q;
+
+    }
+
+
+    else if (type === "news") {
+
+        url =
+            "https://news.google.com/search?q="
+            + q;
+
+    }
+
+
+    else if (type === "maps") {
+
+        url =
+            "https://www.google.com/maps/search/"
+            + q;
+
+    }
+
+
+    else {
+
+        url =
+            getSearchURL(query);
+
+    }
+
+
+    saveSearch(query);
+
+
+    window.location.href =
+        url;
 }
 
 
 /* =========================================
-   VOICE SEARCH
+   VOICE
 ========================================= */
 
 function voiceSearch() {
 
-    const SpeechRecognition =
+    const Recognition =
         window.SpeechRecognition ||
         window.webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
+
+    if (!Recognition) {
 
         showToast(
-            "Голосовой поиск не поддерживается этим браузером"
+            "Голосовой поиск недоступен"
         );
 
         return;
     }
 
+
     const recognition =
-        new SpeechRecognition();
-
-    recognition.lang = "ru-RU";
-
-    recognition.interimResults = false;
-
-    recognition.maxAlternatives = 1;
+        new Recognition();
 
 
-    showToast("Слушаю…");
+    recognition.lang =
+        "ru-RU";
+
+
+    recognition.interimResults =
+        false;
+
+
+    showToast(
+        "Слушаю…"
+    );
 
 
     recognition.start();
@@ -1121,12 +1409,11 @@ function voiceSearch() {
     recognition.onresult =
         function(event) {
 
-            const text =
-                event.results[0][0].transcript;
+            input.value =
+                event
+                .results[0][0]
+                .transcript;
 
-            input.value = text;
-
-            clearButton.style.display = "block";
 
             performSearch();
 
@@ -1146,12 +1433,36 @@ function voiceSearch() {
 
 
 /* =========================================
+   HOME
+========================================= */
+
+function goHome() {
+
+    input.value = "";
+
+    welcome.style.display =
+        "flex";
+
+    resultsSection.style.display =
+        "none";
+
+    window.scrollTo(
+        0,
+        0
+    );
+
+}
+
+
+/* =========================================
    MENU
 ========================================= */
 
 function toggleMenu() {
 
-    menu.classList.toggle("show");
+    menu.classList.toggle(
+        "show"
+    );
 
 }
 
@@ -1161,11 +1472,17 @@ document.addEventListener(
     function(event) {
 
         if (
-            !menu.contains(event.target) &&
-            !event.target.closest(".apps-button")
+            !menu.contains(
+                event.target
+            ) &&
+            !event.target.closest(
+                ".menu-button"
+            )
         ) {
 
-            menu.classList.remove("show");
+            menu.classList.remove(
+                "show"
+            );
 
         }
 
@@ -1174,106 +1491,33 @@ document.addEventListener(
 
 
 /* =========================================
-   MENU SEARCH TYPES
-========================================= */
-
-function searchType(type) {
-
-    const query =
-        input.value.trim();
-
-    if (!query) {
-
-        showToast("Введите запрос");
-
-        menu.classList.remove("show");
-
-        input.focus();
-
-        return;
-    }
-
-    const encoded =
-        encodeURIComponent(query);
-
-    let url;
-
-
-    if (type === "web") {
-
-        url =
-            "https://www.google.com/search?q="
-            + encoded;
-
-    }
-
-
-    if (type === "images") {
-
-        url =
-            "https://www.google.com/search?tbm=isch&q="
-            + encoded;
-
-    }
-
-
-    if (type === "video") {
-
-        url =
-            "https://www.youtube.com/results?search_query="
-            + encoded;
-
-    }
-
-
-    if (type === "news") {
-
-        url =
-            "https://news.google.com/search?q="
-            + encoded;
-
-    }
-
-
-    if (type === "maps") {
-
-        url =
-            "https://www.google.com/maps/search/"
-            + encoded;
-
-    }
-
-
-    window.location.href = url;
-
-}
-
-
-/* =========================================
    MUSIC
 ========================================= */
 
-function openMusic() {
+function music() {
 
-    menu.classList.remove("show");
+    menu.classList.remove(
+        "show"
+    );
 
-    const choice =
+
+    const spotify =
         confirm(
-            "Открыть Spotify?\n\nНажмите «Отмена», чтобы открыть VK."
+            "Открыть Spotify?\n\n" +
+            "Нажмите «Отмена», чтобы открыть VK Музыку."
         );
 
-    if (choice) {
 
-        window.open(
-            "https://open.spotify.com",
-            "_blank"
+    if (spotify) {
+
+        openURL(
+            "https://open.spotify.com"
         );
 
     } else {
 
-        window.open(
-            "https://vk.com/music",
-            "_blank"
+        openURL(
+            "https://vk.com/music"
         );
 
     }
@@ -1282,7 +1526,7 @@ function openMusic() {
 
 
 /* =========================================
-   QUICK LINKS
+   OPEN URL
 ========================================= */
 
 function openURL(url) {
@@ -1299,10 +1543,10 @@ function openURL(url) {
    LOGIN
 ========================================= */
 
-function showLoginMessage() {
+function login() {
 
     showToast(
-        "Авторизация Had1oS скоро будет доступна"
+        "Авторизация Had1oS скоро появится"
     );
 
 }
@@ -1312,11 +1556,50 @@ function showLoginMessage() {
    ABOUT
 ========================================= */
 
-function showAbout() {
+function about() {
 
     showToast(
-        "Had1oS — твой персональный поисковый экран"
+        "Had1oS — персональный поисковый портал"
     );
+
+}
+
+
+function settings() {
+
+    const engine =
+        prompt(
+            "Выберите поисковик:\n\n" +
+            "google — Google\n" +
+            "yandex — Яндекс\n" +
+            "bing — Bing\n" +
+            "duck — DuckDuckGo",
+            selectedEngine
+        );
+
+
+    if (
+        engine === "google" ||
+        engine === "yandex" ||
+        engine === "bing" ||
+        engine === "duck"
+    ) {
+
+        selectedEngine =
+            engine;
+
+
+        localStorage.setItem(
+            "hadios-engine",
+            engine
+        );
+
+
+        showToast(
+            "Поисковик изменён"
+        );
+
+    }
 
 }
 
@@ -1327,72 +1610,58 @@ function showAbout() {
 
 let toastTimer;
 
+
 function showToast(message) {
 
-    toast.textContent = message;
+    toast.textContent =
+        message;
 
-    toast.classList.add("show");
 
-    clearTimeout(toastTimer);
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
 
     toastTimer =
         setTimeout(
-            () => {
+            function() {
 
-                toast.classList.remove("show");
+                toast.classList.remove(
+                    "show"
+                );
 
             },
-            2800
+            2500
         );
 
 }
 
 
 /* =========================================
-   RANDOM STARTUP ANIMATION
+   ESC
 ========================================= */
 
-window.addEventListener(
-    "load",
-    function() {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-        setTimeout(
-            () => {
+        if (
+            event.key === "Escape"
+        ) {
 
-                document.querySelector(".logo")
-                    .style.opacity = "1";
-
-            },
-            100
-        );
-
-    }
-);
-
-
-/* =========================================
-   SUGGESTION CLICK
-========================================= */
-
-document.querySelectorAll(".suggestion")
-    .forEach(
-        item => {
-
-            item.addEventListener(
-                "click",
-                function() {
-
-                    input.value =
-                        "популярные запросы";
-
-                    performSearch();
-
-                }
-
+            menu.classList.remove(
+                "show"
             );
 
         }
-    );
+
+    }
+);
 
 </script>
 
