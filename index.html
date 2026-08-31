@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050816">
-<title>Had1oS — поиск</title>
+<meta name="theme-color" content="#070b1c">
+<title>Had1oS</title>
 
 <style>
 * {
@@ -25,10 +25,10 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
-    color: #fff;
+    color: white;
     background:
-        radial-gradient(circle at 15% 15%, rgba(91,63,255,.25), transparent 35%),
-        radial-gradient(circle at 85% 30%, rgba(0,220,255,.18), transparent 35%),
+        radial-gradient(circle at 15% 20%, rgba(91,63,255,.25), transparent 35%),
+        radial-gradient(circle at 85% 35%, rgba(0,220,255,.18), transparent 35%),
         linear-gradient(135deg, #050816, #080b18 45%, #02060d);
     overflow-x: hidden;
 }
@@ -49,21 +49,17 @@ body {
     position: absolute;
     inset: 0;
     opacity: .16;
-
     background-image:
         linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-
     background-size: 45px 45px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            transparent,
-            black 20%,
-            black 80%,
-            transparent
-        );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+    );
 }
 
 .orb {
@@ -72,13 +68,13 @@ body {
     height: 450px;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: .35;
+    opacity: .32;
     animation: float 9s ease-in-out infinite;
 }
 
 .orb.one {
     background: #643cff;
-    top: 5%;
+    top: 8%;
     left: -180px;
 }
 
@@ -104,238 +100,243 @@ body {
 ========================= */
 
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
     width: 100%;
-    padding: 18px 5%;
-
+    padding: 28px 6%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px;
-
-    background: rgba(5,8,22,.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    background: rgba(5,8,22,.35);
+    backdrop-filter: blur(18px);
+    position: relative;
+    z-index: 20;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
-
-    color: white;
-    text-decoration: none;
-
-    font-size: 24px;
+    gap: 12px;
+    font-size: 25px;
     font-weight: 800;
-
-    white-space: nowrap;
+    letter-spacing: -1px;
 }
 
 .logo-dot {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #765cff,
-        #24d9ff
-    );
-
+    background: linear-gradient(135deg,#765cff,#24d9ff);
     box-shadow:
         0 0 15px #586aff,
-        0 0 30px rgba(36,217,255,.3);
+        0 0 35px rgba(36,217,255,.35);
 }
 
 /* =========================
-   NAVIGATION
+   HEADER BUTTONS
 ========================= */
 
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.nav a,
-.more-button {
-    border: 0;
-    background: transparent;
-
-    color: #aeb5c9;
-
-    padding: 10px 12px;
-    border-radius: 12px;
-
-    text-decoration: none;
-    font-size: 15px;
-
-    cursor: pointer;
-
-    transition:
-        background .25s,
-        color .25s,
-        transform .25s;
-}
-
-.nav a:hover,
-.more-button:hover {
-    color: white;
-    background: rgba(255,255,255,.08);
-    transform: translateY(-1px);
-}
-
-.more {
-    position: relative;
-}
-
-.more-button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.arrow {
-    font-size: 11px;
-    transition: transform .25s;
-}
-
-.more.open .arrow {
-    transform: rotate(180deg);
-}
-
-/* =========================
-   DROPDOWN
-========================= */
-
-.dropdown {
-    position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
-
-    width: 250px;
-
-    padding: 10px;
-
-    background: rgba(10,14,31,.96);
-    backdrop-filter: blur(25px);
-
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 18px;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.45),
-        0 0 30px rgba(70,80,255,.08);
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px) scale(.98);
-
-    transition:
-        opacity .2s,
-        transform .2s,
-        visibility .2s;
-}
-
-.more.open .dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
-
-.dropdown a {
+.header-buttons {
     display: flex;
     align-items: center;
     gap: 12px;
-
-    width: 100%;
-
-    padding: 13px;
-
-    color: #dce1ef;
-    text-decoration: none;
-
-    border-radius: 12px;
-
-    transition: background .2s;
 }
 
-.dropdown a:hover {
-    background: rgba(255,255,255,.08);
+.login-btn,
+.menu-btn {
+    border: 1px solid rgba(255,255,255,.13);
+    background: rgba(255,255,255,.05);
+    color: white;
+    cursor: pointer;
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
 }
 
-.service-icon {
-    width: 32px;
-    height: 32px;
+.login-btn {
+    padding: 15px 28px;
+    border-radius: 22px;
+    font-size: 18px;
+    font-weight: 700;
+}
 
-    display: grid;
-    place-items: center;
+.menu-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 22px;
+    font-size: 30px;
+}
 
-    border-radius: 10px;
+.login-btn:hover,
+.menu-btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,.1);
+    box-shadow: 0 10px 35px rgba(0,0,0,.25);
+}
 
-    background: rgba(255,255,255,.07);
+.login-btn:active,
+.menu-btn:active {
+    transform: scale(.94);
 }
 
 /* =========================
-   LOGIN
+   MENU
 ========================= */
 
-.login {
-    margin-left: auto;
+.menu {
+    position: absolute;
+    z-index: 30;
+    top: 105px;
+    right: 6%;
+    width: min(775px, calc(100% - 40px));
 
-    padding: 10px 18px;
+    padding: 30px;
 
-    border: 1px solid rgba(255,255,255,.12);
-    border-radius: 13px;
+    border-radius: 30px;
 
-    background: rgba(255,255,255,.06);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,15,35,.97),
+            rgba(4,8,22,.97)
+        );
 
-    color: white;
+    border: 1px solid rgba(255,255,255,.13);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55),
+        0 0 60px rgba(83,81,255,.08);
+
+    backdrop-filter: blur(25px);
+
+    opacity: 0;
+    visibility: hidden;
+    transform:
+        translateY(-15px)
+        scale(.97);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        visibility .3s;
+}
+
+.menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.menu-title {
+    color: #777f9f;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 8px;
+}
+
+.menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    width: 100%;
+    padding: 18px 16px;
+
+    border: 0;
+    border-radius: 17px;
+
+    background: transparent;
+    color: #d7dced;
+
+    font-size: 19px;
+    text-align: left;
 
     cursor: pointer;
 
-    font-size: 14px;
-    font-weight: 600;
-
-    transition: .25s;
+    transition:
+        background .25s ease,
+        transform .25s ease,
+        color .25s ease;
 }
 
-.login:hover {
-    background: linear-gradient(
-        135deg,
-        #765cff,
-        #24d9ff
-    );
-
-    border-color: transparent;
-    transform: translateY(-2px);
-
-    box-shadow: 0 10px 30px rgba(70,100,255,.25);
+.menu-item:hover {
+    background: rgba(110,100,255,.13);
+    color: white;
+    transform: translateX(5px);
 }
 
-/* =========================
-   MOBILE BUTTON
-========================= */
+.menu-item:active {
+    transform: scale(.97);
+}
 
-.menu-button {
-    display: none;
+.menu-icon {
+    width: 35px;
+    height: 35px;
 
-    width: 42px;
-    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border-radius: 12px;
+    font-size: 25px;
 
-    border: 1px solid rgba(255,255,255,.1);
-    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.05);
+}
+
+.menu-item.active {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(100,80,255,.22),
+            rgba(0,210,255,.08)
+        );
 
     color: white;
 
-    font-size: 22px;
+    box-shadow:
+        inset 0 0 0 1px rgba(120,110,255,.2),
+        0 0 25px rgba(80,80,255,.08);
+}
+
+.menu-item.active::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: #4ce4ff;
+
+    box-shadow:
+        0 0 12px #4ce4ff,
+        0 0 25px rgba(76,228,255,.6);
+
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        opacity: .6;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
 }
 
 /* =========================
@@ -343,176 +344,66 @@ header {
 ========================= */
 
 .hero {
-    max-width: 1100px;
-    margin: 0 auto;
-
-    padding:
-        45px 20px
-        30px;
-
+    max-width: 1000px;
+    margin: 50px auto 0;
+    padding: 20px;
     text-align: center;
 }
 
 .eyebrow {
     color: #a9aec5;
-
     letter-spacing: 5px;
-    font-size: 13px;
-
-    margin-bottom: 18px;
-
-    animation: fadeUp .8s ease both;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: clamp(65px, 13vw, 140px);
+    font-size: clamp(65px, 12vw, 140px);
     line-height: .9;
-
     font-weight: 900;
     letter-spacing: -7px;
 
     background:
         linear-gradient(
             90deg,
-            #fff,
+            #ffffff,
             #b7aaff,
-            #6beaff
+            #61eaff
         );
 
     -webkit-background-clip: text;
     background-clip: text;
-
     color: transparent;
 
     text-shadow:
         0 0 45px rgba(100,130,255,.15);
-
-    animation:
-        fadeUp .8s .1s ease both;
 }
 
 .subtitle {
-    max-width: 720px;
-
-    margin: 32px auto;
-
+    max-width: 700px;
+    margin: 35px auto;
     color: #9da4bd;
-
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.6;
-
-    animation:
-        fadeUp .8s .2s ease both;
 }
 
 /* =========================
-   SEARCH
-========================= */
-
-.search-box {
-    max-width: 760px;
-    margin: 35px auto 0;
-
-    display: flex;
-    align-items: center;
-
-    padding: 7px;
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 20px;
-
-    background:
-        rgba(10,14,30,.7);
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.25),
-        inset 0 0 30px rgba(255,255,255,.02);
-
-    transition: .3s;
-}
-
-.search-box:focus-within {
-    border-color: rgba(105,150,255,.6);
-
-    box-shadow:
-        0 0 0 4px rgba(90,100,255,.08),
-        0 20px 70px rgba(0,0,0,.3);
-}
-
-.search-box input {
-    flex: 1;
-
-    min-width: 0;
-
-    padding: 17px;
-
-    background: transparent;
-    border: 0;
-    outline: 0;
-
-    color: white;
-
-    font-size: 17px;
-}
-
-.search-box input::placeholder {
-    color: #747c96;
-}
-
-.search-button {
-    border: 0;
-
-    padding: 17px 27px;
-
-    border-radius: 15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #765cff,
-            #24bfff
-        );
-
-    color: white;
-
-    font-weight: 700;
-    font-size: 15px;
-
-    cursor: pointer;
-
-    transition: .25s;
-}
-
-.search-button:hover {
-    transform: scale(1.03);
-
-    box-shadow:
-        0 10px 30px rgba(50,150,255,.25);
-}
-
-/* =========================
-   3D SPHERE
+   SPHERE
 ========================= */
 
 .scene {
-    height: 390px;
-
+    height: 420px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     perspective: 1000px;
-
-    margin-top: 5px;
 }
 
 .sphere {
     position: relative;
 
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
 
     border-radius: 50%;
 
@@ -535,68 +426,205 @@ h1 {
         );
 
     box-shadow:
-        inset -30px -35px 70px rgba(0,0,0,.7),
-        inset 20px 20px 40px rgba(255,255,255,.08),
-        0 0 60px rgba(85,100,255,.25);
+        inset -25px -25px 80px rgba(0,0,0,.7),
+        inset 20px 15px 40px rgba(255,255,255,.08),
+        0 0 80px rgba(75,100,255,.18);
 
     animation:
-        sphereFloat 6s ease-in-out infinite;
-
-    transform-style: preserve-3d;
+        sphereFloat 6s ease-in-out infinite,
+        sphereGlow 4s ease-in-out infinite;
 }
 
 .sphere::before {
     content: "";
-
     position: absolute;
-    inset: 55px -42px;
 
-    border:
-        1px solid rgba(100,220,255,.35);
+    inset: 65px -45px;
 
+    border: 1px solid rgba(100,220,255,.35);
     border-radius: 50%;
 
-    transform:
-        rotateX(70deg)
-        rotateZ(-12deg);
-
-    box-shadow:
-        0 0 25px rgba(0,200,255,.12);
+    transform: rotate(-8deg);
+    box-shadow: 0 0 25px rgba(0,200,255,.15);
 }
 
 .sphere::after {
-    content: "H";
-
+    content: "";
     position: absolute;
 
-    inset: 0;
+    width: 110px;
+    height: 110px;
 
-    display: grid;
-    place-items: center;
+    left: 50%;
+    top: 50%;
 
-    font-size: 64px;
-    font-weight: 800;
+    transform: translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(0,210,255,.18),
+        transparent 70%
+    );
+
+    filter: blur(15px);
+}
+
+.sphere-letter {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    font-size: 100px;
+    font-weight: 900;
 
     color: white;
 
     text-shadow:
-        0 0 30px rgba(100,170,255,.6);
+        0 0 25px rgba(255,255,255,.3);
 }
 
 @keyframes sphereFloat {
     0%,100% {
-        transform:
-            translateY(0)
-            rotateY(-8deg)
-            rotateX(3deg);
+        transform: translateY(0) rotate(0deg);
     }
 
     50% {
-        transform:
-            translateY(-18px)
-            rotateY(12deg)
-            rotateX(-3deg);
+        transform: translateY(-18px) rotate(3deg);
     }
+}
+
+@keyframes sphereGlow {
+    0%,100% {
+        box-shadow:
+            inset -25px -25px 80px rgba(0,0,0,.7),
+            0 0 60px rgba(75,100,255,.12);
+    }
+
+    50% {
+        box-shadow:
+            inset -25px -25px 80px rgba(0,0,0,.7),
+            0 0 100px rgba(0,190,255,.22);
+    }
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+
+.content {
+    max-width: 1000px;
+    margin: 20px auto 100px;
+    padding: 20px;
+}
+
+.panel {
+    display: none;
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,.04);
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.2);
+
+    animation: panelIn .45s ease;
+}
+
+.panel.active {
+    display: block;
+}
+
+@keyframes panelIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.panel h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.panel p {
+    color: #9da4bd;
+    line-height: 1.6;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.search-box input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 17px 20px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: rgba(0,0,0,.25);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 17px;
+}
+
+.search-box input:focus {
+    border-color: #6860ff;
+    box-shadow: 0 0 20px rgba(90,80,255,.15);
+}
+
+.action-btn {
+    border: 0;
+    border-radius: 16px;
+
+    padding: 0 24px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #765cff,
+            #16cfff
+        );
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition: .25s;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(50,150,255,.2);
 }
 
 /* =========================
@@ -604,223 +632,252 @@ h1 {
 ========================= */
 
 .cards {
-    max-width: 1000px;
-
-    margin: 20px auto 80px;
-
-    padding: 20px;
-
     display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 18px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .card {
-    min-height: 190px;
+    padding: 22px;
+    border-radius: 20px;
 
-    padding: 28px;
+    background: rgba(255,255,255,.04);
 
-    border:
-        1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.08);
 
-    border-radius: 22px;
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,.07);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    margin-bottom: 7px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+/* =========================
+   LOGIN MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.65);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    width: min(430px,100%);
+
+    padding: 35px;
+
+    border-radius: 28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(18,23,47,.72),
-            rgba(7,10,24,.72)
+            #10162e,
+            #070b1b
         );
 
-    backdrop-filter: blur(12px);
-
-    transition:
-        transform .3s,
-        border-color .3s,
-        box-shadow .3s;
-
-    animation:
-        fadeUp .8s ease both;
-}
-
-.card:hover {
-    transform:
-        translateY(-7px);
-
-    border-color:
-        rgba(120,150,255,.3);
+    border: 1px solid rgba(255,255,255,.13);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
+        0 30px 100px rgba(0,0,0,.6);
+
+    transform: translateY(20px) scale(.96);
+
+    transition: .35s;
 }
 
-.card-icon {
-    font-size: 27px;
-    margin-bottom: 24px;
+.modal.active .modal-box {
+    transform: translateY(0) scale(1);
 }
 
-.card h2 {
-    font-size: 22px;
+.modal-box h2 {
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
-.card p {
-    color: #8f97b0;
-    line-height: 1.6;
+.modal-box p {
+    color: #929ab5;
+    margin-bottom: 25px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+.login-input {
+    width: 100%;
 
-footer {
-    padding: 35px 20px 50px;
+    padding: 16px;
 
-    text-align: center;
+    margin-bottom: 12px;
 
-    color: #626a83;
+    border-radius: 14px;
 
-    font-size: 13px;
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: rgba(255,255,255,.04);
+
+    color: white;
+
+    outline: none;
 }
 
-/* =========================
-   MOBILE MENU
-========================= */
+.login-submit {
+    width: 100%;
+    padding: 16px;
 
-.mobile-menu {
-    position: fixed;
-
-    top: 75px;
-    left: 15px;
-    right: 15px;
-
-    z-index: 999;
-
-    padding: 12px;
+    border: 0;
+    border-radius: 14px;
 
     background:
-        rgba(8,12,27,.97);
+        linear-gradient(
+            135deg,
+            #765cff,
+            #16cfff
+        );
 
-    border:
-        1px solid rgba(255,255,255,.1);
+    color: white;
 
-    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 700;
 
-    backdrop-filter: blur(25px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
-
-    display: none;
+    cursor: pointer;
 }
 
-.mobile-menu.active {
-    display: block;
+.close-modal {
+    float: right;
 
-    animation:
-        menuIn .25s ease;
-}
+    border: 0;
 
-.mobile-menu a {
-    display: block;
+    background: transparent;
 
-    padding: 15px;
+    color: #9ba3bb;
 
-    color: #dce1ef;
+    font-size: 25px;
 
-    text-decoration: none;
-
-    border-radius: 12px;
-}
-
-.mobile-menu a:hover {
-    background: rgba(255,255,255,.07);
+    cursor: pointer;
 }
 
 /* =========================
-   ANIMATIONS
+   TOAST
 ========================= */
 
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+.toast {
+    position: fixed;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    left: 50%;
+    bottom: 30px;
+
+    transform:
+        translate(-50%, 30px);
+
+    padding: 15px 22px;
+
+    border-radius: 16px;
+
+    background: rgba(15,20,40,.92);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow: 0 15px 50px rgba(0,0,0,.35);
+
+    color: white;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .35s;
+
+    z-index: 200;
 }
 
-@keyframes menuIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+.toast.show {
+    opacity: 1;
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    transform:
+        translate(-50%, 0);
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media (max-width: 850px) {
+@media (max-width: 700px) {
 
     header {
-        padding: 15px 18px;
+        padding: 22px 20px;
     }
 
-    .nav {
-        display: none;
+    .logo {
+        font-size: 23px;
     }
 
-    .menu-button {
-        display: block;
-        margin-left: 8px;
+    .login-btn {
+        padding: 13px 20px;
+        font-size: 16px;
+        border-radius: 18px;
     }
 
-    .login {
-        margin-left: auto;
+    .menu-btn {
+        width: 58px;
+        height: 58px;
+        border-radius: 19px;
+    }
+
+    .menu {
+        top: 92px;
+        right: 20px;
+
+        width: calc(100% - 40px);
+
+        padding: 20px;
+
+        border-radius: 24px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+        font-size: 18px;
+        padding: 15px;
     }
 
     .hero {
-        padding-top: 35px;
-    }
-
-    .scene {
-        height: 330px;
-    }
-
-    .sphere {
-        width: 240px;
-        height: 240px;
-    }
-
-    .sphere::after {
-        font-size: 52px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 520px) {
-
-    .logo {
-        font-size: 21px;
-    }
-
-    .login {
-        padding: 9px 13px;
+        margin-top: 45px;
     }
 
     h1 {
@@ -829,37 +886,41 @@ footer {
     }
 
     .subtitle {
-        font-size: 16px;
-    }
-
-    .search-box {
-        border-radius: 17px;
-    }
-
-    .search-box input {
-        padding: 14px 10px;
-        font-size: 15px;
-    }
-
-    .search-button {
-        padding: 14px 17px;
+        font-size: 17px;
+        margin: 25px auto;
     }
 
     .scene {
-        height: 300px;
+        height: 350px;
     }
 
     .sphere {
-        width: 210px;
-        height: 210px;
+        width: 240px;
+        height: 240px;
     }
 
-    .sphere::before {
-        inset: 45px -35px;
+    .sphere-letter {
+        font-size: 80px;
     }
 
-    .card {
-        min-height: 170px;
+    .content {
+        margin-bottom: 60px;
+    }
+
+    .panel {
+        padding: 25px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        height: 52px;
     }
 }
 </style>
@@ -867,100 +928,102 @@ footer {
 
 <body>
 
+<!-- BACKGROUND -->
+
 <div class="background">
     <div class="grid"></div>
     <div class="orb one"></div>
     <div class="orb two"></div>
 </div>
 
-<!-- ================= HEADER ================= -->
+
+<!-- HEADER -->
 
 <header>
 
-    <a href="#" class="logo">
+    <div class="logo">
         <span class="logo-dot"></span>
         Had1oS
-    </a>
+    </div>
 
-    <nav class="nav">
+    <div class="header-buttons">
 
-        <a href="#search">Поиск</a>
-        <a href="#">Картинки</a>
-        <a href="#">Видео</a>
-        <a href="#">Новости</a>
-        <a href="#">Карты</a>
-        <a href="#">Музыка</a>
+        <button class="login-btn" id="loginButton">
+            Войти
+        </button>
 
-        <div class="more">
+        <button class="menu-btn" id="menuButton">
+            ☰
+        </button>
 
-            <button class="more-button" onclick="toggleMore()">
-                Ещё
-                <span class="arrow">▼</span>
-            </button>
-
-            <div class="dropdown">
-
-                <a href="#">
-                    <span class="service-icon">🎮</span>
-                    Игры
-                </a>
-
-                <a href="#">
-                    <span class="service-icon">☁️</span>
-                    Облако
-                </a>
-
-                <a href="#">
-                    <span class="service-icon">📧</span>
-                    Почта
-                </a>
-
-                <a href="#">
-                    <span class="service-icon">📰</span>
-                    Лента
-                </a>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-    <button class="login" onclick="login()">
-        Войти
-    </button>
-
-    <button
-        class="menu-button"
-        onclick="toggleMobileMenu()">
-        ☰
-    </button>
+    </div>
 
 </header>
 
-<!-- MOBILE MENU -->
 
-<div class="mobile-menu" id="mobileMenu">
+<!-- MENU -->
 
-    <a href="#search">🔍 Поиск</a>
-    <a href="#">🖼️ Картинки</a>
-    <a href="#">🎬 Видео</a>
-    <a href="#">📰 Новости</a>
-    <a href="#">🗺️ Карты</a>
-    <a href="#">🎵 Музыка</a>
-    <a href="#">🎮 Игры</a>
-    <a href="#">☁️ Облако</a>
+<nav class="menu" id="menu">
 
-</div>
+    <div class="menu-title">
+        Сервисы Had1oS
+    </div>
 
-<!-- ================= HERO ================= -->
+    <div class="menu-grid">
+
+        <button class="menu-item" data-section="search">
+            <span class="menu-icon">🔍</span>
+            <span>Поиск</span>
+        </button>
+
+        <button class="menu-item" data-section="images">
+            <span class="menu-icon">🖼️</span>
+            <span>Картинки</span>
+        </button>
+
+        <button class="menu-item" data-section="video">
+            <span class="menu-icon">🎬</span>
+            <span>Видео</span>
+        </button>
+
+        <button class="menu-item" data-section="news">
+            <span class="menu-icon">📰</span>
+            <span>Новости</span>
+        </button>
+
+        <button class="menu-item" data-section="maps">
+            <span class="menu-icon">🗺️</span>
+            <span>Карты</span>
+        </button>
+
+        <button class="menu-item" data-section="music">
+            <span class="menu-icon">🎵</span>
+            <span>Музыка</span>
+        </button>
+
+        <button class="menu-item" data-section="games">
+            <span class="menu-icon">🎮</span>
+            <span>Игры</span>
+        </button>
+
+        <button class="menu-item" data-section="cloud">
+            <span class="menu-icon">☁️</span>
+            <span>Облако</span>
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
 
 <main>
 
 <section class="hero">
 
     <div class="eyebrow">
-        WELCOME TO MY DIGITAL SPACE
+        DIGITAL SPACE
     </div>
 
     <h1>
@@ -968,223 +1031,626 @@ footer {
     </h1>
 
     <p class="subtitle">
-        Быстрый и красивый поиск в пространстве Had1oS —
-        созданный с движением, глубиной и небольшой долей магии.
+        Твоё собственное цифровое пространство.
+        Поиск, музыка, игры, карты и другие сервисы —
+        всё в одном месте.
     </p>
+
+</section>
+
+
+<!-- SPHERE -->
+
+<div class="scene">
+
+    <div class="sphere">
+        <div class="sphere-letter">
+            H
+        </div>
+    </div>
+
+</div>
+
+
+<!-- CONTENT -->
+
+<section class="content">
+
 
     <!-- SEARCH -->
 
-    <form
-        class="search-box"
-        id="search"
-        onsubmit="performSearch(event)"
-    >
+    <div class="panel" id="search">
 
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="Поиск в Had1oS..."
-            autocomplete="off"
-        >
+        <h2>🔍 Поиск</h2>
 
-        <button
-            class="search-button"
-            type="submit"
-        >
-            Найти
-        </button>
+        <p>
+            Здесь будет собственный поиск Had1oS.
+        </p>
 
-    </form>
+        <div class="search-box">
 
-    <!-- 3D -->
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Что хотите найти?"
+            >
 
-    <div class="scene">
+            <button
+                class="action-btn"
+                id="searchButton">
+                Найти
+            </button>
 
-        <div
-            class="sphere"
-            id="sphere">
         </div>
 
     </div>
 
-</section>
 
-<!-- ================= CARDS ================= -->
+    <!-- IMAGES -->
 
-<section class="cards">
+    <div class="panel" id="images">
 
-    <article class="card">
-
-        <div class="card-icon">
-            ✦
-        </div>
-
-        <h2>
-            3D Motion
-        </h2>
+        <h2>🖼️ Картинки</h2>
 
         <p>
-            Интерактивная глубина,
-            плавающие элементы и
-            живой фон.
+            Раздел изображений Had1oS.
+            В будущем сюда можно подключить поиск картинок.
         </p>
 
-    </article>
+        <div class="cards">
 
-    <article class="card">
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <h3>Космос</h3>
+                <p>Изображения космоса</p>
+            </div>
 
-        <div class="card-icon">
-            ◇
+            <div class="card">
+                <div class="card-icon">🏙️</div>
+                <h3>Города</h3>
+                <p>Фотографии городов</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌲</div>
+                <h3>Природа</h3>
+                <p>Красивые места</p>
+            </div>
+
         </div>
 
-        <h2>
-            Had1oS Search
-        </h2>
+    </div>
+
+
+    <!-- VIDEO -->
+
+    <div class="panel" id="video">
+
+        <h2>🎬 Видео</h2>
 
         <p>
-            Собственная поисковая
-            страница с быстрым
-            переходом к результатам.
+            Здесь появится видеосервис Had1oS.
         </p>
 
-    </article>
+        <div class="cards">
 
-    <article class="card">
+            <div class="card">
+                <div class="card-icon">▶️</div>
+                <h3>Видео</h3>
+                <p>Смотреть видео</p>
+            </div>
 
-        <div class="card-icon">
-            ⚡
+            <div class="card">
+                <div class="card-icon">🔥</div>
+                <h3>Популярное</h3>
+                <p>Самые популярные ролики</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⭐</div>
+                <h3>Избранное</h3>
+                <p>Сохранённые видео</p>
+            </div>
+
         </div>
 
-        <h2>
-            Built for Mobile
-        </h2>
+    </div>
+
+
+    <!-- NEWS -->
+
+    <div class="panel" id="news">
+
+        <h2>📰 Новости</h2>
 
         <p>
-            Интерфейс адаптирован
-            для телефона, планшета
-            и компьютера.
+            Раздел новостей Had1oS.
+            Позже сюда можно подключить настоящую ленту.
         </p>
 
-    </article>
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Мир</h3>
+                <p>Новости мира</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Технологии</h3>
+                <p>Новости технологий</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h3>Игры</h3>
+                <p>Новости игровой индустрии</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAPS -->
+
+    <div class="panel" id="maps">
+
+        <h2>🗺️ Карты</h2>
+
+        <p>
+            Карты Had1oS.
+            Пока это красивый раздел-заготовка для будущего сервиса.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">📍</div>
+                <h3>Моё место</h3>
+                <p>Определить местоположение</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🧭</div>
+                <h3>Маршруты</h3>
+                <p>Построить маршрут</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌎</div>
+                <h3>Мир</h3>
+                <p>Исследовать карту</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MUSIC -->
+
+    <div class="panel" id="music">
+
+        <h2>🎵 Музыка</h2>
+
+        <p>
+            Музыкальный раздел Had1oS.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">🎧</div>
+                <h3>Моя музыка</h3>
+                <p>Твои любимые треки</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🔥</div>
+                <h3>Популярное</h3>
+                <p>Популярная музыка</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💿</div>
+                <h3>Плейлисты</h3>
+                <p>Твои плейлисты</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- GAMES -->
+
+    <div class="panel" id="games">
+
+        <h2>🎮 Игры</h2>
+
+        <p>
+            Мини-игры прямо на сайте Had1oS.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>Викторина</h3>
+                <p>Проверить свои знания</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Точность</h3>
+                <p>Проверь свою реакцию</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🧩</div>
+                <h3>Головоломки</h3>
+                <p>Разомни мозг</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CLOUD -->
+
+    <div class="panel" id="cloud">
+
+        <h2>☁️ Облако</h2>
+
+        <p>
+            Личное облачное пространство Had1oS.
+            Здесь позже можно сделать хранение файлов.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">📁</div>
+                <h3>Мои файлы</h3>
+                <p>Твои документы</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📷</div>
+                <h3>Фото</h3>
+                <p>Твои изображения</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Безопасность</h3>
+                <p>Защищённое хранение</p>
+            </div>
+
+        </div>
+
+    </div>
+
 
 </section>
 
 </main>
 
-<footer>
-    © 2026 Had1oS · Digital Space
-</footer>
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+        <button
+            class="close-modal"
+            id="closeModal">
+            ×
+        </button>
+
+        <h2>Войти</h2>
+
+        <p>
+            Вход в аккаунт Had1oS.
+        </p>
+
+        <input
+            class="login-input"
+            type="email"
+            placeholder="Email"
+        >
+
+        <input
+            class="login-input"
+            type="password"
+            placeholder="Пароль"
+        >
+
+        <button
+            class="login-submit"
+            id="loginSubmit">
+            Продолжить
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+    Готово
+</div>
+
 
 <script>
 
 /* =========================
-   MORE MENU
+   ELEMENTS
 ========================= */
 
-function toggleMore() {
+const menuButton = document.getElementById("menuButton");
+const menu = document.getElementById("menu");
 
-    const more =
-        document.querySelector(".more");
+const menuItems =
+    document.querySelectorAll(".menu-item");
 
-    more.classList.toggle("open");
-}
+const panels =
+    document.querySelectorAll(".panel");
 
-document.addEventListener("click", function(event) {
+const loginButton =
+    document.getElementById("loginButton");
 
-    const more =
-        document.querySelector(".more");
+const loginModal =
+    document.getElementById("loginModal");
 
-    if (!more.contains(event.target)) {
-        more.classList.remove("open");
+const closeModal =
+    document.getElementById("closeModal");
+
+const loginSubmit =
+    document.getElementById("loginSubmit");
+
+const toast =
+    document.getElementById("toast");
+
+const searchButton =
+    document.getElementById("searchButton");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+
+/* =========================
+   MENU OPEN / CLOSE
+========================= */
+
+menuButton.addEventListener("click", () => {
+
+    menu.classList.toggle("active");
+
+    if (menu.classList.contains("active")) {
+        menuButton.innerHTML = "×";
+    } else {
+        menuButton.innerHTML = "☰";
     }
 
 });
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-function toggleMobileMenu() {
-
-    const menu =
-        document.getElementById("mobileMenu");
-
-    menu.classList.toggle("active");
-}
 
 /* =========================
-   SEARCH
+   MENU ITEMS
 ========================= */
 
-function performSearch(event) {
+menuItems.forEach(item => {
 
-    event.preventDefault();
+    item.addEventListener("click", () => {
 
-    const input =
-        document.getElementById("searchInput");
+        const sectionId =
+            item.dataset.section;
 
-    const query =
-        input.value.trim();
+        /* active button */
 
-    if (!query) {
+        menuItems.forEach(button => {
+            button.classList.remove("active");
+        });
 
-        input.focus();
+        item.classList.add("active");
 
-        return;
-    }
 
-    /*
-       Сейчас поиск работает через
-       Google как резервный вариант.
+        /* hide panels */
 
-       Позже сюда можно подключить
-       настоящую поисковую систему
-       Had1oS.
-    */
+        panels.forEach(panel => {
+            panel.classList.remove("active");
+        });
 
-    const url =
-        "https://www.google.com/search?q=" +
-        encodeURIComponent(query);
 
-    window.location.href = url;
-}
+        /* show selected panel */
+
+        const selectedPanel =
+            document.getElementById(sectionId);
+
+        if (selectedPanel) {
+
+            selectedPanel.classList.add("active");
+
+            setTimeout(() => {
+
+                selectedPanel.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+        }
+
+
+        /* close menu */
+
+        menu.classList.remove("active");
+        menuButton.innerHTML = "☰";
+
+    });
+
+});
+
 
 /* =========================
    LOGIN
 ========================= */
 
-function login() {
+loginButton.addEventListener("click", () => {
 
-    alert(
-        "Авторизация Had1oS скоро будет доступна."
-    );
-}
+    loginModal.classList.add("active");
+
+});
+
+
+closeModal.addEventListener("click", () => {
+
+    loginModal.classList.remove("active");
+
+});
+
+
+/* close by clicking outside */
+
+loginModal.addEventListener("click", event => {
+
+    if (event.target === loginModal) {
+
+        loginModal.classList.remove("active");
+
+    }
+
+});
+
 
 /* =========================
-   3D MOUSE EFFECT
+   LOGIN BUTTON
 ========================= */
 
-const sphere =
-    document.getElementById("sphere");
+loginSubmit.addEventListener("click", () => {
 
-document.addEventListener(
-    "mousemove",
-    function(event) {
+    showToast(
+        "Форма входа готова — подключим аккаунты позже"
+    );
 
-        if (window.innerWidth < 850) return;
+});
 
-        const x =
-            (event.clientX /
-                window.innerWidth - .5) * 16;
 
-        const y =
-            (event.clientY /
-                window.innerHeight - .5) * 10;
+/* =========================
+   SEARCH
+========================= */
 
-        sphere.style.transform =
-            `rotateY(${x}deg) rotateX(${-y}deg)`;
+searchButton.addEventListener("click", () => {
+
+    const query =
+        searchInput.value.trim();
+
+    if (!query) {
+
+        showToast(
+            "Введите запрос"
+        );
+
+        searchInput.focus();
+
+        return;
+
     }
-);
+
+    showToast(
+        "Ищем: " + query
+    );
+
+});
+
+
+searchInput.addEventListener("keydown", event => {
+
+    if (event.key === "Enter") {
+
+        searchButton.click();
+
+    }
+
+});
+
+
+/* =========================
+   TOAST
+========================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+/* =========================
+   CLOSE MENU WHEN CLICKING
+   OUTSIDE
+========================= */
+
+document.addEventListener("click", event => {
+
+    const clickedInsideMenu =
+        menu.contains(event.target);
+
+    const clickedMenuButton =
+        menuButton.contains(event.target);
+
+    if (
+        menu.classList.contains("active") &&
+        !clickedInsideMenu &&
+        !clickedMenuButton
+    ) {
+
+        menu.classList.remove("active");
+
+        menuButton.innerHTML = "☰";
+
+    }
+
+});
+
+
+/* =========================
+   ESCAPE
+========================= */
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+        menu.classList.remove("active");
+
+        menuButton.innerHTML = "☰";
+
+        loginModal.classList.remove("active");
+
+    }
+
+});
 
 </script>
 
