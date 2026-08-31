@@ -2,15 +2,15 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+<meta name="theme-color" content="#050816">
 
 <title>Had1oS</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     box-sizing: border-box;
@@ -24,7 +24,6 @@ html {
 
 body {
     min-height: 100vh;
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -32,113 +31,56 @@ body {
         Arial,
         sans-serif;
 
-    color: var(--text);
+    color: #ffffff;
 
     background:
         radial-gradient(
             circle at 15% 15%,
-            var(--glow1),
+            rgba(91, 63, 255, 0.25),
             transparent 35%
         ),
         radial-gradient(
             circle at 85% 35%,
-            var(--glow2),
+            rgba(0, 220, 255, 0.18),
             transparent 35%
         ),
-        var(--bg);
+        linear-gradient(
+            135deg,
+            #050816,
+            #080b18 45%,
+            #02060d
+        );
 
     overflow-x: hidden;
-
-    transition:
-        background .4s,
-        color .4s;
 }
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-
-    --bg: #050816;
-
-    --panel: rgba(10,14,30,.68);
-
-    --panel2: rgba(255,255,255,.045);
-
-    --border: rgba(255,255,255,.11);
-
-    --text: #ffffff;
-
-    --muted: #929ab2;
-
-    --glow1: rgba(100,70,255,.22);
-
-    --glow2: rgba(0,210,255,.16);
-
-    --accent: #7358ff;
-
-    --accent2: #18d5ef;
-}
-
-
-body.light {
-
-    --bg: #eef2ff;
-
-    --panel: rgba(255,255,255,.72);
-
-    --panel2: rgba(0,0,0,.045);
-
-    --border: rgba(0,0,0,.1);
-
-    --text: #111525;
-
-    --muted: #626b82;
-
-    --glow1: rgba(100,70,255,.12);
-
-    --glow2: rgba(0,180,255,.1);
-}
-
-
-/* =========================================================
+/* =========================
    BACKGROUND
-========================================================= */
+========================= */
 
 .background {
-
     position: fixed;
-
     inset: 0;
-
-    overflow: hidden;
-
     pointer-events: none;
-
-    z-index: -5;
+    overflow: hidden;
+    z-index: -10;
 }
 
-
 .grid {
-
     position: absolute;
-
     inset: 0;
 
-    opacity: .16;
+    opacity: 0.18;
 
     background-image:
-
         linear-gradient(
-            rgba(255,255,255,.08) 1px,
+            rgba(255,255,255,0.07) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
-            rgba(255,255,255,.08) 1px,
+            rgba(255,255,255,0.07) 1px,
             transparent 1px
         );
 
@@ -148,137 +90,162 @@ body.light {
         linear-gradient(
             to bottom,
             transparent,
-            black 20%,
-            black 80%,
+            black 15%,
+            black 85%,
             transparent
         );
 }
 
 
-.orb {
+/* glowing blobs */
 
+.orb {
     position: absolute;
 
-    width: 430px;
-    height: 430px;
+    width: 450px;
+    height: 450px;
 
     border-radius: 50%;
 
-    filter: blur(90px);
+    filter: blur(80px);
 
-    opacity: .3;
+    opacity: 0.35;
 
     animation:
-        floatOrb 10s ease-in-out infinite;
+        floatOrb 9s ease-in-out infinite;
 }
-
 
 .orb.one {
+    background: #643cff;
 
-    left: -180px;
     top: 5%;
-
-    background: #6845ff;
+    left: -200px;
 }
-
 
 .orb.two {
-
-    right: -180px;
-    top: 40%;
-
     background: #00d9ff;
 
-    animation-delay: -5s;
+    right: -200px;
+    top: 40%;
+
+    animation-delay: -4s;
 }
 
+.orb.three {
+    background: #9d4edd;
+
+    left: 25%;
+    bottom: -250px;
+
+    animation-delay: -7s;
+}
 
 @keyframes floatOrb {
 
-    0%,100% {
-
+    0%, 100% {
         transform:
             translate3d(0,0,0)
             scale(1);
-
     }
 
     50% {
-
         transform:
-            translate3d(35px,-45px,0)
-            scale(1.12);
-
+            translate3d(30px,-40px,0)
+            scale(1.08);
     }
-
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* =========================
+   PARTICLES
+========================= */
 
-header {
+.particles {
+    position: absolute;
+    inset: 0;
+}
 
-    width:
-        min(
-            1150px,
-            calc(100% - 30px)
-        );
+.particle {
+    position: absolute;
 
-    margin:
-        18px auto 0;
+    width: 2px;
+    height: 2px;
 
-    padding:
-        14px 17px;
+    border-radius: 50%;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 20px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(25px);
-
-    -webkit-backdrop-filter:
-        blur(25px);
+    background: rgba(255,255,255,0.8);
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,.18);
+        0 0 8px rgba(120,180,255,0.8);
 
-    position: relative;
+    animation:
+        particleFloat linear infinite;
+}
 
-    z-index: 30;
+@keyframes particleFloat {
+
+    from {
+        transform:
+            translateY(110vh)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    to {
+        transform:
+            translateY(-10vh)
+            scale(1.2);
+
+        opacity: 0;
+    }
 }
 
 
-.logo {
+/* =========================
+   HEADER
+========================= */
+
+header {
+    width: 100%;
+
+    padding:
+        28px
+        6%
+        10px;
 
     display: flex;
 
+    justify-content: space-between;
     align-items: center;
 
-    gap: 11px;
-
-    font-size: 21px;
-
-    font-weight: 850;
+    position: relative;
+    z-index: 10;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
 
 .logo-dot {
-
-    width: 13px;
-    height: 13px;
+    width: 15px;
+    height: 15px;
 
     border-radius: 50%;
 
@@ -290,1346 +257,827 @@ header {
         );
 
     box-shadow:
-        0 0 18px #665dff;
+        0 0 20px #586aff,
+        0 0 40px rgba(36,217,255,0.3);
 }
 
-
-.header-actions {
-
+.header-right {
     display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-    gap: 8px;
+.clock {
+    color: #737b96;
+
+    font-size: 14px;
+
+    font-variant-numeric:
+        tabular-nums;
 }
 
 
-.header-button {
+/* theme button */
 
-    border:
-        1px solid var(--border);
+.theme-button {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 50%;
 
     background:
-        var(--panel2);
+        rgba(255,255,255,0.05);
 
-    color:
-        var(--text);
-
-    border-radius: 13px;
-
-    padding:
-        9px 12px;
+    color: white;
 
     cursor: pointer;
 
-    transition: .25s;
+    font-size: 18px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
 }
 
-
-.header-button:hover {
-
-    transform:
-        translateY(-2px);
+.theme-button:hover {
+    transform: rotate(20deg) scale(1.05);
 
     background:
-        rgba(255,255,255,.1);
+        rgba(255,255,255,0.1);
 }
 
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero {
-
-    width:
-        min(
-            1000px,
-            calc(100% - 30px)
-        );
+    width: min(1100px, 100%);
 
     margin:
-        40px auto 0;
+        35px auto
+        0;
+
+    padding:
+        20px;
 
     text-align: center;
 }
 
-
 .eyebrow {
+    color: #a9aec5;
 
-    color:
-        var(--muted);
+    letter-spacing: 5px;
 
-    letter-spacing:
-        4px;
+    font-size: 14px;
 
-    font-size:
-        12px;
+    margin-bottom: 20px;
 
-    margin-bottom:
-        18px;
+    text-transform: uppercase;
 }
 
-
-.hero h1 {
-
+h1 {
     font-size:
         clamp(
             65px,
             12vw,
-            135px
+            140px
         );
 
-    line-height:
-        .9;
+    line-height: 0.9;
 
-    font-weight:
-        950;
+    font-weight: 900;
 
-    letter-spacing:
-        -7px;
+    letter-spacing: -7px;
 
     background:
         linear-gradient(
             90deg,
-            var(--text),
-            #a99cff,
-            #5ceaff
+            #ffffff,
+            #b7aaff,
+            #6beaff
         );
 
-    -webkit-background-clip:
-        text;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    background-clip:
-        text;
+    color: transparent;
 
-    color:
-        transparent;
+    text-shadow:
+        0 0 45px
+        rgba(100,130,255,0.15);
 }
-
 
 .subtitle {
-
-    max-width:
-        650px;
+    max-width: 720px;
 
     margin:
-        27px auto;
+        35px auto;
 
-    color:
-        var(--muted);
+    color: #9da4bd;
 
-    font-size:
-        17px;
+    font-size: 20px;
 
-    line-height:
-        1.7;
+    line-height: 1.6;
 }
 
 
-/* =========================================================
-   3D CORE
-========================================================= */
+/* =========================
+   3D SPHERE
+========================= */
 
 .scene {
+    height: 430px;
 
-    width:
-        320px;
+    display: flex;
 
-    height:
-        320px;
+    justify-content: center;
+    align-items: center;
 
-    margin:
-        25px auto 5px;
+    perspective: 1000px;
 
-    perspective:
-        900px;
+    margin-bottom: 5px;
 }
 
+.sphere-wrapper {
+    position: relative;
 
-.core {
+    width: 340px;
+    height: 340px;
 
-    position:
-        relative;
+    display: flex;
 
-    width:
-        230px;
+    align-items: center;
+    justify-content: center;
 
-    height:
-        230px;
+    transform-style: preserve-3d;
 
-    top:
-        40px;
+    transition:
+        transform 0.15s ease-out;
+}
 
-    margin:
-        auto;
+.sphere {
+    position: relative;
 
-    border-radius:
-        50%;
+    width: 300px;
+    height: 300px;
 
-    transform-style:
-        preserve-3d;
+    border-radius: 50%;
 
     background:
 
         radial-gradient(
-            circle at 30% 25%,
-            #fff 0 2%,
-            #9e8cff 7%,
-            transparent 15%
+            circle at 30% 27%,
+            white 0%,
+            #a58cff 4%,
+            transparent 13%
         ),
 
         radial-gradient(
-            circle at 60% 65%,
-            #00d5ff,
-            transparent 35%
+            circle at 65% 65%,
+            #00cfff 0%,
+            transparent 30%
         ),
 
         radial-gradient(
             circle at 45% 45%,
-            #30216f,
-            #070a16 72%
+            #352078,
+            #090d1d 70%
         );
 
     box-shadow:
 
         inset
         -30px
-        -35px
-        75px
-        rgba(0,0,0,.8),
+        -25px
+        70px
+        rgba(0,0,0,0.75),
 
-        0 0 60px
-        rgba(100,90,255,.4);
+        inset
+        20px
+        20px
+        60px
+        rgba(255,255,255,0.08),
+
+        0
+        0
+        70px
+        rgba(70,90,255,0.25);
 
     animation:
-        coreFloat 6s ease-in-out infinite;
+        sphereFloat 6s ease-in-out infinite;
+
+    transform-style: preserve-3d;
+
+    overflow: visible;
 }
 
+@keyframes sphereFloat {
 
-.core::before {
-
-    content: "";
-
-    position:
-        absolute;
-
-    inset:
-        -30px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(80,210,255,.35);
-
-    transform:
-        rotateX(70deg)
-        rotateZ(20deg);
-}
-
-
-.core::after {
-
-    content: "";
-
-    position:
-        absolute;
-
-    inset:
-        -15px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(150,100,255,.3);
-
-    transform:
-        rotateX(70deg)
-        rotateZ(-30deg)
-        scaleY(.6);
-}
-
-
-.core-letter {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    font-size:
-        58px;
-
-    font-weight:
-        950;
-
-    text-shadow:
-        0 0 25px rgba(255,255,255,.35);
-}
-
-
-@keyframes coreFloat {
-
-    0%,100% {
-
+    0%, 100% {
         transform:
             translateY(0)
-            rotateY(0deg);
-
+            rotateZ(0deg);
     }
 
     50% {
-
         transform:
-            translateY(-18px)
-            rotateY(18deg);
-
+            translateY(-12px)
+            rotateZ(2deg);
     }
-
 }
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
+/* sphere shine */
 
-.search-area {
+.sphere::before {
+    content: "";
 
-    width:
-        min(
-            760px,
-            calc(100% - 30px)
+    position: absolute;
+
+    width: 85px;
+    height: 85px;
+
+    top: 35px;
+    left: 55px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white 0%,
+            rgba(255,255,255,0.8) 12%,
+            rgba(150,120,255,0.35) 40%,
+            transparent 70%
         );
 
-    margin:
-        25px auto 60px;
+    filter: blur(3px);
+
+    animation:
+        shine 5s ease-in-out infinite;
+}
+
+@keyframes shine {
+
+    0%, 100% {
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(18px,12px)
+            scale(1.12);
+    }
 }
 
 
-.search-box {
+/* sphere rings */
 
-    display:
-        flex;
+.ring {
+    position: absolute;
 
-    padding:
-        8px;
+    top: 50%;
+    left: 50%;
+
+    width: 370px;
+    height: 115px;
+
+    transform:
+        translate(-50%,-50%)
+        rotateX(68deg)
+        rotateZ(8deg);
+
+    border-radius: 50%;
 
     border:
         1px solid
-        var(--border);
-
-    border-radius:
-        21px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(25px);
+        rgba(100,220,255,0.32);
 
     box-shadow:
-        0 20px 70px
-        rgba(0,0,0,.25);
+        0 0 20px
+        rgba(70,180,255,0.08);
 
-    transition:
-        .3s;
+    pointer-events: none;
+
+    animation:
+        ringRotate 8s linear infinite;
 }
 
+.ring.second {
+    width: 410px;
+    height: 130px;
 
-.search-box:focus-within {
+    transform:
+        translate(-50%,-50%)
+        rotateX(68deg)
+        rotateZ(-10deg);
 
     border-color:
-        rgba(110,150,255,.6);
+        rgba(120,90,255,0.25);
 
-    box-shadow:
-        0 0 35px
-        rgba(80,100,255,.18);
+    animation-duration: 12s;
+    animation-direction: reverse;
+}
+
+@keyframes ringRotate {
+
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
 }
 
 
-.search-box input {
+/* H in sphere */
 
-    flex:
-        1;
+.sphere-letter {
+    position: absolute;
 
-    min-width:
-        0;
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size: 62px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,255,255,0.25);
+
+    z-index: 5;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    width: min(900px, 100%);
+
+    margin:
+        0 auto
+        50px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 7px;
+
+    border-radius: 25px;
 
     border:
-        none;
-
-    outline:
-        none;
+        1px solid
+        rgba(255,255,255,0.13);
 
     background:
-        transparent;
+        rgba(10,13,30,0.7);
 
-    color:
-        var(--text);
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.25),
+
+        inset
+        0 1px 0
+        rgba(255,255,255,0.04);
+
+    backdrop-filter:
+        blur(20px);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color:
+        rgba(100,180,255,0.45);
+
+    box-shadow:
+        0 0 40px
+        rgba(80,100,255,0.12);
+}
+
+.search-input {
+    flex: 1;
+
+    min-width: 0;
 
     padding:
-        16px;
+        20px
+        22px;
 
-    font-size:
-        16px;
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 20px;
 }
 
-
-.search-box input::placeholder {
-
-    color:
-        var(--muted);
+.search-input::placeholder {
+    color: #737b96;
 }
-
 
 .search-button {
-
-    border:
-        none;
-
-    border-radius:
-        15px;
+    border: none;
 
     padding:
-        0 24px;
+        18px
+        30px;
+
+    border-radius: 19px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
 
     background:
         linear-gradient(
             135deg,
-            #7358ff,
-            #18d5ef
+            #765cff,
+            #24bfff
         );
-
-    color:
-        white;
-
-    font-weight:
-        750;
-
-    cursor:
-        pointer;
-
-    transition:
-        .25s;
-}
-
-
-.search-button:hover {
-
-    transform:
-        scale(1.03);
 
     box-shadow:
-        0 0 25px
-        rgba(80,130,255,.4);
+        0 8px 25px
+        rgba(50,130,255,0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-button:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(50,130,255,0.35);
+}
+
+.search-button:active {
+    transform:
+        scale(0.97);
 }
 
 
-/* =========================================================
-   DASHBOARD
-========================================================= */
+/* =========================
+   SEARCH MESSAGE
+========================= */
 
-.dashboard {
+.search-message {
+    min-height: 25px;
 
-    width:
-        min(
-            1050px,
-            calc(100% - 30px)
-        );
+    margin-top: -30px;
+
+    margin-bottom: 25px;
+
+    color: #737b96;
+
+    font-size: 14px;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.search-message.show {
+    opacity: 1;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    width: min(1000px, 100%);
 
     margin:
-        0 auto 80px;
+        0 auto;
 
-    display:
-        grid;
+    padding:
+        0 20px
+        80px;
+
+    display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
-    gap:
-        17px;
+    gap: 18px;
 }
 
+.card {
+    min-height: 230px;
 
-.panel {
+    padding: 30px;
 
-    padding:
-        23px;
+    border-radius: 28px;
 
     border:
         1px solid
-        var(--border);
-
-    border-radius:
-        23px;
+        rgba(255,255,255,0.1);
 
     background:
-        var(--panel);
+        linear-gradient(
+            145deg,
+            rgba(20,24,48,0.72),
+            rgba(8,11,25,0.72)
+        );
 
     backdrop-filter:
-        blur(20px);
+        blur(18px);
+
+    position: relative;
+
+    overflow: hidden;
 
     transition:
-        .3s;
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
+.card::before {
+    content: "";
 
-.panel:hover {
+    position: absolute;
 
+    width: 150px;
+    height: 150px;
+
+    right: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(70,120,255,0.12);
+
+    filter: blur(30px);
+}
+
+.card:hover {
     transform:
-        translateY(-5px);
+        translateY(-8px);
+
+    border-color:
+        rgba(100,190,255,0.3);
 
     box-shadow:
         0 20px 50px
-        rgba(0,0,0,.18);
+        rgba(0,0,0,0.25);
+}
+
+.card-icon {
+    font-size: 30px;
+
+    margin-bottom: 35px;
+}
+
+.card h2 {
+    font-size: 23px;
+
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #8e96b0;
+
+    line-height: 1.6;
+
+    font-size: 16px;
 }
 
 
-.panel-title {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    margin-bottom:
-        18px;
-}
-
-
-.panel-title h2 {
-
-    font-size:
-        18px;
-}
-
-
-.panel-title span {
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-}
-
-
-/* =========================================================
-   CLOCK
-========================================================= */
-
-.clock {
-
-    font-size:
-        38px;
-
-    font-weight:
-        850;
-
-    letter-spacing:
-        -1px;
-}
-
-
-.date {
-
-    margin-top:
-        5px;
-
-    color:
-        var(--muted);
-
-    font-size:
-        13px;
-}
-
-
-/* =========================================================
-   HISTORY
-========================================================= */
-
-.history {
-
-    max-height:
-        175px;
-
-    overflow-y:
-        auto;
-}
-
-
-.history-item {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    gap:
-        8px;
-
-    padding:
-        9px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    font-size:
-        13px;
-}
-
-
-.history-query {
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
-}
-
-
-.small-button {
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        var(--panel2);
-
-    color:
-        var(--text);
-
-    padding:
-        6px 9px;
-
-    border-radius:
-        9px;
-
-    cursor:
-        pointer;
-
-    font-size:
-        12px;
-}
-
-
-.clear-button {
-
-    margin-top:
-        10px;
-
-    width:
-        100%;
-}
-
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
-.favorite-add {
-
-    display:
-        flex;
-
-    gap:
-        7px;
-
-    margin-bottom:
-        13px;
-}
-
-
-.favorite-add input {
-
-    flex:
-        1;
-
-    min-width:
-        0;
-
-    padding:
-        10px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        10px;
-
-    outline:
-        none;
-
-    background:
-        var(--panel2);
-
-    color:
-        var(--text);
-}
-
-
-.favorite-list {
-
-    max-height:
-        140px;
-
-    overflow-y:
-        auto;
-}
-
-
-.favorite-item {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    gap:
-        8px;
-
-    padding:
-        9px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
-    font-size:
-        13px;
-}
-
-
-.favorite-item a {
-
-    color:
-        #72dfff;
-
-    text-decoration:
-        none;
-
-    overflow:
-        hidden;
-
-    text-overflow:
-        ellipsis;
-
-    white-space:
-        nowrap;
-}
-
-
-/* =========================================================
-   TOOLS
-========================================================= */
-
-.tools {
-
-    width:
-        min(
-            1050px,
-            calc(100% - 30px)
-        );
-
-    margin:
-        0 auto 80px;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:
-        17px;
-}
-
-
-.tool {
-
-    padding:
-        23px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        23px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(20px);
-}
-
-
-.tool h2 {
-
-    margin-bottom:
-        15px;
-
-    font-size:
-        18px;
-}
-
-
-.tool input {
-
-    width:
-        100%;
-
-    padding:
-        11px;
-
-    margin-bottom:
-        8px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        10px;
-
-    outline:
-        none;
-
-    background:
-        var(--panel2);
-
-    color:
-        var(--text);
-}
-
-
-.tool button {
-
-    border:
-        0;
-
-    padding:
-        10px 13px;
-
-    border-radius:
-        10px;
-
-    color:
-        white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7358ff,
-            #18d5ef
-        );
-
-    cursor:
-        pointer;
-}
-
-
-.tool-result {
-
-    margin-top:
-        12px;
-
-    min-height:
-        20px;
-
-    color:
-        var(--muted);
-}
-
-
-/* =========================================================
-   SETTINGS MODAL
-========================================================= */
-
-.modal {
-
-    position:
-        fixed;
-
-    inset:
-        0;
-
-    display:
-        none;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        20px;
-
-    background:
-        rgba(0,0,0,.7);
-
-    backdrop-filter:
-        blur(14px);
-
-    z-index:
-        100;
-}
-
-
-.modal.active {
-
-    display:
-        flex;
-}
-
-
-.modal-box {
-
-    width:
-        min(
-            430px,
-            100%
-        );
-
-    padding:
-        28px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        25px;
-
-    background:
-        var(--panel);
-
-    backdrop-filter:
-        blur(30px);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.45);
-
-    animation:
-        modalIn .25s ease;
-}
-
-
-@keyframes modalIn {
-
-    from {
-
-        opacity:
-            0;
-
-        transform:
-            scale(.95)
-            translateY(15px);
-
-    }
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            scale(1)
-            translateY(0);
-
-    }
-
-}
-
-
-.modal-header {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    margin-bottom:
-        25px;
-}
-
-
-.close {
-
-    width:
-        35px;
-
-    height:
-        35px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        10px;
-
-    background:
-        var(--panel2);
-
-    color:
-        var(--text);
-
-    cursor:
-        pointer;
-
-    font-size:
-        18px;
-}
-
-
-.setting {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        center;
-
-    padding:
-        15px 0;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.07);
-}
-
-
-.setting-info {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    gap:
-        4px;
-}
-
-
-.setting-info span {
-
-    color:
-        var(--muted);
-
-    font-size:
-        12px;
-}
-
-
-/* SWITCH */
-
-.switch {
-
-    position:
-        relative;
-
-    width:
-        48px;
-
-    height:
-        27px;
-}
-
-
-.switch input {
-
-    display:
-        none;
-}
-
-
-.slider {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    border-radius:
-        30px;
-
-    background:
-        #34394b;
-
-    cursor:
-        pointer;
-
-    transition:
-        .3s;
-}
-
-
-.slider::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        21px;
-
-    height:
-        21px;
-
-    left:
-        3px;
-
-    top:
-        3px;
-
-    border-radius:
-        50%;
-
-    background:
-        white;
-
-    transition:
-        .3s;
-}
-
-
-.switch input:checked + .slider {
-
-    background:
-        linear-gradient(
-            135deg,
-            #7358ff,
-            #18d5ef
-        );
-}
-
-
-.switch input:checked + .slider::before {
-
-    transform:
-        translateX(21px);
-}
-
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer {
-
-    text-align:
-        center;
+    text-align: center;
 
     padding:
-        20px 20px 60px;
+        30px
+        20px
+        50px;
 
-    color:
-        var(--muted);
+    color: #59617a;
 
-    font-size:
-        13px;
+    font-size: 13px;
+}
+
+.footer-logo {
+    color: #8991a9;
+
+    font-weight: 700;
 }
 
 
-/* =========================================================
-   NO ANIMATIONS
-========================================================= */
+/* =========================
+   LIGHT MODE
+========================= */
 
-body.no-animations *,
-body.no-animations *::before,
-body.no-animations *::after {
+body.light {
+    color: #10131f;
 
-    animation:
-        none !important;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(100,80,255,0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(0,180,255,0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f4f7ff,
+            #eaf0ff
+        );
+}
 
-    transition:
-        none !important;
+body.light .grid {
+    opacity: 0.08;
+}
+
+body.light .subtitle,
+body.light .card p {
+    color: #59617a;
+}
+
+body.light .card {
+    background:
+        rgba(255,255,255,0.62);
+
+    border-color:
+        rgba(30,40,80,0.1);
+}
+
+body.light .search-box {
+    background:
+        rgba(255,255,255,0.7);
+
+    border-color:
+        rgba(30,40,80,0.12);
+}
+
+body.light .search-input {
+    color: #10131f;
+}
+
+body.light .search-input::placeholder {
+    color: #7c8499;
+}
+
+body.light .clock {
+    color: #667089;
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media(max-width: 800px) {
-
-    .dashboard,
-    .tools {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .scene {
-
-        transform:
-            scale(.85);
-
-        margin-top:
-            5px;
-
-        margin-bottom:
-            -20px;
-
-    }
-
-}
-
-
-@media(max-width: 520px) {
+@media (max-width: 750px) {
 
     header {
-
-        margin-top:
-            10px;
-
+        padding:
+            22px
+            22px
+            5px;
     }
 
-    .header-button {
+    .logo {
+        font-size: 22px;
+    }
 
-        padding:
-            8px 10px;
-
+    .clock {
+        display: none;
     }
 
     .hero {
+        margin-top: 20px;
 
-        margin-top:
-            25px;
-
+        padding:
+            15px;
     }
 
-    .hero h1 {
+    .eyebrow {
+        font-size: 11px;
 
-        letter-spacing:
-            -4px;
+        letter-spacing: 3px;
+    }
 
+    h1 {
+        font-size:
+            clamp(
+                65px,
+                22vw,
+                105px
+            );
+
+        letter-spacing: -5px;
     }
 
     .subtitle {
+        font-size: 17px;
 
-        font-size:
-            15px;
-
+        margin:
+            28px auto;
     }
 
     .scene {
+        height: 360px;
+    }
 
+    .sphere-wrapper {
         transform:
-            scale(.72);
-
-        margin-top:
-            -5px;
-
-        margin-bottom:
-            -60px;
-
+            scale(0.82);
     }
 
     .search-box {
+        border-radius: 22px;
 
-        border-radius:
-            17px;
-
+        margin-bottom: 40px;
     }
 
-    .search-box input {
-
+    .search-input {
         padding:
-            14px 10px;
+            18px 15px;
 
-        font-size:
-            15px;
-
+        font-size: 17px;
     }
 
     .search-button {
+        padding:
+            17px 21px;
+
+        border-radius: 17px;
+
+        font-size: 15px;
+    }
+
+    .cards {
+        grid-template-columns:
+            1fr;
 
         padding:
-            0 16px;
-
+            0 20px
+            60px;
     }
 
-    .dashboard,
-    .tools {
+    .card {
+        min-height: 190px;
 
-        width:
-            calc(100% - 24px);
+        padding: 26px;
+    }
+}
 
+
+/* very small phones */
+
+@media (max-width: 390px) {
+
+    .sphere-wrapper {
+        transform:
+            scale(0.72);
     }
 
-}
+    .search-button {
+        padding:
+            17px 15px;
+    }
 
-
-/* =========================================================
-   CUSTOM SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-
-    width:
-        7px;
-
-}
-
-
-::-webkit-scrollbar-track {
-
-    background:
-        transparent;
-
-}
-
-
-::-webkit-scrollbar-thumb {
-
-    background:
-        rgba(130,140,180,.3);
-
-    border-radius:
-        20px;
-
+    .search-input {
+        width: 100%;
+    }
 }
 
 </style>
@@ -1638,24 +1086,26 @@ body.no-animations *::after {
 
 <body>
 
-<!-- =======================================================
+<!-- =========================
      BACKGROUND
-======================================================= -->
+========================= -->
 
 <div class="background">
 
     <div class="grid"></div>
 
     <div class="orb one"></div>
-
     <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <div class="particles" id="particles"></div>
 
 </div>
 
 
-<!-- =======================================================
+<!-- =========================
      HEADER
-======================================================= -->
+========================= -->
 
 <header>
 
@@ -1663,18 +1113,23 @@ body.no-animations *::after {
 
         <span class="logo-dot"></span>
 
-        Had1oS
+        <span>Had1oS</span>
 
     </div>
 
 
-    <div class="header-actions">
+    <div class="header-right">
+
+        <div class="clock" id="clock">
+            00:00
+        </div>
 
         <button
-            class="header-button"
-            onclick="openSettings()"
+            class="theme-button"
+            id="themeButton"
+            aria-label="Сменить тему"
         >
-            ⚙️
+            ◐
         </button>
 
     </div>
@@ -1682,14 +1137,16 @@ body.no-animations *::after {
 </header>
 
 
-<!-- =======================================================
+<!-- =========================
      HERO
-======================================================= -->
+========================= -->
+
+<main>
 
 <section class="hero">
 
     <div class="eyebrow">
-        YOUR PERSONAL DIGITAL SPACE
+        Welcome to my digital space
     </div>
 
 
@@ -1699,31 +1156,42 @@ body.no-animations *::after {
 
 
     <p class="subtitle">
-        Search, tools, favorites and useful
-        little things — all in one place.
+        A small interactive corner of the web —
+        built with motion, depth and a little bit of magic.
     </p>
 
 
+    <!-- =========================
+         3D SPHERE
+    ========================= -->
+
     <div class="scene">
 
-        <div class="core">
+        <div
+            class="sphere-wrapper"
+            id="sphereWrapper"
+        >
 
-            <div class="core-letter">
-                H
+            <div class="sphere">
+
+                <div class="ring"></div>
+
+                <div class="ring second"></div>
+
+                <div class="sphere-letter">
+                    H
+                </div>
+
             </div>
 
         </div>
 
     </div>
 
-</section>
 
-
-<!-- =======================================================
-     SEARCH
-======================================================= -->
-
-<section class="search-area">
+    <!-- =========================
+         SEARCH
+    ========================= -->
 
     <form
         class="search-box"
@@ -1731,10 +1199,12 @@ body.no-animations *::after {
     >
 
         <input
-            id="searchInput"
             type="text"
-            autocomplete="off"
+            class="search-input"
+            id="searchInput"
             placeholder="Search the web..."
+            autocomplete="off"
+            spellcheck="false"
         >
 
         <button
@@ -1746,407 +1216,302 @@ body.no-animations *::after {
 
     </form>
 
-</section>
 
-
-<!-- =======================================================
-     DASHBOARD
-======================================================= -->
-
-<section class="dashboard">
-
-
-    <!-- CLOCK -->
-
-    <div class="panel">
-
-        <div class="panel-title">
-
-            <h2>
-                🕐 Time
-            </h2>
-
-            <span>
-                Local
-            </span>
-
-        </div>
-
-
-        <div
-            class="clock"
-            id="clock"
-        >
-            00:00:00
-        </div>
-
-
-        <div
-            class="date"
-            id="date"
-        >
-            Loading...
-        </div>
-
-    </div>
-
-
-    <!-- HISTORY -->
-
-    <div class="panel">
-
-        <div class="panel-title">
-
-            <h2>
-                🕘 Recent
-            </h2>
-
-            <span>
-                Search history
-            </span>
-
-        </div>
-
-
-        <div
-            class="history"
-            id="history"
-        >
-            <div style="color:var(--muted);font-size:13px;">
-                Пока здесь пусто.
-            </div>
-        </div>
-
-
-        <button
-            class="small-button clear-button"
-            onclick="clearHistory()"
-        >
-            Clear history
-        </button>
-
-    </div>
-
-
-    <!-- FAVORITES -->
-
-    <div class="panel">
-
-        <div class="panel-title">
-
-            <h2>
-                ⭐ Favorites
-            </h2>
-
-            <span>
-                Saved links
-            </span>
-
-        </div>
-
-
-        <div class="favorite-add">
-
-            <input
-                id="favoriteInput"
-                placeholder="https://example.com"
-            >
-
-            <button
-                class="small-button"
-                onclick="addFavorite()"
-            >
-                +
-            </button>
-
-        </div>
-
-
-        <div
-            class="favorite-list"
-            id="favorites"
-        >
-            <div style="color:var(--muted);font-size:13px;">
-                Пока здесь пусто.
-            </div>
-        </div>
-
-    </div>
+    <div
+        class="search-message"
+        id="searchMessage"
+    ></div>
 
 
 </section>
 
 
-<!-- =======================================================
-     TOOLS
-======================================================= -->
+<!-- =========================
+     CARDS
+========================= -->
 
-<section class="tools">
-
-
-    <!-- CALCULATOR -->
-
-    <div class="tool">
-
-        <h2>
-            🧮 Calculator
-        </h2>
+<section class="cards">
 
 
-        <input
-            id="calcInput"
-            placeholder="Например: 25*4+10"
-        >
+    <article class="card">
 
-
-        <button
-            onclick="calculate()"
-        >
-            Calculate
-        </button>
-
-
-        <div
-            class="tool-result"
-            id="calcResult"
-        ></div>
-
-    </div>
-
-
-    <!-- RANDOM -->
-
-    <div class="tool">
-
-        <h2>
-            🎲 Random number
-        </h2>
-
-
-        <input
-            id="randomMin"
-            type="number"
-            placeholder="Min"
-            value="1"
-        >
-
-
-        <input
-            id="randomMax"
-            type="number"
-            placeholder="Max"
-            value="100"
-        >
-
-
-        <button
-            onclick="randomNumber()"
-        >
-            Generate
-        </button>
-
-
-        <div
-            class="tool-result"
-            id="randomResult"
-        >
-            —
+        <div class="card-icon">
+            ✦
         </div>
 
-    </div>
-
-
-    <!-- TIMER -->
-
-    <div class="tool">
-
         <h2>
-            ⏱️ Timer
+            3D Motion
         </h2>
 
+        <p>
+            Interactive depth, floating elements
+            and a living animated background.
+        </p>
 
-        <input
-            id="timerInput"
-            type="number"
-            placeholder="Seconds"
-            min="1"
-        >
-
-
-        <button
-            onclick="startTimer()"
-        >
-            Start
-        </button>
+    </article>
 
 
-        <button
-            onclick="stopTimer()"
-            style="margin-left:5px;"
-        >
-            Stop
-        </button>
+    <article class="card">
 
-
-        <div
-            class="tool-result"
-            id="timerResult"
-        >
-            00:00
+        <div class="card-icon">
+            ◈
         </div>
 
-    </div>
+        <h2>
+            Built for Mobile
+        </h2>
+
+        <p>
+            Designed to look clean and smooth
+            on iPhone, Android and desktop.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="card-icon">
+            ⚡
+        </div>
+
+        <h2>
+            Pure HTML
+        </h2>
+
+        <p>
+            No frameworks and no build system.
+            One HTML file runs the entire page.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="card-icon">
+            ◉
+        </div>
+
+        <h2>
+            Had1oS Search
+        </h2>
+
+        <p>
+            A simple search interface built directly
+            into your Had1oS homepage.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="card-icon">
+            ✨
+        </div>
+
+        <h2>
+            Live Interface
+        </h2>
+
+        <p>
+            The clock, particles, sphere and interface
+            respond dynamically in real time.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <div class="card-icon">
+            ☁
+        </div>
+
+        <h2>
+            Your Space
+        </h2>
+
+        <p>
+            This page can become the foundation
+            for your own Had1oS ecosystem.
+        </p>
+
+    </article>
 
 
 </section>
 
-
-<!-- =======================================================
-     SETTINGS
-======================================================= -->
-
-<div
-    class="modal"
-    id="settingsModal"
->
-
-    <div class="modal-box">
-
-        <div class="modal-header">
-
-            <h2>
-                Had1oS Settings
-            </h2>
+</main>
 
 
-            <button
-                class="close"
-                onclick="closeSettings()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- THEME -->
-
-        <div class="setting">
-
-            <div class="setting-info">
-
-                <b>
-                    Light mode
-                </b>
-
-                <span>
-                    Переключить внешний вид
-                </span>
-
-            </div>
-
-
-            <label class="switch">
-
-                <input
-                    id="themeToggle"
-                    type="checkbox"
-                    onchange="toggleTheme()"
-                >
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-
-        <!-- ANIMATIONS -->
-
-        <div class="setting">
-
-            <div class="setting-info">
-
-                <b>
-                    Animations
-                </b>
-
-                <span>
-                    3D-анимации и движения
-                </span>
-
-            </div>
-
-
-            <label class="switch">
-
-                <input
-                    id="animationToggle"
-                    type="checkbox"
-                    checked
-                    onchange="toggleAnimations()"
-                >
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-
-        <!-- RESET -->
-
-        <div class="setting">
-
-            <div class="setting-info">
-
-                <b>
-                    Reset data
-                </b>
-
-                <span>
-                    Очистить историю и избранное
-                </span>
-
-            </div>
-
-
-            <button
-                class="small-button"
-                onclick="resetData()"
-            >
-                Reset
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =======================================================
+<!-- =========================
      FOOTER
-======================================================= -->
+========================= -->
 
 <footer>
 
-    © 2026 Had1oS
+    <span class="footer-logo">
+        Had1oS
+    </span>
+
+    <span>
+        · Personal digital space
+    </span>
 
 </footer>
 
 
 <script>
 
-/* =========================================================
+/* =========================
+   LIVE CLOCK
+========================= */
+
+function updateClock() {
+
+    const clock =
+        document.getElementById("clock");
+
+    const now =
+        new Date();
+
+    const hours =
+        String(now.getHours())
+        .padStart(2, "0");
+
+    const minutes =
+        String(now.getMinutes())
+        .padStart(2, "0");
+
+    clock.textContent =
+        `${hours}:${minutes}`;
+}
+
+updateClock();
+
+setInterval(
+    updateClock,
+    1000
+);
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particles =
+    document.getElementById("particles");
+
+for (
+    let i = 0;
+    i < 55;
+    i++
+) {
+
+    const particle =
+        document.createElement("span");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (7 + Math.random() * 14) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    const size =
+        1 + Math.random() * 2;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    particles.appendChild(
+        particle
+    );
+}
+
+
+/* =========================
+   3D MOUSE EFFECT
+========================= */
+
+const sphereWrapper =
+    document.getElementById(
+        "sphereWrapper"
+    );
+
+document.addEventListener(
+    "mousemove",
+    (event) => {
+
+        if (
+            window.innerWidth < 750
+        ) {
+            return;
+        }
+
+        const x =
+            (event.clientX /
+            window.innerWidth) - 0.5;
+
+        const y =
+            (event.clientY /
+            window.innerHeight) - 0.5;
+
+        const rotateX =
+            y * -12;
+
+        const rotateY =
+            x * 15;
+
+        sphereWrapper.style.transform =
+            `rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)`;
+    }
+);
+
+
+/* =========================
+   RESET 3D EFFECT
+========================= */
+
+document.addEventListener(
+    "mouseleave",
+    () => {
+
+        sphereWrapper.style.transform =
+            "rotateX(0deg) rotateY(0deg)";
+    }
+);
+
+
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
 const searchForm =
-    document.getElementById("searchForm");
+    document.getElementById(
+        "searchForm"
+    );
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
+
+const searchMessage =
+    document.getElementById(
+        "searchMessage"
+    );
 
 
 searchForm.addEventListener(
@@ -2158,880 +1523,201 @@ searchForm.addEventListener(
         const query =
             searchInput.value.trim();
 
-
         if (!query) {
+
+            searchMessage.textContent =
+                "Введите поисковый запрос.";
+
+            searchMessage.classList.add(
+                "show"
+            );
 
             searchInput.focus();
 
-            return;
+            setTimeout(
+                () => {
+                    searchMessage.classList.remove(
+                        "show"
+                    );
+                },
+                2500
+            );
 
+            return;
         }
 
 
-        saveSearch(query);
-
-
         /*
-            Рабочий поиск.
-
-            Интерфейс остаётся Had1oS,
-            а результаты открываются
-            через Google.
-        */
+         * Had1oS Search.
+         *
+         * Пока у Had1oS нет собственного
+         * поискового сервера и индекса,
+         * запрос отправляется в Google.
+         *
+         * Сам интерфейс при этом остаётся
+         * полностью Had1oS.
+         */
 
         const url =
             "https://www.google.com/search?q=" +
             encodeURIComponent(query);
 
-
         window.location.href =
             url;
-
     }
 );
 
 
-/* =========================================================
-   CLOCK
-========================================================= */
-
-function updateClock() {
-
-    const now =
-        new Date();
-
-
-    const time =
-        now.toLocaleTimeString(
-            "ru-RU",
-            {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit"
-            }
-        );
-
-
-    const date =
-        now.toLocaleDateString(
-            "ru-RU",
-            {
-                weekday: "long",
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        );
-
-
-    document
-        .getElementById("clock")
-        .textContent =
-        time;
-
-
-    document
-        .getElementById("date")
-        .textContent =
-        date;
-
-}
-
-
-updateClock();
-
-setInterval(
-    updateClock,
-    1000
-);
-
-
-/* =========================================================
-   SEARCH HISTORY
-========================================================= */
-
-function getHistory() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            "hadios_history"
-        ) || "[]"
-    );
-
-}
-
-
-function saveSearch(query) {
-
-    let history =
-        getHistory();
-
-
-    history =
-        history.filter(
-            item =>
-                item.toLowerCase() !==
-                query.toLowerCase()
-        );
-
-
-    history.unshift(query);
-
-
-    history =
-        history.slice(0, 10);
-
-
-    localStorage.setItem(
-        "hadios_history",
-        JSON.stringify(history)
-    );
-
-}
-
-
-function renderHistory() {
-
-    const container =
-        document.getElementById(
-            "history"
-        );
-
-
-    const history =
-        getHistory();
-
-
-    if (!history.length) {
-
-        container.innerHTML =
-            `<div style="color:var(--muted);font-size:13px;">
-                Пока здесь пусто.
-            </div>`;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        history
-            .map(
-                (query, index) => `
-
-                <div class="history-item">
-
-                    <span
-                        class="history-query"
-                    >
-                        ${escapeHTML(query)}
-                    </span>
-
-                    <button
-                        class="small-button"
-                        onclick="repeatSearch(${index})"
-                    >
-                        →
-                    </button>
-
-                </div>
-
-                `
-            )
-            .join("");
-
-}
-
-
-function repeatSearch(index) {
-
-    const history =
-        getHistory();
-
-
-    if (!history[index]) return;
-
-
-    searchInput.value =
-        history[index];
-
-
-    searchForm.requestSubmit();
-
-}
-
-
-function clearHistory() {
-
-    localStorage.removeItem(
-        "hadios_history"
-    );
-
-
-    renderHistory();
-
-}
-
-
-renderHistory();
-
-
-/* =========================================================
-   FAVORITES
-========================================================= */
-
-function getFavorites() {
-
-    return JSON.parse(
-        localStorage.getItem(
-            "hadios_favorites"
-        ) || "[]"
-    );
-
-}
-
-
-function addFavorite() {
-
-    const input =
-        document.getElementById(
-            "favoriteInput"
-        );
-
-
-    let url =
-        input.value.trim();
-
-
-    if (!url) return;
-
-
-    if (
-        !url.startsWith("http://") &&
-        !url.startsWith("https://")
-    ) {
-
-        url =
-            "https://" + url;
-
-    }
-
-
-    let favorites =
-        getFavorites();
-
-
-    if (
-        !favorites.includes(url)
-    ) {
-
-        favorites.push(url);
-
-    }
-
-
-    localStorage.setItem(
-        "hadios_favorites",
-        JSON.stringify(favorites)
-    );
-
-
-    input.value = "";
-
-
-    renderFavorites();
-
-}
-
-
-function renderFavorites() {
-
-    const container =
-        document.getElementById(
-            "favorites"
-        );
-
-
-    const favorites =
-        getFavorites();
-
-
-    if (!favorites.length) {
-
-        container.innerHTML =
-            `<div style="color:var(--muted);font-size:13px;">
-                Пока здесь пусто.
-            </div>`;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        favorites
-            .map(
-                (url, index) => `
-
-                <div class="favorite-item">
-
-                    <a
-                        href="${escapeAttribute(url)}"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        ${escapeHTML(
-                            getDomain(url)
-                        )}
-                    </a>
-
-                    <button
-                        class="small-button"
-                        onclick="removeFavorite(${index})"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-                `
-            )
-            .join("");
-
-}
-
-
-function removeFavorite(index) {
-
-    let favorites =
-        getFavorites();
-
-
-    favorites.splice(
-        index,
-        1
-    );
-
-
-    localStorage.setItem(
-        "hadios_favorites",
-        JSON.stringify(favorites)
-    );
-
-
-    renderFavorites();
-
-}
-
-
-function getDomain(url) {
-
-    try {
-
-        return new URL(url).hostname;
-
-    } catch {
-
-        return url;
-
-    }
-
-}
-
-
-renderFavorites();
-
-
-/* =========================================================
-   CALCULATOR
-========================================================= */
-
-function calculate() {
-
-    const input =
-        document.getElementById(
-            "calcInput"
-        );
-
-
-    const result =
-        document.getElementById(
-            "calcResult"
-        );
-
-
-    const expression =
-        input.value.trim();
-
-
-    if (!expression) {
-
-        result.textContent =
-            "Введите пример.";
-
-        return;
-
-    }
-
-
-    /*
-        Разрешаем только цифры
-        и математические операторы.
-    */
-
-    if (
-        !/^[0-9+\-*/().%\s]+$/
-            .test(expression)
-    ) {
-
-        result.textContent =
-            "Можно использовать только числа и + − × ÷ %.";
-
-        return;
-
-    }
-
-
-    try {
-
-        const value =
-            Function(
-                "return (" +
-                expression +
-                ")"
-            )();
-
+/* =========================
+   ENTER SEARCH
+========================= */
+
+searchInput.addEventListener(
+    "keydown",
+    function(event) {
 
         if (
-            typeof value !== "number" ||
-            !Number.isFinite(value)
+            event.key === "Enter"
         ) {
 
-            throw new Error();
+            event.preventDefault();
 
+            searchForm.requestSubmit();
         }
-
-
-        result.textContent =
-            "= " + value;
-
-    } catch {
-
-        result.textContent =
-            "Не удалось вычислить.";
-
     }
-
-}
-
-
-/* =========================================================
-   RANDOM NUMBER
-========================================================= */
-
-function randomNumber() {
-
-    const min =
-        Number(
-            document.getElementById(
-                "randomMin"
-            ).value
-        );
+);
 
 
-    const max =
-        Number(
-            document.getElementById(
-                "randomMax"
-            ).value
-        );
+/* =========================
+   THEME
+========================= */
 
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
 
-    const result =
-        document.getElementById(
-            "randomResult"
-        );
-
-
-    if (
-        !Number.isFinite(min) ||
-        !Number.isFinite(max) ||
-        min > max
-    ) {
-
-        result.textContent =
-            "Проверьте значения.";
-
-        return;
-
-    }
-
-
-    const number =
-        Math.floor(
-            Math.random() *
-            (max - min + 1)
-        ) + min;
-
-
-    result.textContent =
-        number;
-
-}
-
-
-/* =========================================================
-   TIMER
-========================================================= */
-
-let timerInterval =
-    null;
-
-let timerSeconds =
-    0;
-
-
-function startTimer() {
-
-    const input =
-        document.getElementById(
-            "timerInput"
-        );
-
-
-    const seconds =
-        Number(input.value);
-
-
-    if (
-        !Number.isFinite(seconds) ||
-        seconds <= 0
-    ) {
-
-        return;
-
-    }
-
-
-    clearInterval(
-        timerInterval
+const savedTheme =
+    localStorage.getItem(
+        "had1os-theme"
     );
 
 
-    timerSeconds =
-        Math.floor(seconds);
+if (
+    savedTheme === "light"
+) {
+
+    document.body.classList.add(
+        "light"
+    );
+}
 
 
-    updateTimerDisplay();
+themeButton.addEventListener(
+    "click",
+    () => {
+
+        document.body.classList.toggle(
+            "light"
+        );
+
+        const isLight =
+            document.body.classList.contains(
+                "light"
+            );
+
+        localStorage.setItem(
+            "had1os-theme",
+            isLight
+                ? "light"
+                : "dark"
+        );
+    }
+);
 
 
-    timerInterval =
-        setInterval(
-            () => {
+/* =========================
+   CARD PARALLAX
+========================= */
 
-                timerSeconds--;
+const cards =
+    document.querySelectorAll(
+        ".card"
+    );
 
-                updateTimerDisplay();
 
+cards.forEach(
+    card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
 
                 if (
-                    timerSeconds <= 0
+                    window.innerWidth < 750
                 ) {
-
-                    clearInterval(
-                        timerInterval
-                    );
-
-                    timerInterval =
-                        null;
-
-                    document
-                        .getElementById(
-                            "timerResult"
-                        )
-                        .textContent =
-                        "00:00";
-
-                    alert(
-                        "⏱️ Had1oS Timer завершён!"
-                    );
-
+                    return;
                 }
 
-            },
-            1000
-        );
-
-}
-
-
-function stopTimer() {
-
-    clearInterval(
-        timerInterval
-    );
-
-    timerInterval =
-        null;
-
-}
-
-
-function updateTimerDisplay() {
-
-    const minutes =
-        Math.floor(
-            timerSeconds / 60
-        );
-
-
-    const seconds =
-        timerSeconds % 60;
-
-
-    document
-        .getElementById(
-            "timerResult"
-        )
-        .textContent =
-
-        String(minutes)
-            .padStart(2, "0")
-        + ":" +
-        String(seconds)
-            .padStart(2, "0");
-
-}
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function openSettings() {
-
-    document
-        .getElementById(
-            "settingsModal"
-        )
-        .classList
-        .add("active");
-
-}
-
-
-function closeSettings() {
-
-    document
-        .getElementById(
-            "settingsModal"
-        )
-        .classList
-        .remove("active");
-
-}
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-function toggleTheme() {
-
-    const enabled =
-        document
-            .getElementById(
-                "themeToggle"
-            )
-            .checked;
-
-
-    document.body
-        .classList
-        .toggle(
-            "light",
-            enabled
-        );
-
-
-    localStorage.setItem(
-        "hadios_theme",
-        enabled
-            ? "light"
-            : "dark"
-    );
-
-}
-
-
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-
-function toggleAnimations() {
-
-    const enabled =
-        document
-            .getElementById(
-                "animationToggle"
-            )
-            .checked;
-
-
-    document.body
-        .classList
-        .toggle(
-            "no-animations",
-            !enabled
-        );
-
-
-    localStorage.setItem(
-        "hadios_animations",
-        enabled
-            ? "on"
-            : "off"
-    );
-
-}
-
-
-/* =========================================================
-   LOAD SETTINGS
-========================================================= */
-
-function loadSettings() {
-
-    const theme =
-        localStorage.getItem(
-            "hadios_theme"
-        );
-
-
-    const animations =
-        localStorage.getItem(
-            "hadios_animations"
-        );
-
-
-    if (theme === "light") {
-
-        document.body
-            .classList
-            .add("light");
-
-        document
-            .getElementById(
-                "themeToggle"
-            )
-            .checked =
-            true;
-
-    }
-
-
-    if (animations === "off") {
-
-        document.body
-            .classList
-            .add("no-animations");
-
-        document
-            .getElementById(
-                "animationToggle"
-            )
-            .checked =
-            false;
-
-    }
-
-}
-
-
-loadSettings();
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-function resetData() {
-
-    const confirmed =
-        confirm(
-            "Очистить историю поиска, избранное и настройки?"
-        );
-
-
-    if (!confirmed) return;
-
-
-    localStorage.removeItem(
-        "hadios_history"
-    );
-
-    localStorage.removeItem(
-        "hadios_favorites"
-    );
-
-    localStorage.removeItem(
-        "hadios_theme"
-    );
-
-    localStorage.removeItem(
-        "hadios_animations"
-    );
-
-
-    location.reload();
-
-}
-
-
-/* =========================================================
-   SECURITY HELPERS
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-function escapeAttribute(text) {
-
-    return escapeHTML(text);
-
-}
-
-
-/* =========================================================
-   CLOSE MODAL BY BACKGROUND
-========================================================= */
-
-document
-    .getElementById("settingsModal")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeSettings();
-
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+                const rotateY =
+                    (x - centerX) /
+                    25;
+
+                const rotateX =
+                    (centerY - y) /
+                    25;
+
+                card.style.transform =
+                    `perspective(700px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-8px)`;
             }
+        );
 
-        }
-    );
 
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform =
+                    "";
+            }
+        );
+
+    }
+);
+
+
+/* =========================
+   PAGE LOADED
+========================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        document.body.style.opacity =
+            "1";
+    }
+);
 
 </script>
 
