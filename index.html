@@ -1,312 +1,187 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Had1os Browser</title>
+<title>My Browser</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b0f14;
-      color: white;
-      min-height: 100vh;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0f14;
+    color: white;
+    min-height: 100vh;
+}
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      text-align: center;
-    }
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 20px 30px;
+}
 
-    .logo {
-      font-size: 48px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
+.logo {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
 
-    .subtitle {
-      color: #8b95a5;
-      margin-bottom: 40px;
-      font-size: 17px;
-    }
+.search-box {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    background: #1a2029;
+    border: 1px solid #303845;
+    border-radius: 30px;
+    padding: 6px;
+}
 
-    .search-box {
-      display: flex;
-      gap: 10px;
-      background: #171d26;
-      border: 1px solid #303946;
-      border-radius: 18px;
-      padding: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.35);
-    }
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    padding: 14px 18px;
+}
 
-    input {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: white;
-      font-size: 18px;
-      padding: 14px;
-    }
+.search-box button {
+    border: none;
+    background: #3b82f6;
+    color: white;
+    border-radius: 25px;
+    padding: 0 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    input::placeholder {
-      color: #697384;
-    }
+.search-box button:active {
+    transform: scale(0.97);
+}
 
-    select {
-      background: #242c37;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 0 12px;
-      font-size: 14px;
-      outline: none;
-    }
+.links {
+    margin-top: 45px;
+    width: 100%;
+    max-width: 700px;
+}
 
-    button {
-      background: #4285f4;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 0 22px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.links h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
 
-    button:active {
-      transform: scale(.97);
-    }
+.link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #151b23;
+    border: 1px solid #29313d;
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+}
 
-    .engines {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
+.link:hover {
+    background: #202733;
+}
 
-    .engine {
-      background: #171d26;
-      border: 1px solid #303946;
-      color: #aeb7c5;
-      padding: 10px 16px;
-      border-radius: 12px;
-      cursor: pointer;
-    }
-
-    .engine:hover {
-      color: white;
-      border-color: #4285f4;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 60px;
-    }
-
-    .card {
-      background: #121821;
-      border: 1px solid #252e3a;
-      border-radius: 16px;
-      padding: 25px 15px;
-    }
-
-    .card-icon {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .card-text {
-      color: #7e8999;
-      font-size: 13px;
-    }
-
-    @media (max-width: 650px) {
-      .container {
-        padding-top: 50px;
-      }
-
-      .logo {
-        font-size: 38px;
-      }
-
-      .search-box {
-        flex-wrap: wrap;
-      }
-
-      input {
-        width: 100%;
-        flex-basis: 100%;
-      }
-
-      select,
-      button {
-        height: 48px;
-      }
-
-      select {
-        flex: 1;
-      }
-
-      button {
-        flex: 1;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+.footer {
+    margin-top: auto;
+    padding-top: 50px;
+    color: #697586;
+    font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="logo">Had1os Browser</div>
-
-    <div class="subtitle">
-      Один поиск — весь интернет
+    <div class="logo">
+        My Browser
     </div>
 
-    <div class="search-box">
+    <form class="search-box" id="searchForm">
+        <input
+            id="search"
+            type="text"
+            placeholder="Искать что угодно..."
+            autocomplete="off"
+        >
 
-      <input
-        id="search"
-        type="text"
-        placeholder="Что вы хотите найти?"
-        autocomplete="off"
-      >
+        <button type="submit">
+            Поиск
+        </button>
+    </form>
 
-      <select id="engine">
-        <option value="google">Google</option>
-        <option value="bing">Bing</option>
-        <option value="duckduckgo">DuckDuckGo</option>
-        <option value="yandex">Яндекс</option>
-      </select>
+    <div class="links">
 
-      <button onclick="searchWeb()">Поиск</button>
+        <h2>Быстрый доступ</h2>
 
-    </div>
+        <a class="link"
+           href="https://www.google.com"
+           target="_blank">
+            🔎 Google
+        </a>
 
-    <div class="engines">
+        <a class="link"
+           href="https://www.youtube.com"
+           target="_blank">
+            ▶️ YouTube
+        </a>
 
-      <div class="engine" onclick="setEngine('google')">
-        🔎 Google
-      </div>
+        <a class="link"
+           href="https://ru.wikipedia.org"
+           target="_blank">
+            📚 Wikipedia
+        </a>
 
-      <div class="engine" onclick="setEngine('bing')">
-        🔵 Bing
-      </div>
-
-      <div class="engine" onclick="setEngine('duckduckgo')">
-        🦆 DuckDuckGo
-      </div>
-
-      <div class="engine" onclick="setEngine('yandex')">
-        🟡 Яндекс
-      </div>
-
-    </div>
-
-    <div class="features">
-
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <div class="card-title">Весь интернет</div>
-        <div class="card-text">
-          Ищите сайты, новости, видео и другую информацию.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <div class="card-title">Быстрый поиск</div>
-        <div class="card-text">
-          Введите запрос и сразу переходите к результатам.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🔒</div>
-        <div class="card-title">Выбор поиска</div>
-        <div class="card-text">
-          Выбирайте поисковую систему самостоятельно.
-        </div>
-      </div>
+        <a class="link"
+           href="https://github.com"
+           target="_blank">
+            💻 GitHub
+        </a>
 
     </div>
 
-  </div>
+    <div class="footer">
+        My Browser • Поиск в интернете
+    </div>
 
-  <script>
+</div>
 
-    function searchWeb() {
+<script>
 
-      const query = document.getElementById("search").value.trim();
-      const engine = document.getElementById("engine").value;
+document
+    .getElementById("searchForm")
+    .addEventListener("submit", function(event) {
 
-      if (!query) {
-        alert("Введите запрос");
-        return;
-      }
+        event.preventDefault();
 
-      const encoded = encodeURIComponent(query);
+        const query =
+            document.getElementById("search").value.trim();
 
-      let url;
+        if (!query) {
+            return;
+        }
 
-      if (engine === "google") {
-        url = "https://www.google.com/search?q=" + encoded;
-      }
+        const url =
+            "https://www.google.com/search?q=" +
+            encodeURIComponent(query);
 
-      if (engine === "bing") {
-        url = "https://www.bing.com/search?q=" + encoded;
-      }
-
-      if (engine === "duckduckgo") {
-        url = "https://duckduckgo.com/?q=" + encoded;
-      }
-
-      if (engine === "yandex") {
-        url = "https://yandex.com/search/?text=" + encoded;
-      }
-
-      window.location.href = url;
-    }
-
-    function setEngine(name) {
-      document.getElementById("engine").value = name;
-      document.getElementById("search").focus();
-    }
-
-    document.getElementById("search").addEventListener("keydown", function(event) {
-
-      if (event.key === "Enter") {
-        searchWeb();
-      }
-
+        window.location.href = url;
     });
 
-  </script>
+</script>
 
 </body>
 </html>
