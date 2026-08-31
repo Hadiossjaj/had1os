@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Had1os Browser</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b0f14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: #8b95a5;
+      margin-bottom: 40px;
+      font-size: 17px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      background: #171d26;
+      border: 1px solid #303946;
+      border-radius: 18px;
+      padding: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 18px;
+      padding: 14px;
+    }
+
+    input::placeholder {
+      color: #697384;
+    }
+
+    select {
+      background: #242c37;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 0 12px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    button {
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 0 22px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(.97);
+    }
+
+    .engines {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .engine {
+      background: #171d26;
+      border: 1px solid #303946;
+      color: #aeb7c5;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .engine:hover {
+      color: white;
+      border-color: #4285f4;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background: #121821;
+      border: 1px solid #252e3a;
+      border-radius: 16px;
+      padding: 25px 15px;
+    }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-text {
+      color: #7e8999;
+      font-size: 13px;
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        padding-top: 50px;
+      }
+
+      .logo {
+        font-size: 38px;
+      }
+
+      .search-box {
+        flex-wrap: wrap;
+      }
+
+      input {
+        width: 100%;
+        flex-basis: 100%;
+      }
+
+      select,
+      button {
+        height: 48px;
+      }
+
+      select {
+        flex: 1;
+      }
+
+      button {
+        flex: 1;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">Had1os Browser</div>
+
+    <div class="subtitle">
+      Один поиск — весь интернет
+    </div>
+
+    <div class="search-box">
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Что вы хотите найти?"
+        autocomplete="off"
+      >
+
+      <select id="engine">
+        <option value="google">Google</option>
+        <option value="bing">Bing</option>
+        <option value="duckduckgo">DuckDuckGo</option>
+        <option value="yandex">Яндекс</option>
+      </select>
+
+      <button onclick="searchWeb()">Поиск</button>
+
+    </div>
+
+    <div class="engines">
+
+      <div class="engine" onclick="setEngine('google')">
+        🔎 Google
+      </div>
+
+      <div class="engine" onclick="setEngine('bing')">
+        🔵 Bing
+      </div>
+
+      <div class="engine" onclick="setEngine('duckduckgo')">
+        🦆 DuckDuckGo
+      </div>
+
+      <div class="engine" onclick="setEngine('yandex')">
+        🟡 Яндекс
+      </div>
+
+    </div>
+
+    <div class="features">
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Весь интернет</div>
+        <div class="card-text">
+          Ищите сайты, новости, видео и другую информацию.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Быстрый поиск</div>
+        <div class="card-text">
+          Введите запрос и сразу переходите к результатам.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Выбор поиска</div>
+        <div class="card-text">
+          Выбирайте поисковую систему самостоятельно.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function searchWeb() {
+
+      const query = document.getElementById("search").value.trim();
+      const engine = document.getElementById("engine").value;
+
+      if (!query) {
+        alert("Введите запрос");
+        return;
+      }
+
+      const encoded = encodeURIComponent(query);
+
+      let url;
+
+      if (engine === "google") {
+        url = "https://www.google.com/search?q=" + encoded;
+      }
+
+      if (engine === "bing") {
+        url = "https://www.bing.com/search?q=" + encoded;
+      }
+
+      if (engine === "duckduckgo") {
+        url = "https://duckduckgo.com/?q=" + encoded;
+      }
+
+      if (engine === "yandex") {
+        url = "https://yandex.com/search/?text=" + encoded;
+      }
+
+      window.location.href = url;
+    }
+
+    function setEngine(name) {
+      document.getElementById("engine").value = name;
+      document.getElementById("search").focus();
+    }
+
+    document.getElementById("search").addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        searchWeb();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
