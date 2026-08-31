@@ -2,11 +2,16 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b1c">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#050816">
+
 <title>Had1oS</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,11 +30,27 @@ body {
         "Segoe UI",
         Arial,
         sans-serif;
+
     color: white;
+
     background:
-        radial-gradient(circle at 15% 20%, rgba(91,63,255,.25), transparent 35%),
-        radial-gradient(circle at 85% 35%, rgba(0,220,255,.18), transparent 35%),
-        linear-gradient(135deg, #050816, #080b18 45%, #02060d);
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(91,63,255,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(0,220,255,.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #050816,
+            #080b18 45%,
+            #02060d
+        );
+
     overflow-x: hidden;
 }
 
@@ -48,28 +69,44 @@ body {
 .grid {
     position: absolute;
     inset: 0;
-    opacity: .16;
+
+    opacity: .17;
+
     background-image:
-        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.07) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.07) 1px,
+            transparent 1px
+        );
+
     background-size: 45px 45px;
-    mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        black 20%,
-        black 80%,
-        transparent
-    );
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 85%
+        );
 }
 
 .orb {
     position: absolute;
-    width: 450px;
-    height: 450px;
+
+    width: 430px;
+    height: 430px;
+
     border-radius: 50%;
+
     filter: blur(80px);
-    opacity: .32;
-    animation: float 9s ease-in-out infinite;
+
+    opacity: .35;
+
+    animation:
+        float 9s ease-in-out infinite;
 }
 
 .orb.one {
@@ -81,11 +118,13 @@ body {
 .orb.two {
     background: #00d9ff;
     right: -180px;
-    top: 40%;
+    top: 42%;
+
     animation-delay: -4s;
 }
 
 @keyframes float {
+
     0%,100% {
         transform: translate(0,0);
     }
@@ -100,243 +139,112 @@ body {
 ========================= */
 
 header {
+
     width: 100%;
-    padding: 28px 6%;
+
+    padding:
+        28px
+        6%;
+
     display: flex;
+
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    background: rgba(5,8,22,.35);
-    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(5,8,22,.55);
+
+    backdrop-filter: blur(20px);
+
     position: relative;
+
     z-index: 20;
 }
 
 .logo {
+
     display: flex;
     align-items: center;
+
     gap: 12px;
-    font-size: 25px;
+
+    font-size: 36px;
     font-weight: 800;
-    letter-spacing: -1px;
 }
 
 .logo-dot {
+
     width: 15px;
     height: 15px;
+
     border-radius: 50%;
-    background: linear-gradient(135deg,#765cff,#24d9ff);
+
+    background:
+        linear-gradient(
+            135deg,
+            #7665ff,
+            #24d9ff
+        );
+
     box-shadow:
-        0 0 15px #586aff,
-        0 0 35px rgba(36,217,255,.35);
+        0 0 20px #586aff;
 }
 
 /* =========================
    HEADER BUTTONS
 ========================= */
 
-.header-buttons {
+.header-actions {
+
     display: flex;
-    align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
-.login-btn,
-.menu-btn {
-    border: 1px solid rgba(255,255,255,.13);
-    background: rgba(255,255,255,.05);
+.header-btn {
+
+    border: 1px solid
+        rgba(255,255,255,.15);
+
+    background:
+        rgba(255,255,255,.06);
+
     color: white;
-    cursor: pointer;
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
-}
 
-.login-btn {
-    padding: 15px 28px;
+    padding: 16px 25px;
+
     border-radius: 22px;
+
     font-size: 18px;
-    font-weight: 700;
-}
-
-.menu-btn {
-    width: 64px;
-    height: 64px;
-    border-radius: 22px;
-    font-size: 30px;
-}
-
-.login-btn:hover,
-.menu-btn:hover {
-    transform: translateY(-3px);
-    background: rgba(255,255,255,.1);
-    box-shadow: 0 10px 35px rgba(0,0,0,.25);
-}
-
-.login-btn:active,
-.menu-btn:active {
-    transform: scale(.94);
-}
-
-/* =========================
-   MENU
-========================= */
-
-.menu {
-    position: absolute;
-    z-index: 30;
-    top: 105px;
-    right: 6%;
-    width: min(775px, calc(100% - 40px));
-
-    padding: 30px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(10,15,35,.97),
-            rgba(4,8,22,.97)
-        );
-
-    border: 1px solid rgba(255,255,255,.13);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.55),
-        0 0 60px rgba(83,81,255,.08);
-
-    backdrop-filter: blur(25px);
-
-    opacity: 0;
-    visibility: hidden;
-    transform:
-        translateY(-15px)
-        scale(.97);
-
-    transition:
-        opacity .3s ease,
-        transform .3s ease,
-        visibility .3s;
-}
-
-.menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-.menu-title {
-    color: #777f9f;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 8px;
-}
-
-.menu-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 17px;
-
-    width: 100%;
-    padding: 18px 16px;
-
-    border: 0;
-    border-radius: 17px;
-
-    background: transparent;
-    color: #d7dced;
-
-    font-size: 19px;
-    text-align: left;
+    font-weight: 600;
 
     cursor: pointer;
 
     transition:
-        background .25s ease,
-        transform .25s ease,
-        color .25s ease;
+        .25s ease;
+
+    backdrop-filter: blur(15px);
 }
 
-.menu-item:hover {
-    background: rgba(110,100,255,.13);
-    color: white;
-    transform: translateX(5px);
-}
+.header-btn:hover {
 
-.menu-item:active {
-    transform: scale(.97);
-}
+    transform: translateY(-3px);
 
-.menu-icon {
-    width: 35px;
-    height: 35px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 25px;
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,.05);
-}
-
-.menu-item.active {
     background:
-        linear-gradient(
-            90deg,
-            rgba(100,80,255,.22),
-            rgba(0,210,255,.08)
-        );
+        rgba(255,255,255,.12);
 
-    color: white;
+    border-color:
+        rgba(130,150,255,.5);
 
     box-shadow:
-        inset 0 0 0 1px rgba(120,110,255,.2),
-        0 0 25px rgba(80,80,255,.08);
+        0 10px 30px
+        rgba(60,80,255,.2);
 }
 
-.menu-item.active::after {
-    content: "";
-    position: absolute;
-    right: 16px;
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-    background: #4ce4ff;
-
-    box-shadow:
-        0 0 12px #4ce4ff,
-        0 0 25px rgba(76,228,255,.6);
-
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0%,100% {
-        opacity: .6;
-        transform: scale(.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+.header-btn:active {
+    transform: scale(.94);
 }
 
 /* =========================
@@ -344,46 +252,64 @@ header {
 ========================= */
 
 .hero {
-    max-width: 1000px;
-    margin: 50px auto 0;
-    padding: 20px;
+
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
     text-align: center;
+
+    padding: 60px 20px;
+
+    position: relative;
 }
 
-.eyebrow {
-    color: #a9aec5;
-    letter-spacing: 5px;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
+.hero h1 {
 
-h1 {
-    font-size: clamp(65px, 12vw, 140px);
-    line-height: .9;
+    font-size:
+        clamp(
+            60px,
+            12vw,
+            140px
+        );
+
     font-weight: 900;
-    letter-spacing: -7px;
+
+    letter-spacing: -8px;
 
     background:
         linear-gradient(
             90deg,
             #ffffff,
-            #b7aaff,
-            #61eaff
+            #9bb0ff,
+            #64eaff
         );
 
     -webkit-background-clip: text;
-    background-clip: text;
+
     color: transparent;
 
     text-shadow:
-        0 0 45px rgba(100,130,255,.15);
+        0 0 45px
+        rgba(100,130,255,.15);
 }
 
-.subtitle {
-    max-width: 700px;
-    margin: 35px auto;
-    color: #9da4bd;
+.hero p {
+
+    margin-top: 20px;
+
+    max-width: 650px;
+
+    color: #9da7c2;
+
     font-size: 20px;
+
     line-height: 1.6;
 }
 
@@ -391,16 +317,9 @@ h1 {
    SPHERE
 ========================= */
 
-.scene {
-    height: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-}
-
 .sphere {
-    position: relative;
+
+    margin-top: 55px;
 
     width: 300px;
     height: 300px;
@@ -408,386 +327,429 @@ h1 {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
             circle at 30% 28%,
-            white 0%,
-            #a58cff 4%,
+            rgba(255,255,255,.2),
             transparent 13%
         ),
+
         radial-gradient(
             circle at 65% 65%,
-            #00cfff 0%,
+            rgba(0,220,255,.25),
             transparent 30%
         ),
+
         radial-gradient(
             circle at 45% 45%,
             #352078,
-            #090d1c 70%
+            #090d1d 70%
         );
 
     box-shadow:
-        inset -25px -25px 80px rgba(0,0,0,.7),
-        inset 20px 15px 40px rgba(255,255,255,.08),
-        0 0 80px rgba(75,100,255,.18);
+
+        inset 0 0 60px
+        rgba(0,0,0,.7),
+
+        0 0 70px
+        rgba(75,100,255,.18);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
 
     animation:
-        sphereFloat 6s ease-in-out infinite,
-        sphereGlow 4s ease-in-out infinite;
-}
-
-.sphere::before {
-    content: "";
-    position: absolute;
-
-    inset: 65px -45px;
-
-    border: 1px solid rgba(100,220,255,.35);
-    border-radius: 50%;
-
-    transform: rotate(-8deg);
-    box-shadow: 0 0 25px rgba(0,200,255,.15);
+        sphereFloat 5s ease-in-out infinite;
 }
 
 .sphere::after {
+
     content: "";
+
     position: absolute;
 
-    width: 110px;
+    width: 500px;
     height: 110px;
 
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%,-50%);
+    border:
+        1px solid
+        rgba(0,220,255,.3);
 
     border-radius: 50%;
 
-    background: radial-gradient(
-        circle,
-        rgba(0,210,255,.18),
-        transparent 70%
-    );
-
-    filter: blur(15px);
+    transform:
+        rotate(-8deg);
 }
 
-.sphere-letter {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%,-50%);
+.sphere span {
 
     font-size: 100px;
+
     font-weight: 900;
 
-    color: white;
-
     text-shadow:
-        0 0 25px rgba(255,255,255,.3);
+        0 0 35px
+        rgba(255,255,255,.3);
 }
 
 @keyframes sphereFloat {
+
     0%,100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-18px) rotate(3deg);
-    }
-}
-
-@keyframes sphereGlow {
-    0%,100% {
-        box-shadow:
-            inset -25px -25px 80px rgba(0,0,0,.7),
-            0 0 60px rgba(75,100,255,.12);
-    }
-
-    50% {
-        box-shadow:
-            inset -25px -25px 80px rgba(0,0,0,.7),
-            0 0 100px rgba(0,190,255,.22);
+        transform: translateY(-15px);
     }
 }
 
 /* =========================
-   CONTENT AREA
+   MENU
 ========================= */
 
-.content {
-    max-width: 1000px;
-    margin: 20px auto 100px;
-    padding: 20px;
-}
+.menu-overlay {
 
-.panel {
-    display: none;
+    position: fixed;
 
-    padding: 35px;
-
-    border-radius: 28px;
-
-    background: rgba(255,255,255,.04);
-
-    border: 1px solid rgba(255,255,255,.1);
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.2);
-
-    animation: panelIn .45s ease;
-}
-
-.panel.active {
-    display: block;
-}
-
-@keyframes panelIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(.98);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.panel h2 {
-    font-size: 32px;
-    margin-bottom: 12px;
-}
-
-.panel p {
-    color: #9da4bd;
-    line-height: 1.6;
-}
-
-/* =========================
-   SEARCH
-========================= */
-
-.search-box {
-    display: flex;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.search-box input {
-    flex: 1;
-
-    min-width: 0;
-
-    padding: 17px 20px;
-
-    border-radius: 16px;
-
-    border: 1px solid rgba(255,255,255,.1);
-
-    background: rgba(0,0,0,.25);
-
-    color: white;
-
-    outline: none;
-
-    font-size: 17px;
-}
-
-.search-box input:focus {
-    border-color: #6860ff;
-    box-shadow: 0 0 20px rgba(90,80,255,.15);
-}
-
-.action-btn {
-    border: 0;
-    border-radius: 16px;
-
-    padding: 0 24px;
-
-    color: white;
+    inset: 0;
 
     background:
-        linear-gradient(
-            135deg,
-            #765cff,
-            #16cfff
-        );
+        rgba(0,0,0,.55);
 
-    cursor: pointer;
-
-    font-weight: 700;
-
-    transition: .25s;
-}
-
-.action-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(50,150,255,.2);
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.card {
-    padding: 22px;
-    border-radius: 20px;
-
-    background: rgba(255,255,255,.04);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    transition: .25s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,.07);
-}
-
-.card-icon {
-    font-size: 30px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    margin-bottom: 7px;
-}
-
-.card p {
-    font-size: 14px;
-}
-
-/* =========================
-   LOGIN MODAL
-========================= */
-
-.modal {
-    position: fixed;
-    inset: 0;
+    backdrop-filter:
+        blur(8px);
 
     z-index: 100;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    background: rgba(0,0,0,.65);
-
-    backdrop-filter: blur(12px);
-
     opacity: 0;
+
     visibility: hidden;
 
-    transition: .3s;
+    transition:
+        .25s ease;
 }
 
-.modal.active {
+.menu-overlay.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
-.modal-box {
-    width: min(430px,100%);
+.menu-panel {
 
-    padding: 35px;
+    position: absolute;
 
-    border-radius: 28px;
+    top: 100px;
+    right: 5%;
+
+    width: min(
+        430px,
+        90%
+    );
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 30px;
+
+    background:
+        rgba(5,8,22,.92);
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.5);
+
+    transform:
+        translateY(-20px)
+        scale(.96);
+
+    transition:
+        .3s ease;
+}
+
+.menu-overlay.active
+.menu-panel {
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.menu-title {
+
+    font-size: 14px;
+
+    color: #77809d;
+
+    letter-spacing: 3px;
+
+    margin:
+        5px 8px 18px;
+}
+
+.menu-item {
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    color: #dce2f5;
+
+    padding: 18px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    font-size: 21px;
+
+    text-align: left;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+}
+
+.menu-item:hover {
+
+    background:
+        rgba(255,255,255,.07);
+
+    transform:
+        translateX(5px);
+}
+
+.menu-item:active {
+
+    transform:
+        scale(.96);
+
+    background:
+        rgba(90,110,255,.18);
+}
+
+.menu-icon {
+
+    width: 38px;
+
+    font-size: 26px;
+
+    text-align: center;
+}
+
+/* =========================
+   CHOICE MODAL
+========================= */
+
+.choice-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,.65);
+
+    backdrop-filter:
+        blur(12px);
+
+    z-index: 200;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .25s ease;
+}
+
+.choice-overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.choice-box {
+
+    width: min(
+        430px,
+        100%
+    );
 
     background:
         linear-gradient(
             145deg,
-            #10162e,
-            #070b1b
+            rgba(16,22,50,.98),
+            rgba(5,8,22,.98)
         );
 
-    border: 1px solid rgba(255,255,255,.13);
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 28px;
+
+    padding: 25px;
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,.6);
+        0 30px 100px
+        rgba(0,0,0,.6);
 
-    transform: translateY(20px) scale(.96);
+    transform:
+        scale(.85)
+        translateY(20px);
 
-    transition: .35s;
-}
-
-.modal.active .modal-box {
-    transform: translateY(0) scale(1);
-}
-
-.modal-box h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.modal-box p {
-    color: #929ab5;
-    margin-bottom: 25px;
-}
-
-.login-input {
-    width: 100%;
-
-    padding: 16px;
-
-    margin-bottom: 12px;
-
-    border-radius: 14px;
-
-    border: 1px solid rgba(255,255,255,.1);
-
-    background: rgba(255,255,255,.04);
-
-    color: white;
-
-    outline: none;
-}
-
-.login-submit {
-    width: 100%;
-    padding: 16px;
-
-    border: 0;
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #765cff,
-            #16cfff
+    transition:
+        .3s cubic-bezier(
+            .2,.8,.2,1
         );
-
-    color: white;
-
-    font-size: 16px;
-    font-weight: 700;
-
-    cursor: pointer;
 }
 
-.close-modal {
-    float: right;
+.choice-overlay.active
+.choice-box {
 
-    border: 0;
+    transform:
+        scale(1)
+        translateY(0);
+}
 
-    background: transparent;
+.choice-header {
 
-    color: #9ba3bb;
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.choice-header h2 {
 
     font-size: 25px;
+}
+
+.close-btn {
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: white;
+
+    font-size: 23px;
 
     cursor: pointer;
+
+    transition: .2s;
+}
+
+.close-btn:hover {
+
+    background:
+        rgba(255,255,255,.15);
+
+    transform: rotate(90deg);
+}
+
+.choice-description {
+
+    color: #8791ad;
+
+    margin-bottom: 20px;
+
+    line-height: 1.5;
+}
+
+.choice-option {
+
+    width: 100%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.045);
+
+    color: white;
+
+    padding: 17px;
+
+    margin-top: 10px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition:
+        .2s ease;
+}
+
+.choice-option:hover {
+
+    background:
+        rgba(90,110,255,.16);
+
+    border-color:
+        rgba(110,140,255,.45);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(60,80,255,.12);
+}
+
+.choice-option:active {
+
+    transform:
+        scale(.95);
+}
+
+.option-icon {
+
+    font-size: 25px;
 }
 
 /* =========================
@@ -795,134 +757,125 @@ h1 {
 ========================= */
 
 .toast {
+
     position: fixed;
 
     left: 50%;
+
     bottom: 30px;
 
     transform:
-        translate(-50%, 30px);
+        translate(-50%,30px);
 
-    padding: 15px 22px;
+    background:
+        rgba(15,20,40,.95);
 
-    border-radius: 16px;
+    border:
+        1px solid
+        rgba(255,255,255,.15);
 
-    background: rgba(15,20,40,.92);
+    padding:
+        14px 22px;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 15px;
 
-    box-shadow: 0 15px 50px rgba(0,0,0,.35);
-
-    color: white;
+    color: #dce2f5;
 
     opacity: 0;
+
     pointer-events: none;
 
-    transition: .35s;
+    transition: .3s ease;
 
-    z-index: 200;
+    z-index: 500;
+
+    backdrop-filter:
+        blur(15px);
 }
 
 .toast.show {
+
     opacity: 1;
 
     transform:
-        translate(-50%, 0);
+        translate(-50%,0);
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 700px) {
+@media(max-width:600px) {
 
     header {
-        padding: 22px 20px;
+
+        padding:
+            22px 18px;
     }
 
     .logo {
-        font-size: 23px;
+
+        font-size: 28px;
     }
 
-    .login-btn {
-        padding: 13px 20px;
+    .header-btn {
+
+        padding:
+            13px 18px;
+
         font-size: 16px;
+
         border-radius: 18px;
     }
 
-    .menu-btn {
-        width: 58px;
-        height: 58px;
-        border-radius: 19px;
-    }
-
-    .menu {
-        top: 92px;
-        right: 20px;
-
-        width: calc(100% - 40px);
-
-        padding: 20px;
-
-        border-radius: 24px;
-    }
-
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .menu-item {
-        font-size: 18px;
-        padding: 15px;
-    }
-
     .hero {
-        margin-top: 45px;
+
+        padding-top: 40px;
     }
 
-    h1 {
-        font-size: 76px;
+    .hero h1 {
+
         letter-spacing: -5px;
     }
 
-    .subtitle {
-        font-size: 17px;
-        margin: 25px auto;
-    }
+    .hero p {
 
-    .scene {
-        height: 350px;
+        font-size: 17px;
     }
 
     .sphere {
-        width: 240px;
-        height: 240px;
+
+        width: 250px;
+        height: 250px;
     }
 
-    .sphere-letter {
+    .sphere span {
+
         font-size: 80px;
     }
 
-    .content {
-        margin-bottom: 60px;
+    .sphere::after {
+
+        width: 360px;
     }
 
-    .panel {
-        padding: 25px;
+    .menu-panel {
+
+        top: 90px;
+
+        right: 5%;
+
+        padding: 17px;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
-    }
+    .menu-item {
 
-    .search-box {
-        flex-direction: column;
-    }
+        font-size: 19px;
 
-    .action-btn {
-        height: 52px;
+        padding: 16px 12px;
     }
 }
+
 </style>
 </head>
 
@@ -931,9 +884,13 @@ h1 {
 <!-- BACKGROUND -->
 
 <div class="background">
+
     <div class="grid"></div>
+
     <div class="orb one"></div>
+
     <div class="orb two"></div>
+
 </div>
 
 
@@ -942,18 +899,30 @@ h1 {
 <header>
 
     <div class="logo">
-        <span class="logo-dot"></span>
+
+        <div class="logo-dot"></div>
+
         Had1oS
+
     </div>
 
-    <div class="header-buttons">
 
-        <button class="login-btn" id="loginButton">
+    <div class="header-actions">
+
+        <button
+            class="header-btn"
+            onclick="openLogin()">
+
             Войти
+
         </button>
 
-        <button class="menu-btn" id="menuButton">
+        <button
+            class="header-btn"
+            onclick="toggleMenu()">
+
             ☰
+
         </button>
 
     </div>
@@ -961,420 +930,173 @@ h1 {
 </header>
 
 
-<!-- MENU -->
+<!-- MAIN -->
 
-<nav class="menu" id="menu">
+<main class="hero">
 
-    <div class="menu-title">
-        Сервисы Had1oS
-    </div>
+    <h1>Had1oS</h1>
 
-    <div class="menu-grid">
-
-        <button class="menu-item" data-section="search">
-            <span class="menu-icon">🔍</span>
-            <span>Поиск</span>
-        </button>
-
-        <button class="menu-item" data-section="images">
-            <span class="menu-icon">🖼️</span>
-            <span>Картинки</span>
-        </button>
-
-        <button class="menu-item" data-section="video">
-            <span class="menu-icon">🎬</span>
-            <span>Видео</span>
-        </button>
-
-        <button class="menu-item" data-section="news">
-            <span class="menu-icon">📰</span>
-            <span>Новости</span>
-        </button>
-
-        <button class="menu-item" data-section="maps">
-            <span class="menu-icon">🗺️</span>
-            <span>Карты</span>
-        </button>
-
-        <button class="menu-item" data-section="music">
-            <span class="menu-icon">🎵</span>
-            <span>Музыка</span>
-        </button>
-
-        <button class="menu-item" data-section="games">
-            <span class="menu-icon">🎮</span>
-            <span>Игры</span>
-        </button>
-
-        <button class="menu-item" data-section="cloud">
-            <span class="menu-icon">☁️</span>
-            <span>Облако</span>
-        </button>
-
-    </div>
-
-</nav>
-
-
-<!-- HERO -->
-
-<main>
-
-<section class="hero">
-
-    <div class="eyebrow">
-        DIGITAL SPACE
-    </div>
-
-    <h1>
-        Had1oS
-    </h1>
-
-    <p class="subtitle">
-        Твоё собственное цифровое пространство.
-        Поиск, музыка, игры, карты и другие сервисы —
-        всё в одном месте.
+    <p>
+        Быстрый доступ к поиску,
+        музыке, видео, картам,
+        новостям и другим сервисам.
     </p>
 
-</section>
-
-
-<!-- SPHERE -->
-
-<div class="scene">
-
     <div class="sphere">
-        <div class="sphere-letter">
-            H
+
+        <span>H</span>
+
+    </div>
+
+</main>
+
+
+<!-- MENU -->
+
+<div
+    class="menu-overlay"
+    id="menuOverlay"
+    onclick="closeMenu(event)">
+
+    <div
+        class="menu-panel"
+        onclick="event.stopPropagation()">
+
+        <div class="menu-title">
+            СЕРВИСЫ HAD1OS
         </div>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('search')">
+
+            <span class="menu-icon">🔎</span>
+
+            <span>Поиск</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('images')">
+
+            <span class="menu-icon">🖼️</span>
+
+            <span>Картинки</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('video')">
+
+            <span class="menu-icon">🎬</span>
+
+            <span>Видео</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('news')">
+
+            <span class="menu-icon">📰</span>
+
+            <span>Новости</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('maps')">
+
+            <span class="menu-icon">🗺️</span>
+
+            <span>Карты</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('music')">
+
+            <span class="menu-icon">🎵</span>
+
+            <span>Музыка</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('games')">
+
+            <span class="menu-icon">🎮</span>
+
+            <span>Игры</span>
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="openChoice('cloud')">
+
+            <span class="menu-icon">☁️</span>
+
+            <span>Облако</span>
+
+        </button>
+
     </div>
 
 </div>
 
 
-<!-- CONTENT -->
+<!-- CHOICE MODAL -->
 
-<section class="content">
+<div
+    class="choice-overlay"
+    id="choiceOverlay"
+    onclick="closeChoice(event)">
 
+    <div
+        class="choice-box"
+        onclick="event.stopPropagation()">
 
-    <!-- SEARCH -->
+        <div class="choice-header">
 
-    <div class="panel" id="search">
-
-        <h2>🔍 Поиск</h2>
-
-        <p>
-            Здесь будет собственный поиск Had1oS.
-        </p>
-
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Что хотите найти?"
-            >
+            <h2 id="choiceTitle">
+                Выберите сервис
+            </h2>
 
             <button
-                class="action-btn"
-                id="searchButton">
-                Найти
+                class="close-btn"
+                onclick="closeChoice()">
+
+                ×
+
             </button>
 
         </div>
 
-    </div>
 
+        <div
+            class="choice-description"
+            id="choiceDescription">
 
-    <!-- IMAGES -->
-
-    <div class="panel" id="images">
-
-        <h2>🖼️ Картинки</h2>
-
-        <p>
-            Раздел изображений Had1oS.
-            В будущем сюда можно подключить поиск картинок.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">🌌</div>
-                <h3>Космос</h3>
-                <p>Изображения космоса</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🏙️</div>
-                <h3>Города</h3>
-                <p>Фотографии городов</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🌲</div>
-                <h3>Природа</h3>
-                <p>Красивые места</p>
-            </div>
+            Выберите, куда перейти.
 
         </div>
 
-    </div>
 
-
-    <!-- VIDEO -->
-
-    <div class="panel" id="video">
-
-        <h2>🎬 Видео</h2>
-
-        <p>
-            Здесь появится видеосервис Had1oS.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">▶️</div>
-                <h3>Видео</h3>
-                <p>Смотреть видео</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🔥</div>
-                <h3>Популярное</h3>
-                <p>Самые популярные ролики</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">⭐</div>
-                <h3>Избранное</h3>
-                <p>Сохранённые видео</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- NEWS -->
-
-    <div class="panel" id="news">
-
-        <h2>📰 Новости</h2>
-
-        <p>
-            Раздел новостей Had1oS.
-            Позже сюда можно подключить настоящую ленту.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">🌍</div>
-                <h3>Мир</h3>
-                <p>Новости мира</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">💻</div>
-                <h3>Технологии</h3>
-                <p>Новости технологий</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🎮</div>
-                <h3>Игры</h3>
-                <p>Новости игровой индустрии</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- MAPS -->
-
-    <div class="panel" id="maps">
-
-        <h2>🗺️ Карты</h2>
-
-        <p>
-            Карты Had1oS.
-            Пока это красивый раздел-заготовка для будущего сервиса.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">📍</div>
-                <h3>Моё место</h3>
-                <p>Определить местоположение</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🧭</div>
-                <h3>Маршруты</h3>
-                <p>Построить маршрут</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🌎</div>
-                <h3>Мир</h3>
-                <p>Исследовать карту</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- MUSIC -->
-
-    <div class="panel" id="music">
-
-        <h2>🎵 Музыка</h2>
-
-        <p>
-            Музыкальный раздел Had1oS.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">🎧</div>
-                <h3>Моя музыка</h3>
-                <p>Твои любимые треки</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🔥</div>
-                <h3>Популярное</h3>
-                <p>Популярная музыка</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">💿</div>
-                <h3>Плейлисты</h3>
-                <p>Твои плейлисты</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- GAMES -->
-
-    <div class="panel" id="games">
-
-        <h2>🎮 Игры</h2>
-
-        <p>
-            Мини-игры прямо на сайте Had1oS.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">🧠</div>
-                <h3>Викторина</h3>
-                <p>Проверить свои знания</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🎯</div>
-                <h3>Точность</h3>
-                <p>Проверь свою реакцию</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🧩</div>
-                <h3>Головоломки</h3>
-                <p>Разомни мозг</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- CLOUD -->
-
-    <div class="panel" id="cloud">
-
-        <h2>☁️ Облако</h2>
-
-        <p>
-            Личное облачное пространство Had1oS.
-            Здесь позже можно сделать хранение файлов.
-        </p>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="card-icon">📁</div>
-                <h3>Мои файлы</h3>
-                <p>Твои документы</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">📷</div>
-                <h3>Фото</h3>
-                <p>Твои изображения</p>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🔒</div>
-                <h3>Безопасность</h3>
-                <p>Защищённое хранение</p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-</section>
-
-</main>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-    <div class="modal-box">
-
-        <button
-            class="close-modal"
-            id="closeModal">
-            ×
-        </button>
-
-        <h2>Войти</h2>
-
-        <p>
-            Вход в аккаунт Had1oS.
-        </p>
-
-        <input
-            class="login-input"
-            type="email"
-            placeholder="Email"
-        >
-
-        <input
-            class="login-input"
-            type="password"
-            placeholder="Пароль"
-        >
-
-        <button
-            class="login-submit"
-            id="loginSubmit">
-            Продолжить
-        </button>
+        <div id="choiceOptions"></div>
 
     </div>
 
@@ -1383,204 +1105,511 @@ h1 {
 
 <!-- TOAST -->
 
-<div class="toast" id="toast">
+<div
+    class="toast"
+    id="toast">
+
     Готово
+
 </div>
 
 
 <script>
 
 /* =========================
-   ELEMENTS
+   MENU
 ========================= */
 
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
+function toggleMenu() {
 
-const menuItems =
-    document.querySelectorAll(".menu-item");
-
-const panels =
-    document.querySelectorAll(".panel");
-
-const loginButton =
-    document.getElementById("loginButton");
-
-const loginModal =
-    document.getElementById("loginModal");
-
-const closeModal =
-    document.getElementById("closeModal");
-
-const loginSubmit =
-    document.getElementById("loginSubmit");
-
-const toast =
-    document.getElementById("toast");
-
-const searchButton =
-    document.getElementById("searchButton");
-
-const searchInput =
-    document.getElementById("searchInput");
-
-
-/* =========================
-   MENU OPEN / CLOSE
-========================= */
-
-menuButton.addEventListener("click", () => {
+    const menu =
+        document.getElementById(
+            "menuOverlay"
+        );
 
     menu.classList.toggle("active");
+}
 
-    if (menu.classList.contains("active")) {
-        menuButton.innerHTML = "×";
-    } else {
-        menuButton.innerHTML = "☰";
+
+function closeMenu(event) {
+
+    if (
+        !event ||
+        event.target.id ===
+        "menuOverlay"
+    ) {
+
+        document
+            .getElementById(
+                "menuOverlay"
+            )
+            .classList.remove(
+                "active"
+            );
     }
-
-});
+}
 
 
 /* =========================
-   MENU ITEMS
+   SERVICES
 ========================= */
 
-menuItems.forEach(item => {
+const services = {
 
-    item.addEventListener("click", () => {
+    search: {
 
-        const sectionId =
-            item.dataset.section;
+        title: "Поиск",
 
-        /* active button */
+        description:
+            "Выберите поисковую систему.",
 
-        menuItems.forEach(button => {
-            button.classList.remove("active");
-        });
+        options: [
 
-        item.classList.add("active");
+            {
+                name: "Safari",
+                icon: "🧭",
+                url:
+                    "https://www.google.com/"
+            },
+
+            {
+                name: "Google",
+                icon: "🔵",
+                url:
+                    "https://www.google.com/"
+            },
+
+            {
+                name: "Яндекс",
+                icon: "🔴",
+                url:
+                    "https://yandex.ru/"
+            }
+
+        ]
+
+    },
 
 
-        /* hide panels */
+    images: {
 
-        panels.forEach(panel => {
-            panel.classList.remove("active");
-        });
+        title: "Картинки",
+
+        description:
+            "Выберите сервис изображений.",
+
+        options: [
+
+            {
+                name: "Google Картинки",
+                icon: "🔵",
+                url:
+                    "https://images.google.com/"
+            },
+
+            {
+                name: "Яндекс.Картинки",
+                icon: "🔴",
+                url:
+                    "https://yandex.ru/images/"
+            }
+
+        ]
+
+    },
 
 
-        /* show selected panel */
+    video: {
 
-        const selectedPanel =
-            document.getElementById(sectionId);
+        title: "Видео",
 
-        if (selectedPanel) {
+        description:
+            "Выберите видеосервис.",
 
-            selectedPanel.classList.add("active");
+        options: [
 
-            setTimeout(() => {
+            {
+                name: "YouTube",
+                icon: "▶️",
+                url:
+                    "https://www.youtube.com/"
+            },
 
-                selectedPanel.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+            {
+                name: "VK Видео",
+                icon: "🔵",
+                url:
+                    "https://vkvideo.ru/"
+            },
 
-            }, 100);
+            {
+                name: "Rutube",
+                icon: "▶️",
+                url:
+                    "https://rutube.ru/"
+            }
+
+        ]
+
+    },
+
+
+    news: {
+
+        title: "Новости",
+
+        description:
+            "Выберите новостной сервис.",
+
+        options: [
+
+            {
+                name: "Google News",
+                icon: "📰",
+                url:
+                    "https://news.google.com/"
+            },
+
+            {
+                name: "Яндекс Новости",
+                icon: "🔴",
+                url:
+                    "https://dzen.ru/news"
+            }
+
+        ]
+
+    },
+
+
+    maps: {
+
+        title: "Карты",
+
+        description:
+            "Выберите картографический сервис.",
+
+        options: [
+
+            {
+                name: "Google Maps",
+                icon: "🌎",
+                url:
+                    "https://maps.google.com/"
+            },
+
+            {
+                name: "Яндекс Карты",
+                icon: "🟡",
+                url:
+                    "https://yandex.ru/maps/"
+            },
+
+            {
+                name: "Apple Maps",
+                icon: "🍎",
+                url:
+                    "https://maps.apple.com/"
+            }
+
+        ]
+
+    },
+
+
+    music: {
+
+        title: "Музыка",
+
+        description:
+            "Выберите музыкальный сервис.",
+
+        options: [
+
+            {
+                name: "VK Музыка",
+                icon: "🎵",
+                url:
+                    "https://vk.com/music"
+            },
+
+            {
+                name: "Spotify",
+                icon: "🟢",
+                url:
+                    "https://open.spotify.com/"
+            }
+
+        ]
+
+    },
+
+
+    games: {
+
+        title: "Игры",
+
+        description:
+            "Выберите игровой сервис.",
+
+        options: [
+
+            {
+                name: "VK Play",
+                icon: "🎮",
+                url:
+                    "https://vkplay.ru/"
+            },
+
+            {
+                name: "Steam",
+                icon: "🎮",
+                url:
+                    "https://store.steampowered.com/"
+            }
+
+        ]
+
+    },
+
+
+    cloud: {
+
+        title: "Облако",
+
+        description:
+            "Выберите облачное хранилище.",
+
+        options: [
+
+            {
+                name: "Google Drive",
+                icon: "☁️",
+                url:
+                    "https://drive.google.com/"
+            },
+
+            {
+                name: "Яндекс Диск",
+                icon: "☁️",
+                url:
+                    "https://disk.yandex.ru/"
+            }
+
+        ]
+
+    }
+
+};
+
+
+/* =========================
+   OPEN CHOICE
+========================= */
+
+function openChoice(type) {
+
+    const service =
+        services[type];
+
+    if (!service) return;
+
+
+    document
+        .getElementById(
+            "menuOverlay"
+        )
+        .classList.remove(
+            "active"
+        );
+
+
+    document
+        .getElementById(
+            "choiceTitle"
+        )
+        .textContent =
+        service.title;
+
+
+    document
+        .getElementById(
+            "choiceDescription"
+        )
+        .textContent =
+        service.description;
+
+
+    const options =
+        document.getElementById(
+            "choiceOptions"
+        );
+
+    options.innerHTML = "";
+
+
+    service.options.forEach(
+        option => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.className =
+                "choice-option";
+
+
+            button.innerHTML = `
+
+                <span class="option-icon">
+                    ${option.icon}
+                </span>
+
+                <span>
+                    ${option.name}
+                </span>
+
+            `;
+
+
+            button.onclick = () => {
+
+                showToast(
+                    "Открываем " +
+                    option.name
+                );
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        option.url;
+
+                }, 250);
+
+            };
+
+
+            options.appendChild(
+                button
+            );
 
         }
+    );
 
 
-        /* close menu */
+    document
+        .getElementById(
+            "choiceOverlay"
+        )
+        .classList.add(
+            "active"
+        );
+}
 
-        menu.classList.remove("active");
-        menuButton.innerHTML = "☰";
 
-    });
+/* =========================
+   CLOSE CHOICE
+========================= */
 
-});
+function closeChoice(event) {
+
+    if (
+        !event ||
+        event.target.id ===
+        "choiceOverlay"
+    ) {
+
+        document
+            .getElementById(
+                "choiceOverlay"
+            )
+            .classList.remove(
+                "active"
+            );
+    }
+}
 
 
 /* =========================
    LOGIN
 ========================= */
 
-loginButton.addEventListener("click", () => {
+function openLogin() {
 
-    loginModal.classList.add("active");
-
-});
-
-
-closeModal.addEventListener("click", () => {
-
-    loginModal.classList.remove("active");
-
-});
+    document
+        .getElementById(
+            "choiceTitle"
+        )
+        .textContent =
+        "Аккаунт Had1oS";
 
 
-/* close by clicking outside */
-
-loginModal.addEventListener("click", event => {
-
-    if (event.target === loginModal) {
-
-        loginModal.classList.remove("active");
-
-    }
-
-});
+    document
+        .getElementById(
+            "choiceDescription"
+        )
+        .textContent =
+        "Авторизация будет подключена через Supabase.";
 
 
-/* =========================
-   LOGIN BUTTON
-========================= */
-
-loginSubmit.addEventListener("click", () => {
-
-    showToast(
-        "Форма входа готова — подключим аккаунты позже"
-    );
-
-});
-
-
-/* =========================
-   SEARCH
-========================= */
-
-searchButton.addEventListener("click", () => {
-
-    const query =
-        searchInput.value.trim();
-
-    if (!query) {
-
-        showToast(
-            "Введите запрос"
+    const options =
+        document.getElementById(
+            "choiceOptions"
         );
 
-        searchInput.focus();
 
-        return;
+    options.innerHTML = `
 
-    }
+        <button
+            class="choice-option"
+            onclick="loginComingSoon()">
+
+            <span class="option-icon">
+                👤
+            </span>
+
+            <span>
+                Войти в аккаунт
+            </span>
+
+        </button>
+
+
+        <button
+            class="choice-option"
+            onclick="loginComingSoon()">
+
+            <span class="option-icon">
+                ✨
+            </span>
+
+            <span>
+                Создать аккаунт
+            </span>
+
+        </button>
+
+    `;
+
+
+    document
+        .getElementById(
+            "choiceOverlay"
+        )
+        .classList.add(
+            "active"
+        );
+}
+
+
+function loginComingSoon() {
 
     showToast(
-        "Ищем: " + query
+        "Авторизацию подключим следующим шагом"
     );
 
-});
-
-
-searchInput.addEventListener("keydown", event => {
-
-    if (event.key === "Enter") {
-
-        searchButton.click();
-
-    }
-
-});
+}
 
 
 /* =========================
@@ -1589,68 +1618,69 @@ searchInput.addEventListener("keydown", event => {
 
 let toastTimer;
 
-function showToast(message) {
 
-    toast.textContent = message;
+function showToast(text) {
 
-    toast.classList.add("show");
+    const toast =
+        document.getElementById(
+            "toast"
+        );
 
-    clearTimeout(toastTimer);
+    toast.textContent =
+        text;
 
-    toastTimer = setTimeout(() => {
+    toast.classList.add(
+        "show"
+    );
 
-        toast.classList.remove("show");
 
-    }, 2500);
+    clearTimeout(
+        toastTimer
+    );
 
+
+    toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        }, 1800);
 }
 
 
 /* =========================
-   CLOSE MENU WHEN CLICKING
-   OUTSIDE
+   ESC
 ========================= */
 
-document.addEventListener("click", event => {
+document.addEventListener(
+    "keydown",
+    event => {
 
-    const clickedInsideMenu =
-        menu.contains(event.target);
+        if (
+            event.key === "Escape"
+        ) {
 
-    const clickedMenuButton =
-        menuButton.contains(event.target);
+            document
+                .getElementById(
+                    "menuOverlay"
+                )
+                .classList.remove(
+                    "active"
+                );
 
-    if (
-        menu.classList.contains("active") &&
-        !clickedInsideMenu &&
-        !clickedMenuButton
-    ) {
-
-        menu.classList.remove("active");
-
-        menuButton.innerHTML = "☰";
-
-    }
-
-});
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-
-        menu.classList.remove("active");
-
-        menuButton.innerHTML = "☰";
-
-        loginModal.classList.remove("active");
+            document
+                .getElementById(
+                    "choiceOverlay"
+                )
+                .classList.remove(
+                    "active"
+                );
+        }
 
     }
-
-});
+);
 
 </script>
 
