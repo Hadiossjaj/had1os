@@ -2,20 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#050816">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
 <title>Had1oS</title>
 
 <style>
-
-/* =========================
-   ОСНОВА
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -28,720 +19,468 @@ html {
 
 body {
     min-height: 100vh;
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
         Arial,
         sans-serif;
-
-    color: white;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(91,63,255,.28),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 85% 35%,
-            rgba(0,220,255,.22),
-            transparent 35%
-        ),
-
-        linear-gradient(
-            135deg,
-            #050816,
-            #080b18 45%,
-            #02060d
-        );
-
+    background: #fff;
+    color: #202124;
     overflow-x: hidden;
 }
 
-
-/* =========================
-   ФОН
-========================= */
-
-.background {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: -2;
-}
-
-.grid {
-    position: absolute;
-    inset: 0;
-
-    opacity: .17;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.07) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.07) 1px,
-            transparent 1px
-        );
-
-    background-size: 45px 45px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-}
-
-.orb {
-    position: absolute;
-
-    width: 430px;
-    height: 430px;
-
-    border-radius: 50%;
-
-    filter: blur(80px);
-
-    opacity: .35;
-
-    animation:
-        float 9s ease-in-out infinite;
-}
-
-.orb.one {
-    background: #643cff;
-
-    top: 8%;
-    left: -180px;
-}
-
-.orb.two {
-    background: #00d9ff;
-
-    right: -180px;
-    top: 42%;
-
-    animation-delay: -4s;
-}
-
-@keyframes float {
-
-    0%,100% {
-        transform: translate(0,0);
-    }
-
-    50% {
-        transform: translate(30px,-40px);
-    }
-}
-
-
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header {
-
-    width: 100%;
-
-    padding:
-        28px 6%;
-
+    height: 70px;
     display: flex;
-
-    justify-content:
-        space-between;
-
     align-items: center;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.08);
-
-    background:
-        rgba(5,8,22,.55);
-
-    backdrop-filter:
-        blur(20px);
-
-    position: relative;
-
-    z-index: 20;
+    justify-content: flex-end;
+    padding: 0 28px;
+    gap: 22px;
 }
+
+.header-link {
+    color: #202124;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+}
+
+.apps-button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    transition: .2s;
+}
+
+.apps-button:hover {
+    background: #f1f3f4;
+}
+
+.login-button {
+    border: none;
+    background: #1a73e8;
+    color: white;
+    border-radius: 24px;
+    padding: 11px 21px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login-button:hover {
+    background: #1765cc;
+    box-shadow: 0 2px 8px rgba(26,115,232,.25);
+}
+
+/* ================= MAIN ================= */
+
+main {
+    min-height: calc(100vh - 70px - 92px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 105px;
+}
+
+/* LOGO */
 
 .logo {
+    font-size: clamp(62px, 13vw, 92px);
+    font-weight: 700;
+    letter-spacing: -5px;
+    margin-bottom: 38px;
 
-    display: flex;
+    background: linear-gradient(
+        90deg,
+        #4285f4,
+        #7c4dff,
+        #00a884,
+        #4285f4
+    );
 
-    align-items: center;
+    background-size: 300% auto;
 
-    gap: 12px;
-
-    font-size: 36px;
-
-    font-weight: 800;
-}
-
-.logo-dot {
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7665ff,
-            #24d9ff
-        );
-
-    box-shadow:
-        0 0 20px
-        #586aff;
-}
-
-.header-actions {
-
-    display: flex;
-
-    gap: 14px;
-}
-
-.header-btn {
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color: white;
-
-    padding:
-        16px 25px;
-
-    border-radius: 22px;
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        .25s ease;
-
-    backdrop-filter:
-        blur(15px);
-}
-
-.header-btn:hover {
-
-    transform:
-        translateY(-3px);
-
-    background:
-        rgba(255,255,255,.12);
-
-    border-color:
-        rgba(130,150,255,.5);
-
-    box-shadow:
-        0 10px 30px
-        rgba(60,80,255,.2);
-}
-
-.header-btn:active {
-
-    transform:
-        scale(.94);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-
-    min-height:
-        calc(100vh - 100px);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content:
-        center;
-
-    text-align: center;
-
-    padding:
-        50px 20px 80px;
-
-    position: relative;
-}
-
-.hero h1 {
-
-    font-size:
-        clamp(
-            60px,
-            12vw,
-            140px
-        );
-
-    font-weight: 900;
-
-    letter-spacing: -8px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #9bb0ff,
-            #64eaff
-        );
-
-    -webkit-background-clip:
-        text;
-
+    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 
-    text-shadow:
-        0 0 45px
-        rgba(100,130,255,.15);
-
-    animation:
-        titleAppear .8s ease;
+    animation: logoGradient 7s linear infinite,
+               logoFloat 4s ease-in-out infinite;
 }
 
-@keyframes titleAppear {
+@keyframes logoGradient {
+    0% { background-position: 0% center; }
+    100% { background-position: 300% center; }
+}
 
-    from {
-        opacity: 0;
-        transform:
-            translateY(20px)
-            scale(.96);
+@keyframes logoFloat {
+    0%,100% {
+        transform: translateY(0);
     }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
+    50% {
+        transform: translateY(-5px);
     }
 }
 
-.hero p {
+/* ================= SEARCH ================= */
 
-    margin-top: 10px;
-
-    max-width: 650px;
-
-    color: #9da7c2;
-
-    font-size: 19px;
-
-    line-height: 1.6;
-}
-
-
-/* =========================
-   ПОИСК
-========================= */
-
-.search-area {
-
-    width:
-        min(720px, 100%);
-
-    margin-top: 32px;
-
+.search-wrapper {
+    width: min(680px, calc(100% - 32px));
     position: relative;
-
-    z-index: 10;
 }
 
 .search-box {
+    width: 100%;
+    min-height: 54px;
+
+    border: 1px solid #dfe1e5;
+    border-radius: 28px;
 
     display: flex;
-
     align-items: center;
 
-    width: 100%;
+    padding: 0 15px 0 19px;
 
-    padding: 7px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(10,15,35,.78);
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.25),
-
-        inset 0 0 30px
-        rgba(100,120,255,.04);
-
-    backdrop-filter:
-        blur(20px);
+    background: white;
 
     transition:
-        .3s ease;
+        box-shadow .25s,
+        border-color .25s,
+        transform .25s;
 }
 
-.search-box:focus-within {
-
-    border-color:
-        rgba(100,180,255,.65);
-
+.search-box:hover,
+.search-box.active {
+    border-color: transparent;
     box-shadow:
-        0 0 0 4px
-        rgba(90,130,255,.08),
-
-        0 20px 70px
-        rgba(30,80,255,.18);
+        0 1px 6px rgba(32,33,36,.15),
+        0 4px 18px rgba(32,33,36,.08);
 }
 
 .search-icon {
-
-    width: 55px;
-
-    font-size: 25px;
-
-    color: #8995b7;
+    font-size: 20px;
+    color: #70757a;
+    margin-right: 12px;
 }
 
 #searchInput {
-
     flex: 1;
-
-    min-width: 0;
-
     border: none;
-
     outline: none;
-
+    font-size: 17px;
+    color: #202124;
     background: transparent;
-
-    color: white;
-
-    font-size: 20px;
-
-    padding: 16px 5px;
+    min-width: 0;
 }
 
 #searchInput::placeholder {
-
-    color: #737d99;
+    color: #9aa0a6;
 }
 
-.search-submit {
-
+.voice-button,
+.clear-button {
+    width: 38px;
+    height: 38px;
     border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 19px;
+    transition: .2s;
+}
 
-    background:
-        linear-gradient(
-            135deg,
-            #6255ff,
-            #1abfff
-        );
+.voice-button:hover,
+.clear-button:hover {
+    background: #f1f3f4;
+}
 
-    color: white;
+/* ================= SUGGESTIONS ================= */
 
-    font-weight: 700;
+.suggestions {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
 
-    font-size: 17px;
+    background: white;
 
-    padding:
-        15px 22px;
+    border-radius: 0 0 24px 24px;
 
-    border-radius: 19px;
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.12);
+
+    overflow: hidden;
+
+    display: none;
+
+    z-index: 50;
+}
+
+.suggestions.show {
+    display: block;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 12px 20px;
 
     cursor: pointer;
 
-    transition:
-        .2s ease;
-
-    box-shadow:
-        0 8px 25px
-        rgba(60,100,255,.2);
+    font-size: 15px;
 }
 
-.search-submit:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 35px
-        rgba(60,100,255,.35);
+.suggestion:hover {
+    background: #f8f9fa;
 }
 
-.search-submit:active {
-
-    transform:
-        scale(.94);
+.suggestion-icon {
+    color: #70757a;
 }
 
+/* ================= BUTTONS ================= */
 
-/* =========================
-   ВЫБОР ПОИСКОВИКА
-========================= */
-
-.search-providers {
-
+.search-buttons {
     display: flex;
-
     justify-content: center;
-
-    gap: 10px;
-
-    margin-top: 14px;
-
+    gap: 12px;
+    margin-top: 30px;
     flex-wrap: wrap;
 }
 
-.provider {
+.action-button {
+    border: 1px solid #f8f9fa;
+    background: #f8f9fa;
 
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+    color: #3c4043;
 
-    background:
-        rgba(255,255,255,.04);
+    padding: 11px 19px;
 
-    color: #9da7c2;
-
-    padding:
-        9px 17px;
-
-    border-radius: 14px;
-
-    cursor: pointer;
+    border-radius: 5px;
 
     font-size: 14px;
 
+    cursor: pointer;
+
     transition:
-        .2s ease;
+        background .2s,
+        box-shadow .2s,
+        transform .15s;
 }
 
-.provider:hover {
-
-    color: white;
-
-    background:
-        rgba(255,255,255,.08);
-
-    transform:
-        translateY(-2px);
+.action-button:hover {
+    background: white;
+    border-color: #dadce0;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
-.provider.active {
-
-    color: white;
-
-    background:
-        rgba(90,110,255,.18);
-
-    border-color:
-        rgba(100,130,255,.5);
-
-    box-shadow:
-        0 0 20px
-        rgba(70,100,255,.1);
+.action-button:active {
+    transform: scale(.96);
 }
 
+/* ================= SEARCH ENGINE ================= */
 
-/* =========================
-   СФЕРА
-========================= */
+.engine-panel {
+    margin-top: 26px;
 
-.sphere {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #5f6368;
+
+    font-size: 13px;
+}
+
+.engine-select {
+    border: 1px solid #dadce0;
+    border-radius: 18px;
+
+    padding: 7px 13px;
+
+    background: white;
+
+    color: #3c4043;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+/* ================= QUICK LINKS ================= */
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 
     margin-top: 50px;
 
-    width: 270px;
-    height: 270px;
+    flex-wrap: wrap;
 
-    border-radius: 50%;
+    width: min(700px, calc(100% - 30px));
+}
 
-    background:
+.quick-card {
+    width: 105px;
+    height: 85px;
 
-        radial-gradient(
-            circle at 30% 28%,
-            rgba(255,255,255,.2),
-            transparent 13%
-        ),
+    border-radius: 14px;
 
-        radial-gradient(
-            circle at 65% 65%,
-            rgba(0,220,255,.25),
-            transparent 30%
-        ),
+    background: #fff;
 
-        radial-gradient(
-            circle at 45% 45%,
-            #352078,
-            #090d1d 70%
-        );
-
-    box-shadow:
-
-        inset 0 0 60px
-        rgba(0,0,0,.7),
-
-        0 0 70px
-        rgba(75,100,255,.18);
+    border: 1px solid #eceff1;
 
     display: flex;
+    flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
-    position: relative;
+    gap: 7px;
 
-    animation:
-        sphereFloat 5s ease-in-out infinite;
-}
-
-.sphere::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 460px;
-    height: 100px;
-
-    border:
-        1px solid
-        rgba(0,220,255,.3);
-
-    border-radius: 50%;
-
-    transform:
-        rotate(-8deg);
-}
-
-.sphere span {
-
-    font-size: 90px;
-
-    font-weight: 900;
-
-    text-shadow:
-        0 0 35px
-        rgba(255,255,255,.3);
-}
-
-@keyframes sphereFloat {
-
-    0%,100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-15px);
-    }
-}
-
-
-/* =========================
-   МЕНЮ
-========================= */
-
-.menu-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0,0,0,.55);
-
-    backdrop-filter:
-        blur(8px);
-
-    z-index: 100;
-
-    opacity: 0;
-
-    visibility: hidden;
+    cursor: pointer;
 
     transition:
-        .25s ease;
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
 }
 
-.menu-overlay.active {
-
-    opacity: 1;
-
-    visibility: visible;
-}
-
-.menu-panel {
-
-    position: absolute;
-
-    top: 100px;
-
-    right: 5%;
-
-    width:
-        min(430px,90%);
-
-    padding: 22px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    border-radius: 30px;
-
-    background:
-        rgba(5,8,22,.95);
+.quick-card:hover {
+    transform: translateY(-5px);
+    border-color: #dadce0;
 
     box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.5);
-
-    transform:
-        translateY(-20px)
-        scale(.96);
-
-    transition:
-        .3s ease;
+        0 6px 18px rgba(60,64,67,.12);
 }
 
-.menu-overlay.active
-.menu-panel {
+.quick-icon {
+    font-size: 25px;
+}
+
+.quick-name {
+    font-size: 12px;
+    color: #5f6368;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    min-height: 92px;
+
+    background: #f2f2f2;
+
+    border-top: 1px solid #dadce0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 35px;
+
+    color: #70757a;
+
+    font-size: 14px;
+}
+
+.footer-left,
+.footer-right {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-link {
+    cursor: pointer;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* ================= TOAST ================= */
+
+.toast {
+    position: fixed;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform:
+        translate(-50%, 30px);
+
+    background: #202124;
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .3s;
+
+    z-index: 100;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ================= MENU ================= */
+
+.menu {
+    position: fixed;
+
+    top: 68px;
+    right: 22px;
+
+    width: 270px;
+
+    background: white;
+
+    border: 1px solid #dadce0;
+
+    border-radius: 18px;
+
+    padding: 12px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.15);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-10px)
+        scale(.97);
+
+    transition: .2s;
+
+    z-index: 100;
+}
+
+.menu.show {
+    opacity: 1;
+    visibility: visible;
 
     transform:
         translateY(0)
@@ -749,1480 +488,911 @@ header {
 }
 
 .menu-title {
-
-    font-size: 14px;
-
-    color: #77809d;
-
-    letter-spacing: 3px;
-
-    margin:
-        5px 8px 18px;
+    font-weight: 600;
+    padding: 10px 12px 8px;
 }
 
 .menu-item {
-
-    width: 100%;
-
-    border: none;
-
-    background: transparent;
-
-    color: #dce2f5;
-
-    padding:
-        18px 15px;
-
     display: flex;
-
     align-items: center;
+    gap: 12px;
 
-    gap: 17px;
+    padding: 12px;
 
-    font-size: 21px;
-
-    text-align: left;
-
-    border-radius: 18px;
-
-    cursor: pointer;
-
-    transition:
-        .2s ease;
-}
-
-.menu-item:hover {
-
-    background:
-        rgba(255,255,255,.07);
-
-    transform:
-        translateX(5px);
-}
-
-.menu-item:active {
-
-    transform:
-        scale(.96);
-
-    background:
-        rgba(90,110,255,.18);
-}
-
-.menu-icon {
-
-    width: 38px;
-
-    font-size: 26px;
-
-    text-align: center;
-}
-
-
-/* =========================
-   ОКНО ВЫБОРА
-========================= */
-
-.choice-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0,0,0,.65);
-
-    backdrop-filter:
-        blur(12px);
-
-    z-index: 200;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: .25s ease;
-}
-
-.choice-overlay.active {
-
-    opacity: 1;
-
-    visibility: visible;
-}
-
-.choice-box {
-
-    width:
-        min(430px,100%);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16,22,50,.98),
-            rgba(5,8,22,.98)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    border-radius: 28px;
-
-    padding: 25px;
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.6);
-
-    transform:
-        scale(.85)
-        translateY(20px);
-
-    transition:
-        .3s
-        cubic-bezier(
-            .2,.8,.2,1
-        );
-}
-
-.choice-overlay.active
-.choice-box {
-
-    transform:
-        scale(1)
-        translateY(0);
-}
-
-.choice-header {
-
-    display: flex;
-
-    justify-content:
-        space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.choice-header h2 {
-
-    font-size: 25px;
-}
-
-.close-btn {
-
-    width: 40px;
-    height: 40px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color: white;
-
-    font-size: 23px;
+    border-radius: 12px;
 
     cursor: pointer;
 
     transition: .2s;
 }
 
-.close-btn:hover {
-
-    background:
-        rgba(255,255,255,.15);
-
-    transform:
-        rotate(90deg);
+.menu-item:hover {
+    background: #f1f3f4;
 }
 
-.choice-description {
+/* ================= RESPONSIVE ================= */
 
-    color: #8791ad;
-
-    margin-bottom: 20px;
-
-    line-height: 1.5;
-}
-
-.choice-option {
-
-    width: 100%;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    background:
-        rgba(255,255,255,.045);
-
-    color: white;
-
-    padding: 17px;
-
-    margin-top: 10px;
-
-    border-radius: 18px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    cursor: pointer;
-
-    font-size: 18px;
-
-    transition:
-        .2s ease;
-}
-
-.choice-option:hover {
-
-    background:
-        rgba(90,110,255,.16);
-
-    border-color:
-        rgba(110,140,255,.45);
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 10px 25px
-        rgba(60,80,255,.12);
-}
-
-.choice-option:active {
-
-    transform:
-        scale(.95);
-}
-
-.option-icon {
-
-    font-size: 25px;
-}
-
-
-/* =========================
-   TOAST
-========================= */
-
-.toast {
-
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 30px;
-
-    transform:
-        translate(-50%,30px);
-
-    background:
-        rgba(15,20,40,.95);
-
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    padding:
-        14px 22px;
-
-    border-radius: 15px;
-
-    color: #dce2f5;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: .3s ease;
-
-    z-index: 500;
-
-    backdrop-filter:
-        blur(15px);
-}
-
-.toast.show {
-
-    opacity: 1;
-
-    transform:
-        translate(-50%,0);
-}
-
-
-/* =========================
-   МОБИЛЬНЫЙ
-========================= */
-
-@media(max-width:600px) {
+@media (max-width: 600px) {
 
     header {
+        height: 62px;
+        padding: 0 15px;
+        gap: 10px;
+    }
 
-        padding:
-            22px 18px;
+    .header-link {
+        display: none;
+    }
+
+    .login-button {
+        padding: 10px 16px;
+    }
+
+    main {
+        padding-top: 75px;
     }
 
     .logo {
-
-        font-size: 28px;
-    }
-
-    .header-btn {
-
-        padding:
-            13px 18px;
-
-        font-size: 16px;
-
-        border-radius: 18px;
-    }
-
-    .hero {
-
-        padding-top: 35px;
-    }
-
-    .hero h1 {
-
-        letter-spacing: -5px;
-    }
-
-    .hero p {
-
-        font-size: 17px;
+        margin-bottom: 28px;
     }
 
     .search-box {
-
-        border-radius: 20px;
+        min-height: 52px;
     }
 
-    .search-icon {
-
-        width: 42px;
-
-        font-size: 21px;
+    .search-buttons {
+        margin-top: 22px;
     }
 
-    #searchInput {
-
-        font-size: 17px;
-
-        padding:
-            14px 3px;
+    .quick-links {
+        margin-top: 35px;
     }
 
-    .search-submit {
-
-        padding:
-            13px 15px;
-
-        font-size: 14px;
-
-        border-radius: 15px;
+    .quick-card {
+        width: 92px;
+        height: 78px;
     }
 
-    .sphere {
-
-        width: 230px;
-        height: 230px;
-
-        margin-top: 40px;
+    footer {
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
     }
 
-    .sphere span {
-
-        font-size: 75px;
-    }
-
-    .sphere::after {
-
-        width: 340px;
-    }
-
-    .menu-panel {
-
-        top: 90px;
-
-        right: 5%;
-
-        padding: 17px;
-    }
-
-    .menu-item {
-
-        font-size: 19px;
-
-        padding:
-            16px 12px;
+    .footer-left,
+    .footer-right {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     ФОН
-========================= -->
-
-<div class="background">
-
-    <div class="grid"></div>
-
-    <div class="orb one"></div>
-
-    <div class="orb two"></div>
-
-</div>
-
-
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-    <div class="logo">
+    <a class="header-link"
+       href="https://mail.google.com"
+       target="_blank">
+        Почта
+    </a>
 
-        <div class="logo-dot"></div>
+    <a class="header-link"
+       href="https://images.google.com"
+       target="_blank">
+        Картинки
+    </a>
 
-        Had1oS
+    <button class="apps-button"
+            onclick="toggleMenu()"
+            aria-label="Меню">
+        ⋮⋮⋮
+    </button>
 
-    </div>
-
-
-    <div class="header-actions">
-
-        <button
-            class="header-btn"
-            onclick="openLogin()">
-
-            Войти
-
-        </button>
-
-
-        <button
-            class="header-btn"
-            onclick="toggleMenu()">
-
-            ☰
-
-        </button>
-
-    </div>
+    <button class="login-button"
+            onclick="showLoginMessage()">
+        Войти
+    </button>
 
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ================= MENU ================= -->
 
-<main class="hero">
+<div class="menu" id="menu">
 
-    <h1>Had1oS</h1>
+    <div class="menu-title">
+        Had1oS
+    </div>
+
+    <div class="menu-item"
+         onclick="searchType('web')">
+        🔎
+        <span>Поиск</span>
+    </div>
+
+    <div class="menu-item"
+         onclick="searchType('images')">
+        🖼️
+        <span>Картинки</span>
+    </div>
+
+    <div class="menu-item"
+         onclick="searchType('video')">
+        🎬
+        <span>Видео</span>
+    </div>
+
+    <div class="menu-item"
+         onclick="searchType('news')">
+        📰
+        <span>Новости</span>
+    </div>
+
+    <div class="menu-item"
+         onclick="searchType('maps')">
+        🗺️
+        <span>Карты</span>
+    </div>
+
+    <div class="menu-item"
+         onclick="openMusic()">
+        🎵
+        <span>Музыка</span>
+    </div>
+
+</div>
 
 
-    <p>
-        Один сайт для поиска,
-        музыки, видео, карт,
-        новостей и развлечений.
-    </p>
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="logo">
+        Had1oS
+    </div>
 
 
-    <!-- ПОИСК -->
+    <!-- SEARCH -->
 
-    <div class="search-area">
+    <div class="search-wrapper">
 
-        <div class="search-box">
+        <div class="search-box"
+             id="searchBox">
 
-            <div class="search-icon">
-                🔎
-            </div>
-
+            <span class="search-icon">
+                🔍
+            </span>
 
             <input
                 id="searchInput"
                 type="text"
                 autocomplete="off"
-                placeholder="Что ищем?"
+                placeholder="Поиск"
+                aria-label="Поиск"
             >
 
+            <button
+                class="clear-button"
+                id="clearButton"
+                onclick="clearSearch()"
+                style="display:none;">
+                ×
+            </button>
 
             <button
-                class="search-submit"
-                onclick="performSearch()">
-
-                Найти
-
+                class="voice-button"
+                onclick="voiceSearch()"
+                aria-label="Голосовой поиск">
+                🎙️
             </button>
 
         </div>
 
 
-        <div class="search-providers">
+        <!-- SUGGESTIONS -->
 
-            <button
-                class="provider active"
-                data-provider="google"
-                onclick="selectProvider('google')">
+        <div class="suggestions"
+             id="suggestions">
 
-                🔵 Google
-
-            </button>
-
-
-            <button
-                class="provider"
-                data-provider="yandex"
-                onclick="selectProvider('yandex')">
-
-                🔴 Яндекс
-
-            </button>
+            <div class="suggestion">
+                <span class="suggestion-icon">↗</span>
+                <span>Популярный поиск</span>
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- СФЕРА -->
+    <!-- BUTTONS -->
 
-    <div class="sphere">
+    <div class="search-buttons">
 
-        <span>H</span>
+        <button
+            class="action-button"
+            onclick="performSearch()">
+            Поиск Had1oS
+        </button>
+
+        <button
+            class="action-button"
+            onclick="luckySearch()">
+            Мне повезёт
+        </button>
+
+    </div>
+
+
+    <!-- ENGINE -->
+
+    <div class="engine-panel">
+
+        <span>Искать через:</span>
+
+        <select
+            class="engine-select"
+            id="engineSelect">
+
+            <option value="google">
+                Google
+            </option>
+
+            <option value="yandex">
+                Яндекс
+            </option>
+
+            <option value="bing">
+                Bing
+            </option>
+
+            <option value="duck">
+                DuckDuckGo
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- QUICK LINKS -->
+
+    <div class="quick-links">
+
+        <div class="quick-card"
+             onclick="openURL('https://www.youtube.com')">
+
+            <div class="quick-icon">
+                ▶️
+            </div>
+
+            <div class="quick-name">
+                YouTube
+            </div>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="openURL('https://vk.com')">
+
+            <div class="quick-icon">
+                VK
+            </div>
+
+            <div class="quick-name">
+                VK
+            </div>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="openURL('https://open.spotify.com')">
+
+            <div class="quick-icon">
+                🎵
+            </div>
+
+            <div class="quick-name">
+                Spotify
+            </div>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="openURL('https://github.com')">
+
+            <div class="quick-icon">
+                🐙
+            </div>
+
+            <div class="quick-name">
+                GitHub
+            </div>
+
+        </div>
+
+
+        <div class="quick-card"
+             onclick="openURL('https://www.google.com/maps')">
+
+            <div class="quick-icon">
+                🗺️
+            </div>
+
+            <div class="quick-name">
+                Карты
+            </div>
+
+        </div>
 
     </div>
 
 </main>
 
 
-<!-- =========================
-     МЕНЮ
-========================= -->
+<!-- ================= FOOTER ================= -->
 
-<div
-    class="menu-overlay"
-    id="menuOverlay"
-    onclick="closeMenu(event)">
+<footer>
 
-    <div
-        class="menu-panel"
-        onclick="event.stopPropagation()">
+    <div class="footer-left">
 
+        <span class="footer-link">
+            О Had1oS
+        </span>
 
-        <div class="menu-title">
-            СЕРВИСЫ HAD1OS
-        </div>
+        <span class="footer-link">
+            Реклама
+        </span>
 
-
-        <button
-            class="menu-item"
-            onclick="openChoice('search')">
-
-            <span class="menu-icon">
-                🔎
-            </span>
-
-            <span>
-                Поиск
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('images')">
-
-            <span class="menu-icon">
-                🖼️
-            </span>
-
-            <span>
-                Картинки
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('video')">
-
-            <span class="menu-icon">
-                🎬
-            </span>
-
-            <span>
-                Видео
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('news')">
-
-            <span class="menu-icon">
-                📰
-            </span>
-
-            <span>
-                Новости
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('maps')">
-
-            <span class="menu-icon">
-                🗺️
-            </span>
-
-            <span>
-                Карты
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('music')">
-
-            <span class="menu-icon">
-                🎵
-            </span>
-
-            <span>
-                Музыка
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('games')">
-
-            <span class="menu-icon">
-                🎮
-            </span>
-
-            <span>
-                Игры
-            </span>
-
-        </button>
-
-
-        <button
-            class="menu-item"
-            onclick="openChoice('cloud')">
-
-            <span class="menu-icon">
-                ☁️
-            </span>
-
-            <span>
-                Облако
-            </span>
-
-        </button>
+        <span class="footer-link">
+            Для бизнеса
+        </span>
 
     </div>
 
-</div>
 
+    <div class="footer-right">
 
-<!-- =========================
-     ОКНО ВЫБОРА
-========================= -->
+        <span class="footer-link">
+            Конфиденциальность
+        </span>
 
-<div
-    class="choice-overlay"
-    id="choiceOverlay"
-    onclick="closeChoice(event)">
+        <span class="footer-link">
+            Условия
+        </span>
 
-    <div
-        class="choice-box"
-        onclick="event.stopPropagation()">
-
-
-        <div class="choice-header">
-
-            <h2 id="choiceTitle">
-                Выберите сервис
-            </h2>
-
-
-            <button
-                class="close-btn"
-                onclick="closeChoice()">
-
-                ×
-
-            </button>
-
-        </div>
-
-
-        <div
-            class="choice-description"
-            id="choiceDescription">
-
-            Выберите, куда перейти.
-
-        </div>
-
-
-        <div id="choiceOptions"></div>
+        <span class="footer-link"
+              onclick="showAbout()">
+            Настройки
+        </span>
 
     </div>
 
-</div>
+</footer>
 
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
-<div
-    class="toast"
-    id="toast">
-
-    Готово
-
+<div class="toast"
+     id="toast">
 </div>
 
 
 <script>
 
-/* =========================
-   ПОИСК
-========================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-let selectedProvider = "google";
+const input =
+    document.getElementById("searchInput");
 
+const searchBox =
+    document.getElementById("searchBox");
 
-function selectProvider(provider) {
+const clearButton =
+    document.getElementById("clearButton");
 
-    selectedProvider = provider;
+const suggestions =
+    document.getElementById("suggestions");
 
+const menu =
+    document.getElementById("menu");
 
-    document
-        .querySelectorAll(".provider")
-        .forEach(button => {
-
-            button.classList.remove(
-                "active"
-            );
-
-        });
-
-
-    const selected =
-        document.querySelector(
-            `[data-provider="${provider}"]`
-        );
+const toast =
+    document.getElementById("toast");
 
 
-    if (selected) {
+/* =========================================
+   SEARCH ENGINE URLS
+========================================= */
 
-        selected.classList.add(
-            "active"
-        );
+function getSearchURL(query) {
 
+    const engine =
+        document.getElementById("engineSelect").value;
+
+    const encoded =
+        encodeURIComponent(query);
+
+    if (engine === "google") {
+        return "https://www.google.com/search?q=" + encoded;
     }
 
+    if (engine === "yandex") {
+        return "https://yandex.ru/search/?text=" + encoded;
+    }
 
-    const name =
-        provider === "google"
-            ? "Google"
-            : "Яндекс";
+    if (engine === "bing") {
+        return "https://www.bing.com/search?q=" + encoded;
+    }
 
+    if (engine === "duck") {
+        return "https://duckduckgo.com/?q=" + encoded;
+    }
 
-    showToast(
-        "Поиск: " + name
-    );
+    return "https://www.google.com/search?q=" + encoded;
 }
 
 
+/* =========================================
+   NORMAL SEARCH
+========================================= */
+
 function performSearch() {
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
 
     const query =
         input.value.trim();
 
-
     if (!query) {
 
-        input.focus();
+        showToast("Введите запрос");
 
-        showToast(
-            "Введите запрос"
-        );
+        input.focus();
 
         return;
     }
 
-
-    let url;
-
-
-    if (
-        selectedProvider ===
-        "yandex"
-    ) {
-
-        url =
-            "https://yandex.ru/search/?text=" +
-            encodeURIComponent(query);
-
-    } else {
-
-        url =
-            "https://www.google.com/search?q=" +
-            encodeURIComponent(query);
-
-    }
-
-
-    showToast(
-        "Ищем: " + query
-    );
-
-
-    setTimeout(() => {
-
-        window.location.href =
-            url;
-
-    }, 250);
+    window.location.href =
+        getSearchURL(query);
 }
 
 
-/* Enter */
-
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key === "Enter"
-            ) {
-
-                performSearch();
-
-            }
-
-        }
-    );
-
-
-/* =========================
-   МЕНЮ
-========================= */
-
-function toggleMenu() {
-
-    document
-        .getElementById(
-            "menuOverlay"
-        )
-        .classList.toggle(
-            "active"
-        );
-}
-
-
-function closeMenu(event) {
-
-    if (
-        !event ||
-        event.target.id ===
-        "menuOverlay"
-    ) {
-
-        document
-            .getElementById(
-                "menuOverlay"
-            )
-            .classList.remove(
-                "active"
-            );
-    }
-}
-
-
-/* =========================
-   СЕРВИСЫ
-========================= */
-
-const services = {
-
-    search: {
-
-        title: "Поиск",
-
-        description:
-            "Выберите поисковую систему.",
-
-        options: [
-
-            {
-                name: "Google",
-                icon: "🔵",
-                url:
-                    "https://www.google.com/"
-            },
-
-            {
-                name: "Яндекс",
-                icon: "🔴",
-                url:
-                    "https://yandex.ru/"
-            }
-
-        ]
-
-    },
-
-
-    images: {
-
-        title: "Картинки",
-
-        description:
-            "Выберите сервис изображений.",
-
-        options: [
-
-            {
-                name: "Google Картинки",
-                icon: "🔵",
-                url:
-                    "https://images.google.com/"
-            },
-
-            {
-                name: "Яндекс.Картинки",
-                icon: "🔴",
-                url:
-                    "https://yandex.ru/images/"
-            }
-
-        ]
-
-    },
-
-
-    video: {
-
-        title: "Видео",
-
-        description:
-            "Выберите видеосервис.",
-
-        options: [
-
-            {
-                name: "YouTube",
-                icon: "▶️",
-                url:
-                    "https://www.youtube.com/"
-            },
-
-            {
-                name: "VK Видео",
-                icon: "🔵",
-                url:
-                    "https://vkvideo.ru/"
-            },
-
-            {
-                name: "Rutube",
-                icon: "▶️",
-                url:
-                    "https://rutube.ru/"
-            }
-
-        ]
-
-    },
-
-
-    news: {
-
-        title: "Новости",
-
-        description:
-            "Выберите новостной сервис.",
-
-        options: [
-
-            {
-                name: "Google News",
-                icon: "📰",
-                url:
-                    "https://news.google.com/"
-            },
-
-            {
-                name: "Дзен Новости",
-                icon: "🔴",
-                url:
-                    "https://dzen.ru/news"
-            }
-
-        ]
-
-    },
-
-
-    maps: {
-
-        title: "Карты",
-
-        description:
-            "Выберите карты.",
-
-        options: [
-
-            {
-                name: "Google Maps",
-                icon: "🌎",
-                url:
-                    "https://maps.google.com/"
-            },
-
-            {
-                name: "Яндекс Карты",
-                icon: "🟡",
-                url:
-                    "https://yandex.ru/maps/"
-            },
-
-            {
-                name: "Apple Maps",
-                icon: "🍎",
-                url:
-                    "https://maps.apple.com/"
-            }
-
-        ]
-
-    },
-
-
-    music: {
-
-        title: "Музыка",
-
-        description:
-            "Выберите музыкальный сервис.",
-
-        options: [
-
-            {
-                name: "VK Музыка",
-                icon: "🎵",
-                url:
-                    "https://vk.com/music"
-            },
-
-            {
-                name: "Spotify",
-                icon: "🟢",
-                url:
-                    "https://open.spotify.com/"
-            }
-
-        ]
-
-    },
-
-
-    games: {
-
-        title: "Игры",
-
-        description:
-            "Выберите игровой сервис.",
-
-        options: [
-
-            {
-                name: "VK Play",
-                icon: "🎮",
-                url:
-                    "https://vkplay.ru/"
-            },
-
-            {
-                name: "Steam",
-                icon: "🎮",
-                url:
-                    "https://store.steampowered.com/"
-            }
-
-        ]
-
-    },
-
-
-    cloud: {
-
-        title: "Облако",
-
-        description:
-            "Выберите облачное хранилище.",
-
-        options: [
-
-            {
-                name: "Google Drive",
-                icon: "☁️",
-                url:
-                    "https://drive.google.com/"
-            },
-
-            {
-                name: "Яндекс Диск",
-                icon: "☁️",
-                url:
-                    "https://disk.yandex.ru/"
-            }
-
-        ]
-
-    }
-
-};
-
-
-/* =========================
-   ОТКРЫТЬ СЕРВИС
-========================= */
-
-function openChoice(type) {
-
-    const service =
-        services[type];
-
-
-    if (!service) return;
-
-
-    document
-        .getElementById(
-            "menuOverlay"
-        )
-        .classList.remove(
-            "active"
-        );
-
-
-    document
-        .getElementById(
-            "choiceTitle"
-        )
-        .textContent =
-        service.title;
-
-
-    document
-        .getElementById(
-            "choiceDescription"
-        )
-        .textContent =
-        service.description;
-
-
-    const options =
-        document.getElementById(
-            "choiceOptions"
-        );
-
-
-    options.innerHTML = "";
-
-
-    service.options.forEach(
-        option => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "choice-option";
-
-
-            button.innerHTML = `
-
-                <span class="option-icon">
-                    ${option.icon}
-                </span>
-
-                <span>
-                    ${option.name}
-                </span>
-
-            `;
-
-
-            button.onclick = () => {
-
-                showToast(
-                    "Открываем " +
-                    option.name
-                );
-
-
-                setTimeout(() => {
-
-                    window.location.href =
-                        option.url;
-
-                }, 250);
-
-            };
-
-
-            options.appendChild(
-                button
-            );
-
-        }
-    );
-
-
-    document
-        .getElementById(
-            "choiceOverlay"
-        )
-        .classList.add(
-            "active"
-        );
-}
-
-
-/* =========================
-   ЗАКРЫТЬ ОКНО
-========================= */
-
-function closeChoice(event) {
-
-    if (
-        !event ||
-        event.target.id ===
-        "choiceOverlay"
-    ) {
-
-        document
-            .getElementById(
-                "choiceOverlay"
-            )
-            .classList.remove(
-                "active"
-            );
-    }
-}
-
-
-/* =========================
-   ВХОД
-========================= */
-
-function openLogin() {
-
-    document
-        .getElementById(
-            "choiceTitle"
-        )
-        .textContent =
-        "Аккаунт Had1oS";
-
-
-    document
-        .getElementById(
-            "choiceDescription"
-        )
-        .textContent =
-        "Здесь позже подключим настоящую авторизацию.";
-
-
-    const options =
-        document.getElementById(
-            "choiceOptions"
-        );
-
-
-    options.innerHTML = `
-
-        <button
-            class="choice-option"
-            onclick="loginComingSoon()">
-
-            <span class="option-icon">
-                👤
-            </span>
-
-            <span>
-                Войти в аккаунт
-            </span>
-
-        </button>
-
-
-        <button
-            class="choice-option"
-            onclick="loginComingSoon()">
-
-            <span class="option-icon">
-                ✨
-            </span>
-
-            <span>
-                Создать аккаунт
-            </span>
-
-        </button>
-
-    `;
-
-
-    document
-        .getElementById(
-            "choiceOverlay"
-        )
-        .classList.add(
-            "active"
-        );
-}
-
-
-function loginComingSoon() {
-
-    showToast(
-        "Авторизацию подключим позже"
-    );
-
-}
-
-
-/* =========================
-   TOAST
-========================= */
-
-let toastTimer;
-
-
-function showToast(text) {
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        text;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-        }, 1800);
-}
-
-
-/* =========================
-   ESC
-========================= */
-
-document.addEventListener(
+/* =========================================
+   ENTER
+========================================= */
+
+input.addEventListener(
     "keydown",
-    event => {
+    function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Enter") {
 
-            document
-                .getElementById(
-                    "menuOverlay"
-                )
-                .classList.remove(
-                    "active"
-                );
+            performSearch();
 
+        }
 
-            document
-                .getElementById(
-                    "choiceOverlay"
-                )
-                .classList.remove(
-                    "active"
-                );
+        if (event.key === "Escape") {
+
+            clearSearch();
 
         }
 
     }
 );
+
+
+/* =========================================
+   INPUT ANIMATION
+========================================= */
+
+input.addEventListener(
+    "focus",
+    function() {
+
+        searchBox.classList.add("active");
+
+    }
+);
+
+input.addEventListener(
+    "blur",
+    function() {
+
+        setTimeout(() => {
+
+            searchBox.classList.remove("active");
+
+        }, 150);
+
+    }
+);
+
+
+/* =========================================
+   CLEAR BUTTON
+========================================= */
+
+input.addEventListener(
+    "input",
+    function() {
+
+        clearButton.style.display =
+            input.value.length
+            ? "block"
+            : "none";
+
+        if (input.value.length > 0) {
+
+            suggestions.classList.add("show");
+
+        } else {
+
+            suggestions.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+function clearSearch() {
+
+    input.value = "";
+
+    clearButton.style.display = "none";
+
+    suggestions.classList.remove("show");
+
+    input.focus();
+
+}
+
+
+/* =========================================
+   LUCKY SEARCH
+========================================= */
+
+function luckySearch() {
+
+    const query =
+        input.value.trim();
+
+    if (!query) {
+
+        showToast("Сначала введите запрос");
+
+        input.focus();
+
+        return;
+    }
+
+    const url =
+        getSearchURL(query)
+        + "&btnI=1";
+
+    window.location.href = url;
+
+}
+
+
+/* =========================================
+   VOICE SEARCH
+========================================= */
+
+function voiceSearch() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+
+        showToast(
+            "Голосовой поиск не поддерживается этим браузером"
+        );
+
+        return;
+    }
+
+    const recognition =
+        new SpeechRecognition();
+
+    recognition.lang = "ru-RU";
+
+    recognition.interimResults = false;
+
+    recognition.maxAlternatives = 1;
+
+
+    showToast("Слушаю…");
+
+
+    recognition.start();
+
+
+    recognition.onresult =
+        function(event) {
+
+            const text =
+                event.results[0][0].transcript;
+
+            input.value = text;
+
+            clearButton.style.display = "block";
+
+            performSearch();
+
+        };
+
+
+    recognition.onerror =
+        function() {
+
+            showToast(
+                "Не удалось распознать голос"
+            );
+
+        };
+
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+function toggleMenu() {
+
+    menu.classList.toggle("show");
+
+}
+
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !menu.contains(event.target) &&
+            !event.target.closest(".apps-button")
+        ) {
+
+            menu.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MENU SEARCH TYPES
+========================================= */
+
+function searchType(type) {
+
+    const query =
+        input.value.trim();
+
+    if (!query) {
+
+        showToast("Введите запрос");
+
+        menu.classList.remove("show");
+
+        input.focus();
+
+        return;
+    }
+
+    const encoded =
+        encodeURIComponent(query);
+
+    let url;
+
+
+    if (type === "web") {
+
+        url =
+            "https://www.google.com/search?q="
+            + encoded;
+
+    }
+
+
+    if (type === "images") {
+
+        url =
+            "https://www.google.com/search?tbm=isch&q="
+            + encoded;
+
+    }
+
+
+    if (type === "video") {
+
+        url =
+            "https://www.youtube.com/results?search_query="
+            + encoded;
+
+    }
+
+
+    if (type === "news") {
+
+        url =
+            "https://news.google.com/search?q="
+            + encoded;
+
+    }
+
+
+    if (type === "maps") {
+
+        url =
+            "https://www.google.com/maps/search/"
+            + encoded;
+
+    }
+
+
+    window.location.href = url;
+
+}
+
+
+/* =========================================
+   MUSIC
+========================================= */
+
+function openMusic() {
+
+    menu.classList.remove("show");
+
+    const choice =
+        confirm(
+            "Открыть Spotify?\n\nНажмите «Отмена», чтобы открыть VK."
+        );
+
+    if (choice) {
+
+        window.open(
+            "https://open.spotify.com",
+            "_blank"
+        );
+
+    } else {
+
+        window.open(
+            "https://vk.com/music",
+            "_blank"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   QUICK LINKS
+========================================= */
+
+function openURL(url) {
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+function showLoginMessage() {
+
+    showToast(
+        "Авторизация Had1oS скоро будет доступна"
+    );
+
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+function showAbout() {
+
+    showToast(
+        "Had1oS — твой персональный поисковый экран"
+    );
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+let toastTimer;
+
+function showToast(message) {
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove("show");
+
+            },
+            2800
+        );
+
+}
+
+
+/* =========================================
+   RANDOM STARTUP ANIMATION
+========================================= */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        setTimeout(
+            () => {
+
+                document.querySelector(".logo")
+                    .style.opacity = "1";
+
+            },
+            100
+        );
+
+    }
+);
+
+
+/* =========================================
+   SUGGESTION CLICK
+========================================= */
+
+document.querySelectorAll(".suggestion")
+    .forEach(
+        item => {
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    input.value =
+                        "популярные запросы";
+
+                    performSearch();
+
+                }
+
+            );
+
+        }
+    );
 
 </script>
 
